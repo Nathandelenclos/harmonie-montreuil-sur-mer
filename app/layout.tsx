@@ -1,11 +1,11 @@
 import type React from "react"
 import "./globals.css"
+import Script from 'next/script';
 import type { Metadata } from "next"
 import { Playfair_Display, Montserrat } from "next/font/google"
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import ScrollToTop from "@/components/scroll-to-top"
-import {GoogleAnalytics} from "nextjs-google-analytics";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -29,8 +29,22 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr" className="scroll-smooth">
-    <GoogleAnalytics trackPageViews gaMeasurementId="G-KYZ6HDRZ7J" />
+
       <body className={`${playfair.variable} ${montserrat.variable} font-sans`}>
+        <Script
+            src={`https://www.googletagmanager.com/gtag/js?id=G-KYZ6HDRZ7J`}
+            strategy="afterInteractive"
+        />
+        <Script id="ga4-script" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-KYZ6HDRZ7J', {
+              page_path: window.location.pathname,
+            });
+          `}
+        </Script>
         <Navigation />
         <ScrollToTop />
         <main className="min-h-screen pt-16">{children}</main>
