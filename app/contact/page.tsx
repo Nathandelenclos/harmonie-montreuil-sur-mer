@@ -55,7 +55,7 @@ export default function ContactPage() {
                   <h2 className="text-3xl md:text-4xl font-bold mb-6">Restons en contact</h2>
                   <p className="text-muted-foreground">
                     Vous souhaitez nous rejoindre, nous inviter à un événement ou simplement en savoir plus sur nos
-                    activités ? N'hésitez pas à nous contacter par le biais du formulaire ci-contre ou via les
+                    activités ? N&#39;hésitez pas à nous contacter par le biais du formulaire ci-contre ou via les
                     coordonnées ci-dessous.
                   </p>
                 </div>
@@ -191,9 +191,9 @@ export default function ContactPage() {
                         className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                       >
                         <option value="">Sélectionnez un sujet</option>
-                        <option value="rejoindre">Rejoindre l'harmonie</option>
+                        <option value="rejoindre">Rejoindre l&#39;harmonie</option>
                         <option value="invitation">Invitation à un événement</option>
-                        <option value="information">Demande d'information</option>
+                        <option value="information">Demande d&#39;information</option>
                         <option value="autre">Autre</option>
                       </select>
                     </div>

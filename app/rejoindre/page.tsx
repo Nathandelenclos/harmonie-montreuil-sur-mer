@@ -49,14 +49,14 @@ export default function JoinPage() {
 
   return (
     <div className="flex flex-col">
-      <PageHeader title="Rejoignez-nous" description="Devenez membre de l'Harmonie de Montreuil-sur-Mer" />
+      <PageHeader title="Rejoignez-nous" description="Devenez membre de l&#39;Harmonie de Montreuil-sur-Mer" />
 
       <section className="py-16 md:py-24">
         <div className="container px-4">
           <AnimatedSection className="text-center mb-16">
             <h2 className="section-title mb-4">Pourquoi nous rejoindre ?</h2>
             <p className="section-subtitle">
-              L'Harmonie de Montreuil-sur-Mer vous offre l'opportunité de partager votre passion pour la musique dans
+              L&#39;Harmonie de Montreuil-sur-Mer vous offre l&#39;opportunité de partager votre passion pour la musique dans
               une ambiance conviviale
             </p>
           </AnimatedSection>
@@ -69,7 +69,7 @@ export default function JoinPage() {
                 </div>
                 <h3 className="text-xl font-bold mb-4">Pratiquer la musique</h3>
                 <p className="text-muted-foreground">
-                  Jouez régulièrement au sein d'un ensemble et développez votre pratique musicale avec un répertoire
+                  Jouez régulièrement au sein d&#39;un ensemble et développez votre pratique musicale avec un répertoire
                   varié et accessible.
                 </p>
               </div>
@@ -107,7 +107,7 @@ export default function JoinPage() {
               <div className="space-y-6">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">Qui peut nous rejoindre ?</h2>
                 <p className="text-muted-foreground">
-                  L'Harmonie de Montreuil-sur-Mer accueille tous les musiciens, quel que soit leur niveau ou leur âge.
+                  L&#39;Harmonie de Montreuil-sur-Mer accueille tous les musiciens, quel que soit leur niveau ou leur âge.
                   Que vous soyez débutant ou confirmé, jeune ou moins jeune, il y a une place pour vous parmi nous !
                 </p>
 
@@ -118,7 +118,7 @@ export default function JoinPage() {
                   </div>
                   <div className="flex items-center gap-3">
                     <CheckCircle2 className="h-5 w-5 text-primary" />
-                    <span>Jeunes musiciens issus de l'école de musique</span>
+                    <span>Jeunes musiciens issus de l&#39;école de musique</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <CheckCircle2 className="h-5 w-5 text-primary" />
@@ -133,7 +133,7 @@ export default function JoinPage() {
                 <div className="pt-4">
                   <Button asChild className="group">
                     <Link href="/contact" className="flex items-center gap-2">
-                      Contactez-nous pour plus d'informations
+                      Contactez-nous pour plus d&#39;informations
                       <ChevronRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                     </Link>
                   </Button>
@@ -147,7 +147,7 @@ export default function JoinPage() {
                 <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-secondary/20 rounded-full -z-10"></div>
                 <Image
                   src="/placeholder.svg?height=600&width=500&text=Rejoignez-nous"
-                  alt="Musiciens de l'Harmonie"
+                  alt="Musiciens de l&#39;Harmonie"
                   width={500}
                   height={600}
                   className="rounded-lg shadow-xl w-full object-cover"
@@ -164,7 +164,7 @@ export default function JoinPage() {
           <AnimatedSection className="text-center mb-16">
             <h2 className="section-title mb-4">Notre École de Musique</h2>
             <p className="section-subtitle">
-              Débutez ou perfectionnez votre pratique musicale avant de rejoindre l'harmonie
+              Débutez ou perfectionnez votre pratique musicale avant de rejoindre l&#39;harmonie
             </p>
           </AnimatedSection>
 
@@ -190,8 +190,8 @@ export default function JoinPage() {
                 </div>
                 <h3 className="text-3xl font-bold mb-4">Formez-vous à la musique</h3>
                 <p className="text-muted-foreground">
-                  Notre école de musique est le tremplin idéal pour rejoindre l'harmonie. Elle accueille les élèves de
-                  tous âges, débutants ou confirmés, désireux d'apprendre ou de perfectionner leur pratique
+                  Notre école de musique est le tremplin idéal pour rejoindre l&#39;harmonie. Elle accueille les élèves de
+                  tous âges, débutants ou confirmés, désireux d&#39;apprendre ou de perfectionner leur pratique
                   instrumentale.
                 </p>
 
@@ -203,8 +203,8 @@ export default function JoinPage() {
                     <div>
                       <h4 className="text-lg font-bold">Formation complète</h4>
                       <p className="text-muted-foreground">
-                        Cours d'instruments, formation musicale, pratique collective... Notre offre pédagogique vous
-                        prépare à intégrer l'harmonie.
+                        Cours d&#39;instruments, formation musicale, pratique collective... Notre offre pédagogique vous
+                        prépare à intégrer l&#39;harmonie.
                       </p>
                     </div>
                   </div>
@@ -216,8 +216,8 @@ export default function JoinPage() {
                     <div>
                       <h4 className="text-lg font-bold">Intégration progressive</h4>
                       <p className="text-muted-foreground">
-                        Dès que votre niveau le permet, vous pourrez participer aux répétitions de l'harmonie et
-                        progressivement intégrer l'ensemble.
+                        Dès que votre niveau le permet, vous pourrez participer aux répétitions de l&#39;harmonie et
+                        progressivement intégrer l&#39;ensemble.
                       </p>
                     </div>
                   </div>
@@ -243,7 +243,7 @@ export default function JoinPage() {
           <AnimatedSection className="text-center mb-16">
             <h2 className="section-title mb-4">Contactez-nous</h2>
             <p className="section-subtitle">
-              Vous souhaitez nous rejoindre ou obtenir plus d'informations ? Remplissez le formulaire ci-dessous.
+              Vous souhaitez nous rejoindre ou obtenir plus d&#39;informations ? Remplissez le formulaire ci-dessous.
             </p>
           </AnimatedSection>
 
@@ -361,7 +361,7 @@ export default function JoinPage() {
                         value={formState.message}
                         onChange={handleChange}
                         className="flex min-h-[120px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                        placeholder="Parlez-nous de vous, de votre parcours musical et de vos motivations pour rejoindre l'harmonie"
+                        placeholder="Parlez-nous de vous, de votre parcours musical et de vos motivations pour rejoindre l&#39;harmonie"
                       />
                     </div>
 

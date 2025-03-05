@@ -11,7 +11,7 @@ export default function AboutPage() {
     <div className="flex flex-col">
       <PageHeader
         title="À propos de nous"
-        description="Découvrez l'Harmonie de Montreuil-sur-Mer, son histoire et ses musiciens"
+        description="Découvrez l&#39;Harmonie de Montreuil-sur-Mer, son histoire et ses musiciens"
       />
 
       <section className="py-16 md:py-24">
@@ -21,19 +21,19 @@ export default function AboutPage() {
               <div className="space-y-6">
                 <h2 className="text-3xl md:text-4xl font-bold">Notre harmonie</h2>
                 <p className="text-muted-foreground">
-                  L'Harmonie de Montreuil-sur-Mer est une formation musicale composée d'une trentaine de musiciens
+                  L&#39;Harmonie de Montreuil-sur-Mer est une formation musicale composée d&#39;une trentaine de musiciens
                   amateurs passionnés, de tous âges et de tous horizons. Fondée en 1865, elle perpétue une tradition
                   musicale plus que centenaire dans notre belle cité.
                 </p>
                 <p className="text-muted-foreground">
-                  Notre répertoire est varié et s'adapte aux différentes manifestations auxquelles nous participons :
+                  Notre répertoire est varié et s&#39;adapte aux différentes manifestations auxquelles nous participons :
                   cérémonies officielles, concerts thématiques, animations locales... Nous interprétons aussi bien des
                   œuvres classiques que des musiques de films, des morceaux de variété ou des compositions originales
-                  pour orchestre d'harmonie.
+                  pour orchestre d&#39;harmonie.
                 </p>
                 <p className="text-muted-foreground">
-                  Plus qu'un simple ensemble musical, l'Harmonie de Montreuil-sur-Mer est un lieu de partage,
-                  d'apprentissage et de convivialité, où chacun peut s'épanouir dans sa pratique musicale tout en
+                  Plus qu&#39;un simple ensemble musical, l&#39;Harmonie de Montreuil-sur-Mer est un lieu de partage,
+                  d&#39;apprentissage et de convivialité, où chacun peut s&#39;épanouir dans sa pratique musicale tout en
                   contribuant à la vie culturelle locale.
                 </p>
               </div>
@@ -45,7 +45,7 @@ export default function AboutPage() {
                 <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-secondary/20 rounded-full -z-10"></div>
                 <Image
                   src="/assets/harmonie-montreuil-sur-mer.jpg?height=600&width=500"
-                  alt="L'Harmonie en répétition"
+                  alt="L&#39;Harmonie en répétition"
                   width={500}
                   height={600}
                   className="rounded-lg shadow-xl w-full object-cover"
@@ -61,7 +61,7 @@ export default function AboutPage() {
           <AnimatedSection className="text-center mb-16">
             <h2 className="section-title mb-4">Notre mission</h2>
             <p className="section-subtitle">
-              L'Harmonie de Montreuil-sur-Mer s'engage à promouvoir la musique et à enrichir la vie culturelle locale
+              L&#39;Harmonie de Montreuil-sur-Mer s&#39;engage à promouvoir la musique et à enrichir la vie culturelle locale
             </p>
           </AnimatedSection>
 
@@ -73,7 +73,7 @@ export default function AboutPage() {
                 </div>
                 <h3 className="text-xl font-bold mb-4">Promouvoir la musique</h3>
                 <p className="text-muted-foreground">
-                  Nous nous efforçons de faire découvrir et apprécier la musique d'harmonie au plus grand nombre, à
+                  Nous nous efforçons de faire découvrir et apprécier la musique d&#39;harmonie au plus grand nombre, à
                   travers nos concerts et nos participations aux événements locaux.
                 </p>
               </div>
@@ -87,7 +87,7 @@ export default function AboutPage() {
                 <h3 className="text-xl font-bold mb-4">Former des musiciens</h3>
                 <p className="text-muted-foreground">
                   Nous accueillons des musiciens de tous niveaux et les accompagnons dans leur progression, en
-                  collaboration avec l'école de musique locale.
+                  collaboration avec l&#39;école de musique locale.
                 </p>
               </div>
             </AnimatedSection>
@@ -112,7 +112,7 @@ export default function AboutPage() {
         <div className="container px-4">
           <AnimatedSection className="text-center mb-16">
             <h2 className="section-title mb-4">Notre équipe</h2>
-            <p className="section-subtitle">Découvrez les personnes qui font vivre l'Harmonie de Montreuil-sur-Mer</p>
+            <p className="section-subtitle">Découvrez les personnes qui font vivre l&#39;Harmonie de Montreuil-sur-Mer</p>
           </AnimatedSection>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -120,7 +120,7 @@ export default function AboutPage() {
               { name: "Jean Dupont", role: "Président", image: "/placeholder.svg?height=300&width=300&text=Jean" },
               {
                 name: "Marie Martin",
-                role: "Chef d'orchestre",
+                role: "Chef d&#39;orchestre",
                 image: "/placeholder.svg?height=300&width=300&text=Marie",
               },
               { name: "Pierre Durand", role: "Trésorier", image: "/placeholder.svg?height=300&width=300&text=Pierre" },

@@ -9,12 +9,12 @@ export default function HistoryPage() {
     {
       year: "1865",
       title: "Fondation",
-      description: "Création de l'Harmonie de Montreuil-sur-Mer par un groupe de musiciens amateurs passionnés.",
+      description: "Création de l&#39;Harmonie de Montreuil-sur-Mer par un groupe de musiciens amateurs passionnés.",
     },
     {
       year: "1880-1900",
-      title: "Âge d'or",
-      description: "L'Harmonie connaît un essor important et participe à de nombreux concours régionaux et nationaux.",
+      title: "Âge d&#39;or",
+      description: "L&#39;Harmonie connaît un essor important et participe à de nombreux concours régionaux et nationaux.",
     },
     {
       year: "1914-1918",
@@ -30,48 +30,48 @@ export default function HistoryPage() {
       year: "1939-1945",
       title: "Seconde Guerre mondiale",
       description:
-        "Nouvelle interruption pendant l'occupation. L'Harmonie maintient cependant quelques activités discrètes.",
+        "Nouvelle interruption pendant l&#39;occupation. L&#39;Harmonie maintient cependant quelques activités discrètes.",
     },
     {
       year: "1950-1960",
       title: "Renouveau",
-      description: "Période de reconstruction et de modernisation du répertoire sous l'impulsion d'un nouveau chef.",
+      description: "Période de reconstruction et de modernisation du répertoire sous l&#39;impulsion d&#39;un nouveau chef.",
     },
     {
       year: "1965",
       title: "Centenaire",
-      description: "Célébration du centenaire de l'Harmonie avec un grand concert réunissant d'anciens musiciens.",
+      description: "Célébration du centenaire de l&#39;Harmonie avec un grand concert réunissant d&#39;anciens musiciens.",
     },
     {
       year: "1980-2000",
       title: "Développement",
       description:
-        "Diversification du répertoire et ouverture à de nouveaux styles musicaux. Collaboration avec l'école de musique.",
+        "Diversification du répertoire et ouverture à de nouveaux styles musicaux. Collaboration avec l&#39;école de musique.",
     },
     {
       year: "2015",
       title: "150ème anniversaire",
       description:
-        "150ème anniversaire de l'Harmonie, marqué par une série de concerts exceptionnels et la publication d'un livre retraçant son histoire.",
+        "150ème anniversaire de l&#39;Harmonie, marqué par une série de concerts exceptionnels et la publication d&#39;un livre retraçant son histoire.",
     },
     {
-      year: "Aujourd'hui",
+      year: "Aujourd&#39;hui",
       title: "Continuité",
       description:
-        "L'Harmonie continue de se produire régulièrement et accueille de nouveaux musiciens de tous âges et de tous niveaux.",
+        "L&#39;Harmonie continue de se produire régulièrement et accueille de nouveaux musiciens de tous âges et de tous niveaux.",
     },
   ]
 
   return (
     <div className="flex flex-col">
-      <PageHeader title="Notre histoire" description="Plus de 150 ans d'histoire musicale à Montreuil-sur-Mer" />
+      <PageHeader title="Notre histoire" description="Plus de 150 ans d&#39;histoire musicale à Montreuil-sur-Mer" />
 
       <section className="py-16 md:py-24">
         <div className="container px-4">
           <AnimatedSection className="text-center mb-16">
             <h2 className="section-title mb-4">Notre parcours à travers le temps</h2>
             <p className="section-subtitle">
-              Découvrez les moments clés qui ont façonné l'histoire de notre harmonie depuis sa création en 1865
+              Découvrez les moments clés qui ont façonné l&#39;histoire de notre harmonie depuis sa création en 1865
             </p>
           </AnimatedSection>
 
@@ -80,12 +80,12 @@ export default function HistoryPage() {
               <div className="space-y-6">
                 <h2 className="text-3xl md:text-4xl font-bold">Une tradition musicale centenaire</h2>
                 <p className="text-muted-foreground">
-                  L'Harmonie de Montreuil-sur-Mer a traversé les époques, les guerres et les changements sociaux tout en
+                  L&#39;Harmonie de Montreuil-sur-Mer a traversé les époques, les guerres et les changements sociaux tout en
                   maintenant vivante la tradition musicale de notre cité. Fondée en 1865 par un groupe de passionnés,
-                  elle est l'une des plus anciennes associations culturelles encore en activité dans la région.
+                  elle est l&#39;une des plus anciennes associations culturelles encore en activité dans la région.
                 </p>
                 <p className="text-muted-foreground">
-                  Au fil des décennies, l'Harmonie a su s'adapter aux évolutions musicales et sociétales, tout en
+                  Au fil des décennies, l&#39;Harmonie a su s&#39;adapter aux évolutions musicales et sociétales, tout en
                   préservant son identité et sa mission : faire vivre la musique au cœur de Montreuil-sur-Mer et de ses
                   environs.
                 </p>
@@ -103,7 +103,7 @@ export default function HistoryPage() {
                 <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-secondary/20 rounded-full -z-10"></div>
                 <Image
                   src="/placeholder.svg?height=600&width=500&text=Photo+historique"
-                  alt="Photo historique de l'Harmonie"
+                  alt="Photo historique de l&#39;Harmonie"
                   width={500}
                   height={600}
                   className="rounded-lg shadow-xl w-full object-cover"
@@ -154,7 +154,7 @@ export default function HistoryPage() {
                 title: "Premier prix",
                 description: "Concours régional des harmonies du Nord de la France",
               },
-              { year: "1925", title: "Médaille d'or", description: "Festival international de musique d'Arras" },
+              { year: "1925", title: "Médaille d&#39;or", description: "Festival international de musique d&#39;Arras" },
               {
                 year: "2015",
                 title: "Prix du patrimoine culturel",
@@ -181,7 +181,7 @@ export default function HistoryPage() {
           <AnimatedSection className="text-center mb-16">
             <h2 className="section-title mb-4">Témoignages</h2>
             <p className="section-subtitle">
-              Souvenirs et anecdotes de musiciens qui ont marqué l'histoire de notre harmonie
+              Souvenirs et anecdotes de musiciens qui ont marqué l&#39;histoire de notre harmonie
             </p>
           </AnimatedSection>
 
@@ -191,14 +191,14 @@ export default function HistoryPage() {
                 name: "Robert Dumont",
                 role: "Ancien président (1980-1995)",
                 quote:
-                  "J'ai vu l'Harmonie traverser des périodes difficiles, mais la passion et la détermination des musiciens ont toujours permis de surmonter les obstacles. C'est cette résilience qui fait la force de notre association depuis plus de 150 ans.",
+                  "J&#39;ai vu l&#39;Harmonie traverser des périodes difficiles, mais la passion et la détermination des musiciens ont toujours permis de surmonter les obstacles. C&#39;est cette résilience qui fait la force de notre association depuis plus de 150 ans.",
                 image: "/placeholder.svg?height=300&width=300&text=Robert",
               },
               {
                 name: "Jeanne Leroy",
                 role: "Musicienne depuis 1975",
                 quote:
-                  "L'Harmonie a été comme une seconde famille pour moi. J'y ai rencontré des personnes extraordinaires et vécu des moments inoubliables. Les concerts, les voyages, les répétitions... Chaque instant passé avec l'Harmonie est un souvenir précieux.",
+                  "L&#39;Harmonie a été comme une seconde famille pour moi. J&#39;y ai rencontré des personnes extraordinaires et vécu des moments inoubliables. Les concerts, les voyages, les répétitions... Chaque instant passé avec l&#39;Harmonie est un souvenir précieux.",
                 image: "/placeholder.svg?height=300&width=300&text=Jeanne",
               },
             ].map((testimonial, index) => (
@@ -215,7 +215,7 @@ export default function HistoryPage() {
                       />
                     </div>
                     <div>
-                      <blockquote className="text-muted-foreground italic mb-4">"{testimonial.quote}"</blockquote>
+                      <blockquote className="text-muted-foreground italic mb-4">&#34;{testimonial.quote}&#34;</blockquote>
                       <div className="font-bold">{testimonial.name}</div>
                       <div className="text-primary text-sm">{testimonial.role}</div>
                     </div>

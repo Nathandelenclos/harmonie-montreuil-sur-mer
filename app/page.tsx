@@ -56,12 +56,12 @@ export default function Home() {
 
           <AnimatedSection delay={0.4} animation="fade-up">
             <p className="text-white/90 text-lg md:text-xl max-w-2xl mx-auto mb-8">
-              Plus de 150 ans d'histoire musicale au service de la culture et du patrimoine de notre belle cité
+              Plus de 150 ans d&#39;histoire musicale au service de la culture et du patrimoine de notre belle cité
             </p>
           </AnimatedSection>
 
           <AnimatedSection delay={0.6} animation="fade-up" className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" variant="gradient" className="bg-secondary text-white border-white/40 hover:bg-secondary/90 group">
+            <Button asChild size="lg" className="bg-secondary text-white border-white/40 hover:bg-secondary/90 group">
               <Link href="/evenements" className="flex items-center gap-2">
                 Nos prochains concerts
                 <ChevronRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -74,7 +74,7 @@ export default function Home() {
               className="bg-secondary text-white border-white/40 hover:bg-secondary/90 group"
             >
               <Link href="/rejoindre" className="flex items-center gap-2">
-                Rejoindre l'harmonie
+                Rejoindre l&#39;harmonie
                 <ChevronRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </Button>
@@ -97,7 +97,7 @@ export default function Home() {
           <AnimatedSection className="text-center mb-16" animation="fade-up">
             <h2 className="section-title mb-4">À propos de nous</h2>
             <p className="section-subtitle">
-              L'Harmonie de Montreuil-sur-Mer est composée de musiciens amateurs passionnés de tous âges. Notre
+              L&#39;Harmonie de Montreuil-sur-Mer est composée de musiciens amateurs passionnés de tous âges. Notre
               répertoire est varié, allant des musiques de films aux œuvres classiques.
             </p>
           </AnimatedSection>
@@ -109,7 +109,7 @@ export default function Home() {
                 <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-secondary/20 rounded-full -z-10"></div>
                 <Image
                   src="/assets/harmonie.avif"
-                  alt="Musiciens de l'Harmonie"
+                  alt="Musiciens de l&#39;Harmonie"
                   width={500}
                   height={600}
                   className="rounded-lg shadow-xl w-full object-cover hover-scale"
@@ -126,7 +126,7 @@ export default function Home() {
                   <div>
                     <h3 className="text-xl font-bold mb-2">Une passion commune</h3>
                     <p className="text-muted-foreground">
-                      Notre harmonie réunit des musiciens de tous horizons et de tous niveaux, unis par l'amour de la
+                      Notre harmonie réunit des musiciens de tous horizons et de tous niveaux, unis par l&#39;amour de la
                       musique et le plaisir de jouer ensemble.
                     </p>
                   </div>
@@ -139,7 +139,7 @@ export default function Home() {
                   <div>
                     <h3 className="text-xl font-bold mb-2">Des événements variés</h3>
                     <p className="text-muted-foreground">
-                      Nous participons à de nombreux événements tout au long de l'année : concerts, cérémonies
+                      Nous participons à de nombreux événements tout au long de l&#39;année : concerts, cérémonies
                       officielles, festivals et animations locales.
                     </p>
                   </div>
@@ -152,7 +152,7 @@ export default function Home() {
                   <div>
                     <h3 className="text-xl font-bold mb-2">Une grande famille</h3>
                     <p className="text-muted-foreground">
-                      Plus qu'un ensemble musical, l'Harmonie de Montreuil-sur-Mer est une véritable famille où règnent
+                      Plus qu&#39;un ensemble musical, l&#39;Harmonie de Montreuil-sur-Mer est une véritable famille où règnent
                       convivialité, entraide et bonne humeur.
                     </p>
                   </div>
@@ -189,7 +189,7 @@ export default function Home() {
               <div className="space-y-6">
                 <h3 className="text-3xl font-bold mb-4">Formez-vous à la musique</h3>
                 <p className="text-muted-foreground">
-                  Notre école de musique accueille les élèves de tous âges, débutants ou confirmés, désireux d'apprendre
+                  Notre école de musique accueille les élèves de tous âges, débutants ou confirmés, désireux d&#39;apprendre
                   ou de perfectionner leur pratique instrumentale dans une ambiance conviviale et bienveillante.
                 </p>
 
@@ -201,8 +201,8 @@ export default function Home() {
                     <div>
                       <h4 className="text-lg font-bold">Des cours adaptés à tous</h4>
                       <p className="text-muted-foreground">
-                        Cours individuels d'instruments, formation musicale, pratique collective... Notre offre
-                        pédagogique s'adapte à vos besoins et à votre niveau.
+                        Cours individuels d&#39;instruments, formation musicale, pratique collective... Notre offre
+                        pédagogique s&#39;adapte à vos besoins et à votre niveau.
                       </p>
                     </div>
                   </div>
@@ -224,13 +224,13 @@ export default function Home() {
                 <div className="flex flex-col sm:flex-row gap-4 mt-8">
                   <Button asChild size="lg" className="group">
                     <Link href="/ecole-de-musique" className="flex items-center gap-2">
-                      Découvrir l'école
+                      Découvrir l&#39;école
                       <ChevronRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                     </Link>
                   </Button>
                   <Button asChild size="lg" variant="outline" className="group">
                     <Link href="/ecole-de-musique#inscription" className="flex items-center gap-2">
-                      S'inscrire maintenant
+                      S&#39;inscrire maintenant
                       <ChevronRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                     </Link>
                   </Button>
@@ -301,9 +301,9 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                title: "Concert d'été",
+                title: "Concert d&#39;été",
                 date: new Date(2025, 6, 15),
-                location: "Jardins de l'Abbatiale Saint-Saulve",
+                location: "Jardins de l&#39;Abbatiale Saint-Saulve",
                 description: "Concert en plein air avec un répertoire estival varié",
               },
               {
@@ -316,7 +316,7 @@ export default function Home() {
                 title: "Concert de Noël",
                 date: new Date(2025, 11, 20),
                 location: "Théâtre municipal, Montreuil-sur-Mer",
-                description: "Concert de fin d'année avec un répertoire festif",
+                description: "Concert de fin d&#39;année avec un répertoire festif",
               },
             ].map((event, index) => (
               <AnimatedSection key={index} delay={0.2 * index} animation="zoom-in" className="card-hover">
@@ -372,7 +372,7 @@ export default function Home() {
                 <div className="overflow-hidden rounded-lg shadow-lg aspect-square relative group hover-glow">
                   <Image
                     src={`/placeholder.svg?height=400&width=400&text=Photo+${i}`}
-                    alt={`Photo de l'Harmonie ${i}`}
+                    alt={`Photo de l&#39;Harmonie ${i}`}
                     fill
                     className="object-cover transition-all duration-500 group-hover:scale-110"
                   />

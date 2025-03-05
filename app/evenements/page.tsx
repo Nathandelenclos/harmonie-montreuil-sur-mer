@@ -9,10 +9,10 @@ import { formatDate } from "@/lib/utils"
 export default function EventsPage() {
   const events = [
     {
-      title: "Concert d'été",
+      title: "Concert d&#39;été",
       date: new Date(2025, 6, 15),
       time: "20h00",
-      location: "Jardins de l'Abbatiale Saint-Saulve",
+      location: "Jardins de l&#39;Abbatiale Saint-Saulve",
       description:
         "Concert en plein air avec un répertoire estival varié. Au programme : musiques de films, œuvres classiques et morceaux de variété.",
       featured: true,
@@ -40,7 +40,7 @@ export default function EventsPage() {
       time: "15h00",
       location: "Citadelle de Montreuil-sur-Mer",
       description:
-        "Concert dans le cadre du Festival des Remparts. Un programme spécial mettant à l'honneur la musique médiévale et Renaissance.",
+        "Concert dans le cadre du Festival des Remparts. Un programme spécial mettant à l&#39;honneur la musique médiévale et Renaissance.",
       featured: true,
     },
     {
@@ -57,7 +57,7 @@ export default function EventsPage() {
       time: "20h00",
       location: "Théâtre municipal",
       description:
-        "Concert de fin d'année avec un répertoire festif. Venez vous immerger dans la magie de Noël avec des musiques traditionnelles et contemporaines.",
+        "Concert de fin d&#39;année avec un répertoire festif. Venez vous immerger dans la magie de Noël avec des musiques traditionnelles et contemporaines.",
       featured: true,
     },
   ]
@@ -67,7 +67,6 @@ export default function EventsPage() {
 
   // Séparer les événements en vedette
   const featuredEvents = sortedEvents.filter((event) => event.featured)
-  const regularEvents = sortedEvents.filter((event) => !event.featured)
 
   return (
     <div className="flex flex-col">
@@ -78,7 +77,7 @@ export default function EventsPage() {
         <div className="container px-4">
           <AnimatedSection className="text-center mb-16">
             <h2 className="section-title mb-4">Événements à ne pas manquer</h2>
-            <p className="section-subtitle">Nos concerts et manifestations phares de l'année</p>
+            <p className="section-subtitle">Nos concerts et manifestations phares de l&#39;année</p>
           </AnimatedSection>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -162,7 +161,7 @@ export default function EventsPage() {
           <AnimatedSection animation="bounce">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Vous souhaitez nous inviter ?</h2>
             <p className="text-xl max-w-2xl mx-auto mb-8 text-muted-foreground">
-              Vous organisez un événement et souhaitez que l'Harmonie de Montreuil-sur-Mer s'y produise ? N'hésitez pas
+              Vous organisez un événement et souhaitez que l&#39;Harmonie de Montreuil-sur-Mer s&#39;y produise ? N&#39;hésitez pas
               à nous contacter !
             </p>
             <Button asChild size="lg" className="group">

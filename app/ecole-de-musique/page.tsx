@@ -29,7 +29,7 @@ export default function MusicSchoolPage() {
       name: "Jean Martin",
       role: "Professeur de cuivres",
       image: "/placeholder.svg?height=300&width=300&text=Jean",
-      bio: "Trompettiste professionnel, Jean partage son temps entre l'enseignement et les concerts avec différents orchestres de la région.",
+      bio: "Trompettiste professionnel, Jean partage son temps entre l&#39;enseignement et les concerts avec différents orchestres de la région.",
     },
     {
       name: "Sophie Leroy",
@@ -56,22 +56,22 @@ export default function MusicSchoolPage() {
             <AnimatedSection>
               <div className="space-y-6">
                 <div className="inline-block bg-secondary/20 text-primary px-4 py-1 rounded-full mb-2 font-medium">
-                  Inscriptions ouvertes pour l'année 2025-2026
+                  Inscriptions ouvertes pour l&#39;année 2025-2026
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold">Bienvenue à l'École de Musique de Montreuil-sur-Mer</h2>
+                <h2 className="text-3xl md:text-4xl font-bold">Bienvenue à l&#39;École de Musique de Montreuil-sur-Mer</h2>
                 <p className="text-muted-foreground">
-                  Notre école de musique accueille les élèves de tous âges, débutants ou confirmés, désireux d'apprendre
+                  Notre école de musique accueille les élèves de tous âges, débutants ou confirmés, désireux d&#39;apprendre
                   ou de perfectionner leur pratique instrumentale dans une ambiance conviviale et bienveillante.
                 </p>
                 <p className="text-muted-foreground">
-                  Étroitement liée à l'Harmonie de Montreuil-sur-Mer, notre école propose un enseignement de qualité
+                  Étroitement liée à l&#39;Harmonie de Montreuil-sur-Mer, notre école propose un enseignement de qualité
                   dispensé par des professeurs qualifiés et passionnés. Notre approche pédagogique favorise
-                  l'épanouissement musical de chaque élève à son rythme.
+                  l&#39;épanouissement musical de chaque élève à son rythme.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 pt-4">
                   <Button asChild size="lg" className="group">
                     <Link href="#inscription" className="flex items-center gap-2">
-                      S'inscrire maintenant
+                      S&#39;inscrire maintenant
                       <ChevronRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                     </Link>
                   </Button>
@@ -146,7 +146,7 @@ export default function MusicSchoolPage() {
                 </div>
                 <h3 className="text-xl font-bold mb-4">Événements réguliers</h3>
                 <p className="text-muted-foreground">
-                  Des auditions, concerts et masterclasses sont organisés tout au long de l'année pour permettre aux
+                  Des auditions, concerts et masterclasses sont organisés tout au long de l&#39;année pour permettre aux
                   élèves de se produire en public et de progresser.
                 </p>
               </div>
@@ -174,7 +174,7 @@ export default function MusicSchoolPage() {
                 <div className="p-8">
                   <h3 className="text-2xl font-bold mb-4">Formation musicale</h3>
                   <p className="text-muted-foreground mb-6">
-                    La formation musicale est le socle de l'apprentissage musical. Elle permet d'acquérir les bases
+                    La formation musicale est le socle de l&#39;apprentissage musical. Elle permet d&#39;acquérir les bases
                     théoriques et pratiques nécessaires à la pratique instrumentale : lecture de notes, rythme, écoute,
                     culture musicale...
                   </p>
@@ -202,10 +202,10 @@ export default function MusicSchoolPage() {
                   <GraduationCap className="h-16 w-16 text-white" />
                 </div>
                 <div className="p-8">
-                  <h3 className="text-2xl font-bold mb-4">Cours d'instruments</h3>
+                  <h3 className="text-2xl font-bold mb-4">Cours d&#39;instruments</h3>
                   <p className="text-muted-foreground mb-6">
-                    Les cours d'instruments sont dispensés en cours individuels pour permettre un suivi personnalisé de
-                    chaque élève. Notre école propose l'apprentissage de nombreux instruments à vent, à cordes et à
+                    Les cours d&#39;instruments sont dispensés en cours individuels pour permettre un suivi personnalisé de
+                    chaque élève. Notre école propose l&#39;apprentissage de nombreux instruments à vent, à cordes et à
                     percussion.
                   </p>
                   <div className="space-y-2">
@@ -219,7 +219,7 @@ export default function MusicSchoolPage() {
                     </div>
                     <div className="flex items-center gap-2">
                       <CheckCircle2 className="h-5 w-5 text-primary" />
-                      <span>Répertoire varié et adapté aux goûts de l'élève</span>
+                      <span>Répertoire varié et adapté aux goûts de l&#39;élève</span>
                     </div>
                   </div>
                 </div>
@@ -236,14 +236,14 @@ export default function MusicSchoolPage() {
                 <div className="p-8">
                   <h3 className="text-2xl font-bold mb-4">Pratique collective</h3>
                   <p className="text-muted-foreground mb-6">
-                    La pratique collective est essentielle dans l'apprentissage musical. Elle permet de développer
-                    l'écoute, le sens du rythme et le plaisir de jouer ensemble. Plusieurs ensembles sont proposés selon
+                    La pratique collective est essentielle dans l&#39;apprentissage musical. Elle permet de développer
+                    l&#39;écoute, le sens du rythme et le plaisir de jouer ensemble. Plusieurs ensembles sont proposés selon
                     les niveaux.
                   </p>
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
                       <Clock className="h-5 w-5 text-primary" />
-                      <span>1h à 2h par semaine selon l'ensemble</span>
+                      <span>1h à 2h par semaine selon l&#39;ensemble</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <CheckCircle2 className="h-5 w-5 text-primary" />
@@ -266,8 +266,8 @@ export default function MusicSchoolPage() {
                 <div className="p-8">
                   <h3 className="text-2xl font-bold mb-4">Éveil musical</h3>
                   <p className="text-muted-foreground mb-6">
-                    L'éveil musical s'adresse aux enfants de 4 à 6 ans. Il permet de découvrir la musique de manière
-                    ludique et sensorielle à travers le chant, le rythme, l'écoute et la découverte des instruments.
+                    L&#39;éveil musical s&#39;adresse aux enfants de 4 à 6 ans. Il permet de découvrir la musique de manière
+                    ludique et sensorielle à travers le chant, le rythme, l&#39;écoute et la découverte des instruments.
                   </p>
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
@@ -362,7 +362,7 @@ export default function MusicSchoolPage() {
         <div className="container px-4">
           <AnimatedSection className="text-center mb-16">
             <h2 className="section-title mb-4">Inscriptions</h2>
-            <p className="section-subtitle">Rejoignez notre école de musique pour l'année 2025-2026</p>
+            <p className="section-subtitle">Rejoignez notre école de musique pour l&#39;année 2025-2026</p>
           </AnimatedSection>
 
           <div className="grid md:grid-cols-2 gap-12 items-start">
@@ -391,12 +391,12 @@ export default function MusicSchoolPage() {
                         <span className="font-bold">150€</span>
                       </li>
                       <li className="flex justify-between items-center">
-                        <span>Location d'instrument</span>
+                        <span>Location d&#39;instrument</span>
                         <span className="font-bold">100€</span>
                       </li>
                     </ul>
                     <p className="text-sm text-muted-foreground mt-2">
-                      Réduction de 10% pour le 2ème membre d'une même famille, 15% pour le 3ème.
+                      Réduction de 10% pour le 2ème membre d&#39;une même famille, 15% pour le 3ème.
                     </p>
                   </div>
 
@@ -437,11 +437,11 @@ export default function MusicSchoolPage() {
 
             <AnimatedSection delay={0.2}>
               <div className="bg-white rounded-lg shadow-lg p-8">
-                <h3 className="text-2xl font-bold mb-6">Comment s'inscrire ?</h3>
+                <h3 className="text-2xl font-bold mb-6">Comment s&#39;inscrire ?</h3>
 
                 <div className="space-y-6">
                   <p className="text-muted-foreground">
-                    Pour vous inscrire à l'École de Musique de Montreuil-sur-Mer, plusieurs options s'offrent à vous :
+                    Pour vous inscrire à l&#39;École de Musique de Montreuil-sur-Mer, plusieurs options s&#39;offrent à vous :
                   </p>
 
                   <div className="space-y-4">
@@ -452,7 +452,7 @@ export default function MusicSchoolPage() {
                       <div>
                         <h4 className="text-lg font-bold">Sur place</h4>
                         <p className="text-muted-foreground">
-                          Rendez-vous à l'École de Musique pendant les permanences d'inscription :
+                          Rendez-vous à l&#39;École de Musique pendant les permanences d&#39;inscription :
                           <br />- Mercredis de 14h à 18h
                           <br />- Samedis de 10h à 12h
                           <br />
@@ -493,7 +493,7 @@ export default function MusicSchoolPage() {
                   <div className="pt-4">
                     <Button asChild size="lg" className="w-full">
                       <Link href="/contact" className="flex items-center justify-center gap-2">
-                        Nous contacter pour plus d'informations
+                        Nous contacter pour plus d&#39;informations
                         <ChevronRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                       </Link>
                     </Button>
