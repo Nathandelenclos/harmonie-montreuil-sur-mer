@@ -5,6 +5,7 @@ import { Playfair_Display, Montserrat } from "next/font/google"
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import ScrollToTop from "@/components/scroll-to-top"
+import {GoogleAnalytics} from "nextjs-google-analytics";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -28,6 +29,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr" className="scroll-smooth">
+    <GoogleAnalytics trackPageViews gaMeasurementId="G-KYZ6HDRZ7J" />
       <body className={`${playfair.variable} ${montserrat.variable} font-sans`}>
         <Navigation />
         <ScrollToTop />
