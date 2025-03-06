@@ -13,9 +13,9 @@ export default function GalleryPage() {
   const galleryImages = Array.from({ length: 12 }, (_, i) => ({
     id: i + 1,
     src: `/placeholder.svg?height=800&width=1200&text=Photo+${i + 1}`,
-    alt: `Photo de l&#39;Harmonie ${i + 1}`,
+    alt: `Photo de l'Harmonie ${i + 1}`,
     year: 2024 - Math.floor(i / 3),
-    event: ["Concert d&#39;été", "Festival des Remparts", "Concert de Noël", "Fête de la musique"][i % 4],
+    event: ["Concert d'été", "Festival des Remparts", "Concert de Noël", "Fête de la musique"][i % 4],
   }))
 
   const categories = ["Tous", "Concerts", "Répétitions", "Cérémonies", "Événements"]

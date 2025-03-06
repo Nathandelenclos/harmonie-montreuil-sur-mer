@@ -9,10 +9,10 @@ import { formatDate } from "@/lib/utils"
 export default function EventsPage() {
   const events = [
     {
-      title: "Concert d&#39;été",
+      title: "Concert d'été",
       date: new Date(2025, 6, 15),
       time: "20h00",
-      location: "Jardins de l&#39;Abbatiale Saint-Saulve",
+      location: "Jardins de l'Abbatiale Saint-Saulve",
       description:
         "Concert en plein air avec un répertoire estival varié. Au programme : musiques de films, œuvres classiques et morceaux de variété.",
       featured: true,
@@ -57,7 +57,7 @@ export default function EventsPage() {
       time: "20h00",
       location: "Théâtre municipal",
       description:
-        "Concert de fin d&#39;année avec un répertoire festif. Venez vous immerger dans la magie de Noël avec des musiques traditionnelles et contemporaines.",
+        "Concert de fin d'année avec un répertoire festif. Venez vous immerger dans la magie de Noël avec des musiques traditionnelles et contemporaines.",
       featured: true,
     },
   ]

@@ -11,7 +11,7 @@ export default function AboutPage() {
     <div className="flex flex-col">
       <PageHeader
         title="À propos de nous"
-        description="Découvrez l&#39;Harmonie de Montreuil-sur-Mer, son histoire et ses musiciens"
+        description="Découvrez l'Harmonie de Montreuil-sur-Mer, son histoire et ses musiciens"
       />
 
       <section className="py-16 md:py-24">
@@ -45,7 +45,7 @@ export default function AboutPage() {
                 <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-secondary/20 rounded-full -z-10"></div>
                 <Image
                   src="/assets/harmonie-montreuil-sur-mer.jpg?height=600&width=500"
-                  alt="L&#39;Harmonie en répétition"
+                  alt="L'Harmonie en répétition"
                   width={500}
                   height={600}
                   className="rounded-lg shadow-xl w-full object-cover"
@@ -117,15 +117,15 @@ export default function AboutPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { name: "Jean Dupont", role: "Président", image: "/placeholder.svg?height=300&width=300&text=Jean" },
+              { name: "Raphaël Moreau", role: "Président", image: "/placeholder.svg?height=300&width=300&text=Jean" },
               {
-                name: "Marie Martin",
-                role: "Chef d&#39;orchestre",
+                name: "Magalie Birault",
+                role: "Chef d'orchestre",
                 image: "/placeholder.svg?height=300&width=300&text=Marie",
               },
-              { name: "Pierre Durand", role: "Trésorier", image: "/placeholder.svg?height=300&width=300&text=Pierre" },
+              { name: "Cyril", role: "Trésorier", image: "/placeholder.svg?height=300&width=300&text=Pierre" },
               {
-                name: "Sophie Lefebvre",
+                name: "Bertille Depre",
                 role: "Secrétaire",
                 image: "/placeholder.svg?height=300&width=300&text=Sophie",
               },

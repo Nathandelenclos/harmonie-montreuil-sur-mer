@@ -301,7 +301,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                title: "Concert d&#39;été",
+                title: "Concert d'été",
                 date: new Date(2025, 6, 15),
                 location: "Jardins de l&#39;Abbatiale Saint-Saulve",
                 description: "Concert en plein air avec un répertoire estival varié",

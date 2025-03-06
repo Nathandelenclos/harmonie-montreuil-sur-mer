@@ -8,6 +8,7 @@ import { MapPin, Mail, Phone, Calendar, Send } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import PageHeader from "@/components/page-header"
 import AnimatedSection from "@/components/animated-section"
+import {sendEmail} from "@/lib/sendMail";
 
 export default function ContactPage() {
   const [formState, setFormState] = useState({
@@ -25,9 +26,15 @@ export default function ContactPage() {
     setFormState((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+
+    try {
+      await sendEmail(`${formState.name} <${formState.email}>`, formState.subject, formState.message)
+    } catch (err) {
+      console.error(err);
+    }
 
     // Simulate form submission
     setTimeout(() => {

@@ -8,38 +8,64 @@ import AnimatedSection from "@/components/animated-section"
 
 export default function MusicSchoolPage() {
   const instruments = [
-    { name: "Piano", image: "/placeholder.svg?height=300&width=300&text=Piano" },
-    { name: "Violon", image: "/placeholder.svg?height=300&width=300&text=Violon" },
-    { name: "Flûte", image: "/placeholder.svg?height=300&width=300&text=Flûte" },
-    { name: "Clarinette", image: "/placeholder.svg?height=300&width=300&text=Clarinette" },
-    { name: "Saxophone", image: "/placeholder.svg?height=300&width=300&text=Saxophone" },
-    { name: "Trompette", image: "/placeholder.svg?height=300&width=300&text=Trompette" },
-    { name: "Trombone", image: "/placeholder.svg?height=300&width=300&text=Trombone" },
-    { name: "Percussion", image: "/placeholder.svg?height=300&width=300&text=Percussion" },
+    { name: "Piano", image: "/assets/piano.jpeg?height=300&width=300&text=Piano" },
+    { name: "Violon", image: "/assets/violon.jpeg?height=300&width=300&text=Violon" },
+    { name: "Flûte", image: "/assets/flute.png?height=300&width=300&text=Flûte" },
+    { name: "Clarinette", image: "/assets/clarinette.jpg?height=300&width=300&text=Clarinette" },
+    { name: "Saxophone", image: "/assets/saxophone.jpg?height=300&width=300&text=Saxophone" },
+    { name: "Trompette", image: "/assets/trompette.jpeg?height=300&width=300&text=Trompette" },
+    { name: "Trombone", image: "/assets/trombone.jpg?height=300&width=300&text=Trombone" },
+    { name: "Hautbois", image: "/assets/hautbois.webp?height=300&width=300&text=Trombone" },
+    { name: "Cor", image: "/assets/cor.avif?height=300&width=300&text=Trombone" },
+    { name: "Percussion", image: "/assets/percussion.jpg?height=300&width=300&text=Percussion" },
   ]
 
   const teachers = [
     {
-      name: "Marie Dupont",
-      role: "Directrice & Professeur de piano",
+      name: "Magalie DELMOTTE",
+      role: "Directrice",
       image: "/placeholder.svg?height=300&width=300&text=Marie",
       bio: "Diplômée du Conservatoire National de Paris, Marie enseigne le piano depuis plus de 15 ans avec passion et bienveillance.",
     },
     {
-      name: "Jean Martin",
+      name: "Fabien ROGER",
       role: "Professeur de cuivres",
       image: "/placeholder.svg?height=300&width=300&text=Jean",
-      bio: "Trompettiste professionnel, Jean partage son temps entre l&#39;enseignement et les concerts avec différents orchestres de la région.",
+      bio: "Trompettiste professionnel, Jean partage son temps entre l'enseignement et les concerts avec différents orchestres de la région.",
     },
     {
-      name: "Sophie Leroy",
+      name: "Jean-François AUBEL",
       role: "Professeur de cordes",
       image: "/placeholder.svg?height=300&width=300&text=Sophie",
       bio: "Violoniste passionnée, Sophie a à cœur de transmettre son amour de la musique aux élèves de tous âges et de tous niveaux.",
     },
     {
-      name: "Thomas Bernard",
+      name: "Annie JOUSSE",
       role: "Professeur de bois",
+      image: "/placeholder.svg?height=300&width=300&text=Thomas",
+      bio: "Clarinettiste et saxophoniste, Thomas enseigne avec enthousiasme et adapte sa pédagogie à chaque élève.",
+    },
+    {
+      name: "Hugo MOREAU",
+      role: "Professeur de bois",
+      image: "/placeholder.svg?height=300&width=300&text=Thomas",
+      bio: "Clarinettiste et saxophoniste, Thomas enseigne avec enthousiasme et adapte sa pédagogie à chaque élève.",
+    },
+    {
+      name: "Audrey BERNARD",
+      role: "Professeur de bois",
+      image: "/placeholder.svg?height=300&width=300&text=Thomas",
+      bio: "Clarinettiste et saxophoniste, Thomas enseigne avec enthousiasme et adapte sa pédagogie à chaque élève.",
+    },
+    {
+      name: "Céline GRAY",
+      role: "Professeur de bois",
+      image: "/placeholder.svg?height=300&width=300&text=Thomas",
+      bio: "Clarinettiste et saxophoniste, Thomas enseigne avec enthousiasme et adapte sa pédagogie à chaque élève.",
+    },
+    {
+      name: "Karim AFFREINGHUE",
+      role: "Professeur de piano",
       image: "/placeholder.svg?height=300&width=300&text=Thomas",
       bio: "Clarinettiste et saxophoniste, Thomas enseigne avec enthousiasme et adapte sa pédagogie à chaque élève.",
     },
@@ -372,31 +398,93 @@ export default function MusicSchoolPage() {
 
                 <div className="space-y-6">
                   <div>
-                    <h4 className="text-lg font-bold mb-2">Tarifs annuels</h4>
                     <ul className="space-y-2">
-                      <li className="flex justify-between items-center border-b pb-2">
-                        <span>Éveil musical (4-6 ans)</span>
-                        <span className="font-bold">180€</span>
+                      <li className="flex justify-between items-center pb-2">
+                        <h4 className="text-lg font-bold mb-2">Tarifs annuels</h4>
+                        <div className="flex gap-1">
+                          <span className="font-bold">Montreuil</span>
+                          <span>|</span>
+                          <span className="font-bold">Hors Montreuil</span>
+                        </div>
                       </li>
                       <li className="flex justify-between items-center border-b pb-2">
-                        <span>Formation musicale seule</span>
-                        <span className="font-bold">200€</span>
+                        <span>Eveil musical (4-6 ans)</span>
+                        <div className="flex gap-1">
+                          <span className="font-bold">80€</span>
+                          <span>|</span>
+                          <span className="font-bold">100€</span>
+                        </div>
                       </li>
                       <li className="flex justify-between items-center border-b pb-2">
-                        <span>Instrument + Formation musicale</span>
-                        <span className="font-bold">350€</span>
+                        <span>Formation musicale</span>
+                        <div className="flex gap-1">
+                          <span className="font-bold">125€</span>
+                          <span>|</span>
+                          <span className="font-bold">160€</span>
+                        </div>
                       </li>
                       <li className="flex justify-between items-center border-b pb-2">
-                        <span>Pratique collective seule</span>
-                        <span className="font-bold">150€</span>
+                        <span>Formation instrumentale</span>
+                        <div className="flex gap-1">
+                          <span className="font-bold">180€</span>
+                          <span>|</span>
+                          <span className="font-bold">220€</span>
+                        </div>
+                      </li>
+                      <li className="flex justify-between items-center border-b pb-2">
+                        <span>Musicien intégré à l’harmonie</span>
+                        <div className="flex gap-1">
+                          <span className="font-bold">90€</span>
+                          <span>|</span>
+                          <span className="font-bold">   111€</span>
+                        </div>
+                      </li>
+                      <li className="flex justify-between items-center border-b pb-2">
+                        <span>Adhésion à l’association</span>
+                        <div className="flex gap-1">
+                          <span className="font-bold">5€</span>
+                          <span>|</span>
+                          <span className="font-bold">5€</span>
+                        </div>
+                      </li>
+                      <li className="flex justify-between items-center border-b pb-2">
+                        <span>Inscription aux examens</span>
+                        <div className="flex gap-1">
+                          <span className="font-bold">16€</span>
+                          <span>|</span>
+                          <span className="font-bold">16€</span>
+                        </div>
+                      </li>
+                      <li className="flex justify-between items-center border-b pb-2">
+                        <span>Caution Instrument</span>
+                        <div className="flex gap-1">
+                          <span className="font-bold">400€</span>
+                          <span>|</span>
+                          <span className="font-bold">400€</span>
+                        </div>
                       </li>
                       <li className="flex justify-between items-center">
-                        <span>Location d&#39;instrument</span>
-                        <span className="font-bold">100€</span>
+                        <span>Cours Particuliers</span>
+                        <div className="flex gap-1">
+                          <span className="font-bold">380€</span>
+                          <span>|</span>
+                          <span className="font-bold">445€</span>
+                        </div>
                       </li>
                     </ul>
                     <p className="text-sm text-muted-foreground mt-2">
-                      Réduction de 10% pour le 2ème membre d&#39;une même famille, 15% pour le 3ème.
+                      Réduction de 10% pour le 2ème membre d&#39;une même famille, 20% pour le 3ème.
+                    </p>
+                    <p className="text-sm text-muted-foreground mt-2">
+                      Tarif horaire global : Formation Musicale + Instrument soit 60 heures de cours par an.
+                      <ul>
+                        <li>
+                          - Montreuillois: 305€ : 60 heures = 5,1€/heure
+                        </li>
+                        <li>
+                          - Non Montreuillois: 380€ : 60 heures = 6,3€/heure
+                        </li>
+                      </ul>
                     </p>
                   </div>
 
