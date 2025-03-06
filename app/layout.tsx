@@ -6,6 +6,7 @@ import { Playfair_Display, Montserrat } from "next/font/google"
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import ScrollToTop from "@/components/scroll-to-top"
+import { Analytics } from "@vercel/analytics/react"
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -73,6 +74,7 @@ export default function RootLayout({
         <ScrollToTop />
         <main className="min-h-screen pt-16">{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   )
