@@ -20,6 +20,25 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: "Harmonie de Montreuil-sur-Mer",
   description: "Harmonie municipale de Montreuil-sur-Mer, fondée en 1865 - Musique, concerts et événements culturels",
+  applicationName: "Harmonie de Montreuil-sur-Mer",
+  twitter: {
+    title: "Harmonie de Montreuil-sur-Mer",
+    description: "Harmonie municipale de Montreuil-sur-Mer, fondée en 1865 - Musique, concerts et événements culturels",
+  },
+  openGraph: {
+    type: "website",
+    url: "https://harmonie-montreuil-sur-mer.fr/",
+    title: "Harmonie de Montreuil-sur-Mer",
+    description: "Harmonie municipale de Montreuil-sur-Mer, fondée en 1865 - Musique, concerts et événements culturels",
+    images: [
+      {
+        url: "https://harmonie-montreuil-sur-mer.fr/assets/harmonie-officiel.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Harmonie de Montreuil-sur-Mer",
+      },
+    ],
+  }
 }
 
 export default function RootLayout({
@@ -29,7 +48,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr" className="scroll-smooth">
-
       <body className={`${playfair.variable} ${montserrat.variable} font-sans`}>
         <Script
             src={`https://www.googletagmanager.com/gtag/js?id=G-KYZ6HDRZ7J`}
