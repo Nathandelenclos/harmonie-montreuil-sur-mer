@@ -9,6 +9,7 @@ import PageHeader from "@/components/page-header"
 import AnimatedSection from "@/components/animated-section"
 import Link from "next/link"
 import Image from "next/image"
+import {sendEmail} from "@/lib/sendMail";
 
 export default function JoinPage() {
   const [formState, setFormState] = useState({
@@ -28,9 +29,33 @@ export default function JoinPage() {
     setFormState((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+
+    try {
+      const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '';
+      const token = await window.grecaptcha.execute(siteKey, {
+        action: 'submit_form',
+      });
+      await sendEmail(
+          'nathan.delenclos@gmail.com',
+          `Nous rejoindre - ${formState.name} <${formState.email}>`,
+          `
+          Nom: ${formState.name}
+          Email: ${formState.email}
+          Téléphone: ${formState.phone}
+          Instrument: ${formState.instrument}
+          Niveau / Expérience: ${formState.experience}
+          
+          Message: 
+          ${formState.message}
+          `,
+          token
+      )
+    } catch (err) {
+      console.error(err);
+    }
 
     // Simulate form submission
     setTimeout(() => {

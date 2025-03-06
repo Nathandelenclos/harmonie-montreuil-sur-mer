@@ -35,7 +35,12 @@ export default function ContactPage() {
       const token = await window.grecaptcha.execute(siteKey, {
         action: 'submit_form',
       });
-      await sendEmail('nathan.delenclos@gmail.com', formState.subject + ` - ${formState.name} <${formState.email}>`, formState.message, token)
+      await sendEmail(
+          'nathan.delenclos@gmail.com',
+          formState.subject + ` - ${formState.name} <${formState.email}>`,
+          formState.message,
+          token
+      )
     } catch (err) {
       console.error(err);
     }
