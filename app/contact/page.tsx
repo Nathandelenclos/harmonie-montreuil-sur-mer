@@ -31,7 +31,7 @@ export default function ContactPage() {
     setIsSubmitting(true)
 
     try {
-      await sendEmail(`${formState.name} <${formState.email}>`, formState.subject, formState.message)
+      await sendEmail('nathan.delenclos@gmail.com', formState.subject + ` - ${formState.name} <${formState.email}>`, formState.message)
     } catch (err) {
       console.error(err);
     }
