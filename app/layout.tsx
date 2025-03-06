@@ -49,6 +49,12 @@ export default function RootLayout({
   return (
     <html lang="fr" className="scroll-smooth">
       <body className={`${playfair.variable} ${montserrat.variable} font-sans`}>
+      {/* Script reCAPTCHA v3 */}
+      <Script
+          src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
+          strategy="beforeInteractive"
+      />
+       {/* Google Analytics 4 */}
         <Script
             src={`https://www.googletagmanager.com/gtag/js?id=G-KYZ6HDRZ7J`}
             strategy="afterInteractive"

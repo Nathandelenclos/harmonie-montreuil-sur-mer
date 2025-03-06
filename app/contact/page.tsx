@@ -31,12 +31,15 @@ export default function ContactPage() {
     setIsSubmitting(true)
 
     try {
-      await sendEmail('nathan.delenclos@gmail.com', formState.subject + ` - ${formState.name} <${formState.email}>`, formState.message)
+      const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '';
+      const token = await window.grecaptcha.execute(siteKey, {
+        action: 'submit_form',
+      });
+      await sendEmail('nathan.delenclos@gmail.com', formState.subject + ` - ${formState.name} <${formState.email}>`, formState.message, token)
     } catch (err) {
       console.error(err);
     }
 
-    // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false)
       setIsSubmitted(true)

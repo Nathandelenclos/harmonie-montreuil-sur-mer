@@ -1,11 +1,15 @@
 
-export async function sendEmail(to: string, subject:string, text:string) {
+export async function sendEmail(to: string, subject:string, text:string, reCaptchaToken: string) {
+
+
     const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+            apiSecret: process.env.NEXT_PUBLIC_EMAIL_API_SECRET,
+            reCaptchaToken,
             to, subject, text
         }),
     });
