@@ -301,28 +301,21 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                title: "Concert d'été",
-                date: new Date(2025, 6, 15),
-                location: "Jardins de l&#39;Abbatiale Saint-Saulve",
-                description: "Concert en plein air avec un répertoire estival varié",
-              },
-              {
-                title: "Cérémonie commémorative",
-                date: new Date(2025, 10, 11),
-                location: "Monument aux morts, Montreuil-sur-Mer",
-                description: "Participation aux cérémonies du 11 novembre",
-              },
-              {
-                title: "Concert de Noël",
-                date: new Date(2025, 11, 20),
-                location: "Théâtre municipal, Montreuil-sur-Mer",
-                description: "Concert de fin d&#39;année avec un répertoire festif",
+                image: "/assets/affiches/symphonie-des-elements.jpg",
+                title: "La Symphonie des éléments",
+                date: new Date(2025, 4, 17),
+                time: "20h30",
+                location: "Salle Rheinberg, Montreuil-sur-Mer",
+                description:
+                    "Proposé par l'harmonie municipale de montreuil-sur-mer, la SAJ d'etaples, la chorale 7 vallées song et l'association manifest' action",
               },
             ].map((event, index) => (
               <AnimatedSection key={index} delay={0.2 * index} animation="zoom-in" className="card-hover">
                 <div className="bg-white rounded-lg shadow-lg overflow-hidden h-full card-equal">
-                  <div className="h-48 bg-gradient-to-r from-primary/90 via-accent/80 to-secondary/90 flex items-center justify-center">
-                    <Music className="h-16 w-16 text-white hover-rotate" />
+                  <div className="bg-gradient-to-r from-primary/90 via-accent/80 to-secondary/90 flex items-center justify-center">
+                    {event.image && <img src={event.image} alt={event.title} className="object-cover" />}
+                    {!event.image && <Music className="h-16 w-16 text-white hover-rotate" />}
+
                   </div>
                   <div className="p-6 card-equal-body">
                     <div className="flex items-center gap-2 text-primary mb-2">
@@ -359,7 +352,7 @@ export default function Home() {
       </section>
 
       {/* Gallery Preview */}
-      <section className="py-20 md:py-32 bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5">
+      {/* <section className="py-20 md:py-32 bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5">
         <div className="container px-4">
           <AnimatedSection className="text-center mb-16" animation="fade-up">
             <h2 className="section-title mb-4">Galerie photos</h2>
@@ -393,7 +386,7 @@ export default function Home() {
             </Button>
           </div>
         </div>
-      </section>
+      </section>*/}
 
       {/* Call to Action */}
       <section className="py-20 md:py-32 bg-gradient-to-r from-primary via-accent to-secondary text-white">

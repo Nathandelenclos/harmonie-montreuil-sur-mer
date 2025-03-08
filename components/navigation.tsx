@@ -11,9 +11,9 @@ const links = [
   { href: "/", label: "Accueil" },
   { href: "/a-propos", label: "À propos" },
   { href: "/evenements", label: "Événements" },
-  { href: "/histoire", label: "Histoire" },
+  //{ href: "/histoire", label: "Histoire" },
   { href: "/ecole-de-musique", label: "École de Musique" },
-  { href: "/galerie", label: "Galerie" },
+  // { href: "/galerie", label: "Galerie" },
   { href: "/contact", label: "Contact" },
 ]
 

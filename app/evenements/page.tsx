@@ -9,55 +9,13 @@ import { formatDate } from "@/lib/utils"
 export default function EventsPage() {
   const events = [
     {
-      title: "Concert d'été",
-      date: new Date(2025, 6, 15),
-      time: "20h00",
-      location: "Jardins de l'Abbatiale Saint-Saulve",
+      image: "/assets/affiches/symphonie-des-elements.jpg",
+      title: "La Symphonie des éléments",
+      date: new Date(2025, 4, 17),
+      time: "20h30",
+      location: "Salle Rheinberg, Montreuil-sur-Mer",
       description:
-        "Concert en plein air avec un répertoire estival varié. Au programme : musiques de films, œuvres classiques et morceaux de variété.",
-      featured: true,
-    },
-    {
-      title: "Fête de la musique",
-      date: new Date(2025, 5, 21),
-      time: "18h30",
-      location: "Place du Général de Gaulle",
-      description:
-        "Animation musicale dans le cadre de la Fête de la Musique. Venez nombreux pour célébrer la musique avec nous !",
-      featured: false,
-    },
-    {
-      title: "Cérémonie du 14 juillet",
-      date: new Date(2025, 6, 14),
-      time: "11h00",
-      location: "Monument aux morts",
-      description: "Participation à la cérémonie officielle de la Fête Nationale.",
-      featured: false,
-    },
-    {
-      title: "Festival des Remparts",
-      date: new Date(2025, 7, 10),
-      time: "15h00",
-      location: "Citadelle de Montreuil-sur-Mer",
-      description:
-        "Concert dans le cadre du Festival des Remparts. Un programme spécial mettant à l&#39;honneur la musique médiévale et Renaissance.",
-      featured: true,
-    },
-    {
-      title: "Cérémonie commémorative",
-      date: new Date(2025, 10, 11),
-      time: "11h00",
-      location: "Monument aux morts",
-      description: "Participation aux cérémonies du 11 novembre.",
-      featured: false,
-    },
-    {
-      title: "Concert de Noël",
-      date: new Date(2025, 11, 20),
-      time: "20h00",
-      location: "Théâtre municipal",
-      description:
-        "Concert de fin d'année avec un répertoire festif. Venez vous immerger dans la magie de Noël avec des musiques traditionnelles et contemporaines.",
+        "Proposé par l'harmonie municipale de montreuil-sur-mer, la SAJ d'etaples, la chorale 7 vallées song et l'association manifest' action",
       featured: true,
     },
   ]
@@ -84,8 +42,8 @@ export default function EventsPage() {
             {featuredEvents.map((event, index) => (
               <AnimatedSection key={index} delay={0.1 * index} animation="zoom-in" className="card-hover">
                 <div className="bg-white rounded-lg shadow-lg overflow-hidden h-full card-equal">
-                  <div className="h-48 bg-gradient-to-r from-primary/90 via-accent/80 to-secondary/90 flex items-center justify-center">
-                    <Music className="h-16 w-16 text-white hover-rotate" />
+                  <div className="bg-gradient-to-r from-primary/90 via-accent/80 to-secondary/90 flex items-center justify-center">
+                    {event.image && <img src={event.image} alt={event.title} className="object-cover" />}
                   </div>
                   <div className="p-6 flex flex-col card-equal-body">
                     <div className="flex items-center gap-2 text-primary mb-2">
