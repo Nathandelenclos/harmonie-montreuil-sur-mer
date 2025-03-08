@@ -554,7 +554,7 @@ export default function MusicSchoolPage() {
                       <div>
                         <h4 className="text-lg font-bold">Par téléphone</h4>
                         <p className="text-muted-foreground">
-                          Contactez-nous au 03 21 06 XX XX pour une pré-inscription par téléphone.
+                          Contactez-nous au +33 3 21 86 05 69 pour une pré-inscription par téléphone.
                         </p>
                       </div>
                     </div>
