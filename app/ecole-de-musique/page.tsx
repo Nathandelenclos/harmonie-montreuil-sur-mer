@@ -117,7 +117,7 @@ export default function MusicSchoolPage() {
                 <div className="absolute -top-4 -left-4 w-24 h-24 bg-primary/20 rounded-full -z-10"></div>
                 <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-secondary/20 rounded-full -z-10"></div>
                 <Image
-                  src="/placeholder.svg?height=600&width=500&text=École+de+Musique"
+                  src="/assets/cours-de-groupe.avif?height=600&width=500"
                   alt="École de Musique de Montreuil-sur-Mer"
                   width={500}
                   height={600}
