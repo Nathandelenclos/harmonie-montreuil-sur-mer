@@ -123,7 +123,7 @@ export default function AboutPage() {
                 role: "Chef d'orchestre",
                 image: "/placeholder.svg?height=300&width=300&text=Marie",
               },
-              { name: "Cyril", role: "Trésorier", image: "/placeholder.svg?height=300&width=300&text=Pierre" },
+              { name: "Cyril Saison", role: "Trésorier", image: "/placeholder.svg?height=300&width=300&text=Pierre" },
               {
                 name: "Bertille Depre",
                 role: "Secrétaire",
@@ -132,9 +132,9 @@ export default function AboutPage() {
             ].map((member, index) => (
               <AnimatedSection key={index} delay={0.1 * index} className="card-hover">
                 <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-                  <div className="aspect-square relative">
-                    <Image src={member.image || "/placeholder.svg"} alt={member.name} fill className="object-cover" />
-                  </div>
+                  {/*<div className="aspect-square relative">
+                    <Image src={member.image || "/placeholder.svg"} alt={member.name} fill className="object-cover"/>
+                  </div>*/}
                   <div className="p-6 text-center">
                     <h3 className="text-xl font-bold">{member.name}</h3>
                     <p className="text-primary">{member.role}</p>

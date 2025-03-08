@@ -83,9 +83,9 @@ export default function ContactPage() {
                     <div>
                       <h3 className="text-lg font-bold mb-1">Adresse</h3>
                       <p className="text-muted-foreground">
-                        Salle des fêtes, Place du Général de Gaulle
+                        Rue du Paon,
                         <br />
-                        62170 Montreuil-sur-Mer
+                        62170 Montreuil-sur-Mer, France
                       </p>
                     </div>
                   </div>
@@ -96,8 +96,8 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="text-lg font-bold mb-1">Email</h3>
-                      <a href="mailto:harmonie.montreuil@gmail.com" className="text-primary hover:underline">
-                        harmonie.montreuil@gmail.com
+                      <a href="mailto:harmoniemontreuilsurmer@orange.fr" className="text-primary hover:underline">
+                        harmoniemontreuilsurmer@orange.fr
                       </a>
                     </div>
                   </div>
@@ -108,7 +108,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="text-lg font-bold mb-1">Téléphone</h3>
-                      <p className="text-muted-foreground">+33 3 21 06 XX XX</p>
+                      <a href="tel:+33321860569" className="text-muted-foreground">+33 3 21 86 05 69</a>
                     </div>
                   </div>
 
@@ -121,7 +121,9 @@ export default function ContactPage() {
                       <p className="text-muted-foreground">
                         Tous les vendredis de 20h à 22h
                         <br />
-                        Salle des fêtes de Montreuil-sur-Mer
+                        Rue du Paon,
+                        <br />
+                        62170 Montreuil-sur-Mer, France
                       </p>
                     </div>
                   </div>
@@ -131,13 +133,13 @@ export default function ContactPage() {
                   <h3 className="text-lg font-bold mb-4">Localisation</h3>
                   <div className="aspect-[16/9] bg-muted rounded-lg overflow-hidden relative">
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2542.1786147696734!2d1.7580892!3d50.4654029!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47dd2c1c31a0b0c3%3A0x40af13e81646360!2sPlace%20du%20G%C3%A9n%C3%A9ral%20de%20Gaulle%2C%2062170%20Montreuil!5e0!3m2!1sfr!2sfr!4v1646579595693!5m2!1sfr!2sfr"
-                      width="100%"
-                      height="100%"
-                      style={{ border: 0 }}
-                      allowFullScreen
-                      loading="lazy"
-                      className="absolute inset-0"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2539.8162474014025!2d1.763416706945495!3d50.46314635669665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47ddc66397fcd1d1%3A0xb1d6ec0b38659778!2sHarmonie%20Municipale!5e0!3m2!1sfr!2shr!4v1741475925105!5m2!1sfr!2shr"
+                        width="100%"
+                        height="100%"
+                        style={{border: 0}}
+                        allowFullScreen
+                        loading="lazy"
+                        className="absolute inset-0"
                     ></iframe>
                   </div>
                 </div>
@@ -149,8 +151,8 @@ export default function ContactPage() {
                 <h2 className="text-2xl font-bold mb-6">Envoyez-nous un message</h2>
 
                 {isSubmitted ? (
-                  <div className="text-center py-12">
-                    <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div className="text-center py-12">
+                      <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                       <Send className="h-8 w-8 text-green-600" />
                     </div>
                     <h3 className="text-xl font-bold mb-2">Message envoyé !</h3>

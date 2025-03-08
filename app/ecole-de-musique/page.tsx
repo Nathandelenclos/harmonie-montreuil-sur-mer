@@ -5,6 +5,7 @@ import { Music, GraduationCap, Clock, Calendar, MapPin, ChevronRight, CheckCircl
 import { Button } from "@/components/ui/button"
 import PageHeader from "@/components/page-header"
 import AnimatedSection from "@/components/animated-section"
+import type React from "react";
 
 export default function MusicSchoolPage() {
   const instruments = [
@@ -49,7 +50,7 @@ export default function MusicSchoolPage() {
       name: "Hugo MOREAU",
       role: "Professeur de bois",
       image: "/placeholder.svg?height=300&width=300&text=Thomas",
-      bio: "Clarinettiste et saxophoniste, Thomas enseigne avec enthousiasme et adapte sa pédagogie à chaque élève.",
+      bio: "Saxophoniste, Hugo enseigne avec enthousiasme et adapte sa pédagogie à chaque élève.",
     },
     {
       name: "Audrey BERNARD",
@@ -365,9 +366,6 @@ export default function MusicSchoolPage() {
             {teachers.map((teacher, index) => (
               <AnimatedSection key={index} delay={0.1 * index} className="card-hover">
                 <div className="bg-white rounded-lg shadow-lg overflow-hidden h-full">
-                  <div className="aspect-square relative">
-                    <Image src={teacher.image || "/placeholder.svg"} alt={teacher.name} fill className="object-cover" />
-                  </div>
                   <div className="p-6">
                     <h3 className="text-xl font-bold">{teacher.name}</h3>
                     <p className="text-primary mb-4">{teacher.role}</p>
@@ -495,9 +493,9 @@ export default function MusicSchoolPage() {
                       <span>
                         École de Musique de Montreuil-sur-Mer
                         <br />
-                        Salle des fêtes, Place du Général de Gaulle
+                        Rue du Paon,
                         <br />
-                        62170 Montreuil-sur-Mer
+                        62170 Montreuil-sur-Mer, France
                       </span>
                     </div>
                   </div>
@@ -569,8 +567,8 @@ export default function MusicSchoolPage() {
                         <h4 className="text-lg font-bold">Par email</h4>
                         <p className="text-muted-foreground">
                           Envoyez-nous un email à{" "}
-                          <a href="mailto:ecole.musique.montreuil@gmail.com" className="text-primary hover:underline">
-                            ecole.musique.montreuil@gmail.com
+                          <a href="mailto:harmoniemontreuilsurmer@orange.fr" className="text-primary hover:underline">
+                            harmoniemontreuilsurmer@orange.fr
                           </a>{" "}
                           avec vos coordonnées et nous vous contacterons.
                         </p>

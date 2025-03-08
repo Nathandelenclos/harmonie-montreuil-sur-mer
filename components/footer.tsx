@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Facebook, Instagram, Mail, MapPin, Music, Phone } from "lucide-react"
+import type React from "react";
 
 export default function Footer() {
   return (
@@ -37,7 +38,7 @@ export default function Footer() {
                 <span className="sr-only">Instagram</span>
               </a>
               <a
-                href="mailto:harmonie.montreuil@gmail.com"
+                href="mailto:harmoniemontreuilsurmer@orange.fr"
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
                 <Mail className="h-5 w-5" />
@@ -88,22 +89,21 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                 <span className="text-muted-foreground">
-                  Salle des fêtes, Place du Général de Gaulle
-                  <br />
-                  62170 Montreuil-sur-Mer
+                  Rue du Paon,
+                  <br />62170 Montreuil-sur-Mer, France
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-primary shrink-0" />
-                <span className="text-muted-foreground">+33 3 21 06 XX XX</span>
+                <span className="text-muted-foreground"><a href="tel:+33321860569" className="text-muted-foreground">+33 3 21 86 05 69</a></span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-primary shrink-0" />
                 <a
-                  href="mailto:harmonie.montreuil@gmail.com"
+                  href="mailto:harmoniemontreuilsurmer@orange.fr"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  harmonie.montreuil@gmail.com
+                  harmoniemontreuilsurmer@orange.fr
                 </a>
               </li>
             </ul>
@@ -114,7 +114,9 @@ export default function Footer() {
             <p className="text-muted-foreground">
               Tous les vendredis de 20h à 22h
               <br />
-              Salle des fêtes de Montreuil-sur-Mer
+              Rue du Paon,
+              <br />
+              62170 Montreuil-sur-Mer, France
             </p>
             <Link href="/rejoindre" className="inline-block text-primary hover:underline font-medium">
               Rejoignez-nous →
