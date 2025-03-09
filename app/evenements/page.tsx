@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import PageHeader from "@/components/page-header"
 import AnimatedSection from "@/components/animated-section"
 import { formatDate } from "@/lib/utils"
+import Image from "next/image";
 
 export default function EventsPage() {
   const events = [
@@ -43,7 +44,8 @@ export default function EventsPage() {
               <AnimatedSection key={index} delay={0.1 * index} animation="zoom-in" className="card-hover">
                 <div className="bg-white rounded-lg shadow-lg overflow-hidden h-full card-equal">
                   <div className="bg-gradient-to-r from-primary/90 via-accent/80 to-secondary/90 flex items-center justify-center">
-                    {event.image && <img src={event.image} alt={event.title} className="object-cover" />}
+                    {event.image && <Image src={event.image} alt={event.title} className="object-cover" />}
+                    {!event.image && <Music className="h-16 w-16 text-white hover-rotate" />}
                   </div>
                   <div className="p-6 flex flex-col card-equal-body">
                     <div className="flex items-center gap-2 text-primary mb-2">

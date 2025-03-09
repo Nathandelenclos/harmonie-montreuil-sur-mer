@@ -313,7 +313,7 @@ export default function Home() {
               <AnimatedSection key={index} delay={0.2 * index} animation="zoom-in" className="card-hover">
                 <div className="bg-white rounded-lg shadow-lg overflow-hidden h-full card-equal">
                   <div className="bg-gradient-to-r from-primary/90 via-accent/80 to-secondary/90 flex items-center justify-center">
-                    {event.image && <img src={event.image} alt={event.title} className="object-cover" />}
+                    {event.image && <Image src={event.image} alt={event.title} className="object-cover" />}
                     {!event.image && <Music className="h-16 w-16 text-white hover-rotate" />}
 
                   </div>
