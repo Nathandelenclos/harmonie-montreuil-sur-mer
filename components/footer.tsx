@@ -65,14 +65,19 @@ export default function Footer() {
                   Événements
                 </Link>
               </li>
-              <li>
+              {/*<li>
                 <Link href="/histoire" className="text-muted-foreground hover:text-primary transition-colors">
                   Histoire
                 </Link>
               </li>
-              <li>
+                <li>
                 <Link href="/galerie" className="text-muted-foreground hover:text-primary transition-colors">
-                  Galerie
+                Galerie
+                </Link>
+                </li>*/}
+              <li>
+                <Link href="/ecole-de-musique" className="text-muted-foreground hover:text-primary transition-colors">
+                  École de Musique
                 </Link>
               </li>
               <li>
