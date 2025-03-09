@@ -24,51 +24,35 @@ export default function MusicSchoolPage() {
   const teachers = [
     {
       name: "Magalie DELMOTTE",
-      role: "Directrice",
-      image: "/placeholder.svg?height=300&width=300&text=Marie",
-      bio: "Diplômée du Conservatoire National de Paris, Marie enseigne le piano depuis plus de 15 ans avec passion et bienveillance.",
-    },
+      role: "Directrice, professeur de Formation musicale et eveil, professeur de Tuba et Trombone",
+     },
     {
       name: "Fabien ROGER",
-      role: "Professeur de cuivres",
-      image: "/placeholder.svg?height=300&width=300&text=Jean",
-      bio: "Trompettiste professionnel, Jean partage son temps entre l'enseignement et les concerts avec différents orchestres de la région.",
+      role: "Professeur de Formation musicale, professeur de Percussions, Trompette et Cor",
     },
     {
       name: "Jean-François AUBEL",
-      role: "Professeur de cordes",
-      image: "/placeholder.svg?height=300&width=300&text=Sophie",
-      bio: "Violoniste passionnée, Sophie a à cœur de transmettre son amour de la musique aux élèves de tous âges et de tous niveaux.",
+      role: "Professeur de Clarinette",
     },
     {
       name: "Annie JOUSSE",
-      role: "Professeur de bois",
-      image: "/placeholder.svg?height=300&width=300&text=Thomas",
-      bio: "Clarinettiste et saxophoniste, Thomas enseigne avec enthousiasme et adapte sa pédagogie à chaque élève.",
+      role: "Professeur de Flûte et de Violon",
     },
     {
       name: "Hugo MOREAU",
-      role: "Professeur de bois",
-      image: "/placeholder.svg?height=300&width=300&text=Thomas",
-      bio: "Saxophoniste, Hugo enseigne avec enthousiasme et adapte sa pédagogie à chaque élève.",
+      role: "Professeur de Saxophone et Piano",
     },
     {
       name: "Audrey BERNARD",
-      role: "Professeur de bois",
-      image: "/placeholder.svg?height=300&width=300&text=Thomas",
-      bio: "Clarinettiste et saxophoniste, Thomas enseigne avec enthousiasme et adapte sa pédagogie à chaque élève.",
+      role: "Professeur d'eveil, professeur de Hautbois",
     },
     {
       name: "Céline GRAY",
-      role: "Professeur de bois",
-      image: "/placeholder.svg?height=300&width=300&text=Thomas",
-      bio: "Clarinettiste et saxophoniste, Thomas enseigne avec enthousiasme et adapte sa pédagogie à chaque élève.",
+      role: "Professeur de Piano",
     },
     {
       name: "Karim AFFREINGHUE",
-      role: "Professeur de piano",
-      image: "/placeholder.svg?height=300&width=300&text=Thomas",
-      bio: "Clarinettiste et saxophoniste, Thomas enseigne avec enthousiasme et adapte sa pédagogie à chaque élève.",
+      role: "Professeur de Chorale",
     },
   ]
 
@@ -369,7 +353,6 @@ export default function MusicSchoolPage() {
                   <div className="p-6">
                     <h3 className="text-xl font-bold">{teacher.name}</h3>
                     <p className="text-primary mb-4">{teacher.role}</p>
-                    <p className="text-muted-foreground">{teacher.bio}</p>
                   </div>
                 </div>
               </AnimatedSection>
