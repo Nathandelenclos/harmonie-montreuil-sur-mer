@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Harmonie Montreuil sur Mer
 
-## Getting Started
+This project was developed for Harmonie de Montreuil sur Mer. The base and design were created by v0 to provide a modern and efficient interface built with Next.js.
 
-First, run the development server:
+## Table of Contents
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- [Description](#description)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Description
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This project offers a web interface designed to showcase Harmonie de Montreuil sur Mer. It was developed with Next.js to ensure optimized performance and smooth navigation. The base and design were created by v0, enabling a modern and intuitive user experience.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Technologies Used
 
-## Learn More
+- **Next.js**: A React framework for building performant web applications.
+- **React**: A JavaScript library for creating user interfaces.
+- Additional tools and libraries from the JavaScript ecosystem to enhance development and performance.
 
-To learn more about Next.js, take a look at the following resources:
+## Installation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To clone and set up the project locally, follow these steps:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Clone the repository:**
 
-## Deploy on Vercel
+   ```bash
+   git clone https://github.com/Nathandelenclos/harmonie-montreuil-sur-mer.git
+   cd harmonie-montreuil-sur-mer
+   ```
+   
+2. **Install dependencies :**
+   Use npm or yarn:
+   ```bash
+    npm install
+    # or
+    yarn install
+    ```
+   
+3. **Run the development server:** 
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+   
+4. **Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Usage
+Once the development server is running, explore the application to discover its features and modern design. The project is designed to be easily extendable and modifiable to suit your needs.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Project Structure
+
+The project is organized as follows:
+
+- /pages: Contains the main application pages generated with Next.js.
+- /components: Reusable components for building the user interface.
+- /public: Static resources (images, icons, etc.).
+- /styles: Stylesheets and CSS configurations.
+- /utils: Utility functions and additional logic.
+
+This structure promotes clear organization and easy maintenance.
+
+## Contributing
+
+Contributions are welcome! To contribute to the project:
+
+1. Fork the project.
+2. Create a new branch for your feature:
+    ```bash
+    git checkout -b feature/my-new-feature
+    ```
+3. Commit your changes:
+    ```bash
+    git commit -am 'Add a new feature'
+    ```
+4. Push to the branch:
+    ```bash
+    git push origin feature/my-new-feature
+    ```
+5. Open a Pull Request on GitHub.
+
+Thank you for following the project's contribution guidelines and code of conduct.
+
+## License
+This project is licensed under the MIT License.
+
+## Contact
+For any questions or suggestions, you can open an issue on GitHub or contact me directly via my GitHub profile [@Nathandelenclos](https://github.com/Nathandelenclos).
+
+
+
