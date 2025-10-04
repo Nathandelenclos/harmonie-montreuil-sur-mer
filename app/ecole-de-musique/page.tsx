@@ -9,22 +9,22 @@ import type React from "react";
 
 export default function MusicSchoolPage() {
   const instruments = [
-    { name: "Piano", image: "/assets/piano.jpeg?height=300&width=300&text=Piano" },
-    { name: "Violon", image: "/assets/violon.jpeg?height=300&width=300&text=Violon" },
-    { name: "Flûte", image: "/assets/flute.png?height=300&width=300&text=Flûte" },
-    { name: "Clarinette", image: "/assets/clarinette.jpg?height=300&width=300&text=Clarinette" },
-    { name: "Saxophone", image: "/assets/saxophone.jpg?height=300&width=300&text=Saxophone" },
-    { name: "Trompette", image: "/assets/trompette.jpeg?height=300&width=300&text=Trompette" },
-    { name: "Trombone", image: "/assets/trombone.jpg?height=300&width=300&text=Trombone" },
-    { name: "Hautbois", image: "/assets/hautbois.webp?height=300&width=300&text=Trombone" },
-    { name: "Cor", image: "/assets/cor.avif?height=300&width=300&text=Trombone" },
-    { name: "Percussion", image: "/assets/percussion.jpg?height=300&width=300&text=Percussion" },
+    { name: "Piano", image: "/assets/instruments/piano.jpeg?height=300&width=300&text=Piano" },
+    { name: "Flûte", image: "/assets/instruments/flute.png?height=300&width=300&text=Flûte" },
+    { name: "Clarinette", image: "/assets/instruments/clarinette.jpg?height=300&width=300&text=Clarinette" },
+    { name: "Saxophone", image: "/assets/instruments/saxophone.jpg?height=300&width=300&text=Saxophone" },
+    { name: "Trompette", image: "/assets/instruments/trompette.jpeg?height=300&width=300&text=Trompette" },
+    { name: "Trombone", image: "/assets/instruments/trombone.jpg?height=300&width=300&text=Trombone" },
+    { name: "Tuba", image: "/assets/instruments/tuba.jpg?height=300&width=300&text=Trombone" },
+    { name: "Hautbois", image: "/assets/instruments/hautbois.webp?height=300&width=300&text=Trombone" },
+    { name: "Cor", image: "/assets/instruments/cor.avif?height=300&width=300&text=Trombone" },
+    { name: "Percussion", image: "/assets/instruments/percussion.jpg?height=300&width=300&text=Percussion" },
   ]
 
   const teachers = [
     {
       name: "Magalie DELMOTTE",
-      role: "Directrice, professeur de Formation musicale et eveil, professeur de Tuba et Trombone",
+      role: "Directrice, professeures de Formation musicale et eveil, professeures de Tuba et Trombone et professeures de Chorale",
      },
     {
       name: "Fabien ROGER",
@@ -35,24 +35,20 @@ export default function MusicSchoolPage() {
       role: "Professeur de Clarinette",
     },
     {
-      name: "Annie JOUSSE",
-      role: "Professeur de Flûte et de Violon",
+      name: "Gaëlle Delecroix",
+      role: "Professeures de Flûte",
     },
     {
       name: "Hugo MOREAU",
-      role: "Professeur de Saxophone et Piano",
+      role: "Professeur de Saxophone, Clarinette et Piano",
     },
     {
       name: "Audrey BERNARD",
-      role: "Professeur d'eveil, professeur de Hautbois",
+      role: "Professeures d'eveil, professeures de Hautbois",
     },
     {
       name: "Céline GRAY",
-      role: "Professeur de Piano",
-    },
-    {
-      name: "Karim AFFREINGHUE",
-      role: "Professeur de Chorale",
+      role: "Professeures de Piano",
     },
   ]
 
@@ -66,9 +62,6 @@ export default function MusicSchoolPage() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <AnimatedSection>
               <div className="space-y-6">
-                <div className="inline-block bg-secondary/20 text-primary px-4 py-1 rounded-full mb-2 font-medium">
-                  Inscriptions ouvertes pour l&#39;année 2025-2026
-                </div>
                 <h2 className="text-3xl md:text-4xl font-bold">Bienvenue à l&#39;École de Musique de Montreuil-sur-Mer</h2>
                 <p className="text-muted-foreground">
                   Notre école de musique accueille les élèves de tous âges, débutants ou confirmés, désireux d&#39;apprendre
@@ -192,7 +185,7 @@ export default function MusicSchoolPage() {
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
                       <Clock className="h-5 w-5 text-primary" />
-                      <span>1h à 1h30 par semaine selon le niveau</span>
+                      <span>1h par semaine</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <CheckCircle2 className="h-5 w-5 text-primary" />
@@ -222,7 +215,7 @@ export default function MusicSchoolPage() {
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
                       <Clock className="h-5 w-5 text-primary" />
-                      <span>30 min à 1h par semaine selon le niveau</span>
+                      <span>30 min par semaine</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <CheckCircle2 className="h-5 w-5 text-primary" />
@@ -254,7 +247,7 @@ export default function MusicSchoolPage() {
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
                       <Clock className="h-5 w-5 text-primary" />
-                      <span>1h à 2h par semaine selon l&#39;ensemble</span>
+                      <span>1h par semaine le lundi de 18h à 19h</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <CheckCircle2 className="h-5 w-5 text-primary" />
@@ -283,7 +276,7 @@ export default function MusicSchoolPage() {
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
                       <Clock className="h-5 w-5 text-primary" />
-                      <span>45 min par semaine</span>
+                      <span>1h par semaine</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <CheckCircle2 className="h-5 w-5 text-primary" />
@@ -537,7 +530,7 @@ export default function MusicSchoolPage() {
                       <div>
                         <h4 className="text-lg font-bold">Par téléphone</h4>
                         <p className="text-muted-foreground">
-                          Contactez-nous au +33 3 21 86 05 69 pour une pré-inscription par téléphone.
+                          Contactez-nous au <a href="tel:+33 3 21 86 05 69" className="text-primary hover:underline">+33 3 21 86 05 69</a> ou au <a href="tel:+33 6 12 13 0 89" className="text-primary hover:underline">+33 6 12 13 0 89</a> pour une pré-inscription par téléphone.
                         </p>
                       </div>
                     </div>

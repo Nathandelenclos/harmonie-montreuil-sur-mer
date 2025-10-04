@@ -1,4 +1,4 @@
-import nodemailer from 'nodemailer';
+import {createTransport} from 'nodemailer';
 import {NextResponse} from "next/server";
 
 interface SendEmailBody {
@@ -63,7 +63,7 @@ export async function POST(request: Request) {
     }
 
     try {
-        const transporter = nodemailer.createTransport({
+        const transporter = createTransport({
             host: process.env.SMTP_HOST,
             port: Number(process.env.SMTP_PORT),
             secure: true,

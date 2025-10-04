@@ -7,18 +7,34 @@ import AnimatedSection from "@/components/animated-section"
 import { formatDate } from "@/lib/utils"
 import Image from "next/image";
 
+interface Event {
+    image?: string;
+    title: string;
+    date: Date;
+    time: string;
+    location: string;
+    description: string;
+    featured?: boolean;
+}
+
 export default function EventsPage() {
-  const events = [
-    {
-      image: "/assets/affiches/symphonie-des-elements.jpg",
-      title: "La Symphonie des éléments",
-      date: new Date(2025, 4, 17),
-      time: "20h30",
-      location: "Salle Rheinberg, Montreuil-sur-Mer",
-      description:
-        "Proposé par l'harmonie municipale de montreuil-sur-mer, la SAJ d'etaples, la chorale 7 vallées song et l'association manifest' action",
-      featured: true,
-    },
+  const events: Event[] = [
+      {
+          title: "Sainte Cécile",
+          date: new Date(2025, 10, 16),
+          time: "11h00",
+          location: "Abbatial Saint Solve, Montreuil-sur-Mer",
+          description: "Célébration de la Sainte Cécile, patronne des musiciens, avec un concert spécial.",
+          featured: true,
+      },
+      {
+          title: "Sacré Fiesta",
+          date: new Date(2025, 10, 21),
+          time: "20h30",
+          location: "Théâtre, Montreuil-sur-Mer",
+          description: "Concert d'automne de l'harmonie de montreuil-sur-mer avec des morceaux festifs et variés.",
+          featured: true,
+      },
   ]
 
   // Trier les événements par date
@@ -43,8 +59,8 @@ export default function EventsPage() {
             {featuredEvents.map((event, index) => (
               <AnimatedSection key={index} delay={0.1 * index} animation="zoom-in" className="card-hover">
                 <div className="bg-white rounded-lg shadow-lg overflow-hidden h-full card-equal">
-                  <div className="bg-gradient-to-r from-primary/90 via-accent/80 to-secondary/90 flex items-center justify-center">
-                    {event.image && <Image src={event.image} alt={event.title} className="object-cover" />}
+                  <div className="bg-gradient-to-r from-primary/90 via-accent/80 to-secondary/90 flex items-center justify-center h-48">
+                    {event.image && <Image src={event.image} alt={event.title} width={1400} height={600} className="object-cover" />}
                     {!event.image && <Music className="h-16 w-16 text-white hover-rotate" />}
                   </div>
                   <div className="p-6 flex flex-col card-equal-body">

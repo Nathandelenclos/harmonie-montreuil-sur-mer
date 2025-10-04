@@ -120,7 +120,7 @@ export default function AboutPage() {
               { name: "Raphaël Moreau", role: "Président", image: "/placeholder.svg?height=300&width=300&text=Jean" },
               {
                 name: "Magalie Birault",
-                role: "Chef d'orchestre",
+                role: "Cheffe d'orchestre",
                 image: "/placeholder.svg?height=300&width=300&text=Marie",
               },
               { name: "Cyril Saison", role: "Trésorier", image: "/placeholder.svg?height=300&width=300&text=Pierre" },

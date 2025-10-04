@@ -36,7 +36,7 @@ export default function ContactPage() {
         action: 'submit_form',
       });
       await sendEmail(
-          'nathan.delenclos@gmail.com',
+          'harmoniemontreuilsurmer@orange.fr',
           formState.subject + ` - ${formState.name} <${formState.email}>`,
           formState.message,
           token

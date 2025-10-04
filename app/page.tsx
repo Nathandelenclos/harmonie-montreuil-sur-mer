@@ -266,8 +266,8 @@ export default function Home() {
                   <div className="space-y-4 pt-6">
                     <div className="overflow-hidden rounded-lg shadow-lg">
                       <Image
-                        src="/assets/violon.jpeg?height=300&width=300&text=Cours+Violon"
-                        alt="Cours de violon"
+                        src="/assets/saxophone.jpg?height=300&width=300&text=Cours+Violon"
+                        alt="Cours de saxophone"
                         width={300}
                         height={300}
                         className="w-full h-auto hover-scale"
@@ -313,7 +313,7 @@ export default function Home() {
               <AnimatedSection key={index} delay={0.2 * index} animation="zoom-in" className="card-hover">
                 <div className="bg-white rounded-lg shadow-lg overflow-hidden h-full card-equal">
                   <div className="bg-gradient-to-r from-primary/90 via-accent/80 to-secondary/90 flex items-center justify-center">
-                    {event.image && <Image src={event.image} alt={event.title} className="object-cover" />}
+                    {event.image && <Image src={event.image} alt={event.title} width={600} height={300} className="object-cover" />}
                     {!event.image && <Music className="h-16 w-16 text-white hover-rotate" />}
 
                   </div>

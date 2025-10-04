@@ -39,7 +39,7 @@ export default function JoinPage() {
         action: 'submit_form',
       });
       await sendEmail(
-          'nathan.delenclos@gmail.com',
+          'harmoniemontreuilsurmer@orange.fr',
           `Nous rejoindre - ${formState.name} <${formState.email}>`,
           `
           Nom: ${formState.name}
@@ -171,7 +171,7 @@ export default function JoinPage() {
                 <div className="absolute -top-4 -left-4 w-24 h-24 bg-primary/20 rounded-full -z-10"></div>
                 <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-secondary/20 rounded-full -z-10"></div>
                 <Image
-                  src="/placeholder.svg?height=600&width=500&text=Rejoignez-nous"
+                  src="/assets/harmonie-officiel.jpg?height=600&width=500&text=Rejoignez-nous"
                   alt="Musiciens de l&#39;Harmonie"
                   width={500}
                   height={600}
@@ -199,7 +199,7 @@ export default function JoinPage() {
                 <div className="absolute -top-4 -left-4 w-24 h-24 bg-primary/20 rounded-full -z-10"></div>
                 <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-secondary/20 rounded-full -z-10"></div>
                 <Image
-                  src="/placeholder.svg?height=600&width=500&text=École+de+Musique"
+                  src="/assets/cours-de-groupe.avif?height=600&width=500&text=École+de+Musique"
                   alt="École de Musique"
                   width={500}
                   height={600}

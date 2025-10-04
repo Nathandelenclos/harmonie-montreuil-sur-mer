@@ -20,7 +20,7 @@ export default function Footer() {
             </p>
             <div className="flex gap-4">
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/profile.php?id=100062936003912"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
@@ -29,7 +29,7 @@ export default function Footer() {
                 <span className="sr-only">Facebook</span>
               </a>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/harmoniemontreuilsurmer/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
@@ -100,7 +100,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-primary shrink-0" />
-                <span className="text-muted-foreground"><a href="tel:+33321860569" className="text-muted-foreground">+33 3 21 86 05 69</a></span>
+                <span className="text-muted-foreground hover:text-primary transition-colors"><a href="tel:+33321860569">+33 3 21 86 05 69</a></span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-primary shrink-0" />
