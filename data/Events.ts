@@ -13,7 +13,7 @@ export const events: Event[] = [
         title: "Sainte Cécile",
         date: new Date(2025, 10, 16),
         time: "11h00",
-        location: "Abbatial Saint Solve, Montreuil-sur-Mer",
+        location: "Abbatiale Saint-Saulve, Montreuil-sur-Mer",
         description: "Célébration de la Sainte Cécile, patronne des musiciens, avec un concert spécial.",
         featured: true,
     },
