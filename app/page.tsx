@@ -4,8 +4,11 @@ import { Calendar, ChevronRight, MapPin, Music, Users, GraduationCap, BookOpen }
 
 import { Button } from "@/components/ui/button"
 import AnimatedSection from "@/components/animated-section"
+import {events} from "@/data/Events";
 
 export default function Home() {
+
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -246,7 +249,7 @@ export default function Home() {
                   <div className="space-y-4">
                     <div className="overflow-hidden rounded-lg shadow-lg">
                       <Image
-                        src="/assets/piano.jpeg?height=300&width=300&text=Cours+Piano"
+                        src="/assets/instruments/piano.jpeg?height=300&width=300&text=Cours+Piano"
                         alt="Cours de piano"
                         width={300}
                         height={300}
@@ -266,7 +269,7 @@ export default function Home() {
                   <div className="space-y-4 pt-6">
                     <div className="overflow-hidden rounded-lg shadow-lg">
                       <Image
-                        src="/assets/saxophone.jpg?height=300&width=300&text=Cours+Violon"
+                        src="/assets/instruments/saxophone.jpg?height=300&width=300&text=Cours+Violon"
                         alt="Cours de saxophone"
                         width={300}
                         height={300}
@@ -275,7 +278,7 @@ export default function Home() {
                     </div>
                     <div className="overflow-hidden rounded-lg shadow-lg">
                       <Image
-                        src="/assets/trompette.jpeg?height=300&width=300&text=Cours+Trompette"
+                        src="/assets/instruments/trompette.jpeg?height=300&width=300&text=Cours+Trompette"
                         alt="Cours de trompette"
                         width={300}
                         height={300}
@@ -299,20 +302,10 @@ export default function Home() {
           </AnimatedSection>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                image: "/assets/affiches/symphonie-des-elements.jpg",
-                title: "La Symphonie des éléments",
-                date: new Date(2025, 4, 17),
-                time: "20h30",
-                location: "Salle Rheinberg, Montreuil-sur-Mer",
-                description:
-                    "Proposé par l'harmonie municipale de montreuil-sur-mer, la SAJ d'etaples, la chorale 7 vallées song et l'association manifest' action",
-              },
-            ].map((event, index) => (
+            {events.map((event, index) => (
               <AnimatedSection key={index} delay={0.2 * index} animation="zoom-in" className="card-hover">
                 <div className="bg-white rounded-lg shadow-lg overflow-hidden h-full card-equal">
-                  <div className="bg-gradient-to-r from-primary/90 via-accent/80 to-secondary/90 flex items-center justify-center">
+                  <div className="bg-gradient-to-r from-primary/90 via-accent/80 to-secondary/90 flex items-center justify-center h-40">
                     {event.image && <Image src={event.image} alt={event.title} width={600} height={300} className="object-cover" />}
                     {!event.image && <Music className="h-16 w-16 text-white hover-rotate" />}
 
