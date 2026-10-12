@@ -21,6 +21,7 @@ test('each public page has its own canonical URL and sharing metadata', () => {
 test('the sitemap includes the concert and excludes unfinished pages', () => {
   const urls = sitemap().map(item => item.url);
   assert.ok(urls.some(url => url.endsWith('/evenements/mille-legendes-en-harmonie')));
-  assert.equal(urls.some(url => /\/(galerie|histoire)$/.test(url)), false);
+  assert.ok(urls.some(url => url.endsWith('/galerie')));
+  assert.equal(urls.some(url => url.endsWith('/histoire')), false);
   assert.equal(urls.length, new Set(urls).size);
 });

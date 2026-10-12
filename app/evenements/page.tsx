@@ -1,7 +1,6 @@
 import NoUpcomingEvents from "@/components/no-upcoming-events"
 import Link from "next/link"
-import Image from "next/image"
-import { Play } from "lucide-react"
+import YouTubeEmbed from "@/components/youtube-embed"
 import { partitionEvents } from "@/data/Events"
 import { pageMetadata } from "@/lib/metadata"
 import PageHeader from "@/components/page-header"
@@ -35,19 +34,13 @@ export default function EventsPage() {
             { id: "XQZA28P2dxY", title: "Morgana", description: "Fabien Roger · Concert d’automne 2024" },
             { id: "8SaXsLgCffM", title: "The Greatest Showman", description: "L’harmonie en concert à Fruges" },
           ].map(video => <li key={video.id}>
-            <a href={`https://www.youtube.com/watch?v=${video.id}`} className="group block h-full overflow-hidden rounded-lg border bg-white text-primary hover:underline underline-offset-4">
-              <div className="relative aspect-[4/3]">
-                <Image src={`/assets/videos/${video.id}.jpg`} alt="" fill sizes="(max-width: 767px) 100vw, 33vw" className="object-contain" />
-                <span className="absolute bottom-4 left-4 flex h-12 w-12 items-center justify-center rounded-full bg-secondary text-primary"><Play aria-hidden="true" className="h-6 w-6" /></span>
-              </div>
-              <div className="border-t-4 border-secondary p-6">
-                <h3 className="text-2xl font-bold mb-3">{video.title}</h3>
-                <p className="text-foreground mb-4">{video.description}</p>
-                <span className="font-semibold">Voir sur YouTube ↗</span>
-              </div>
-            </a>
+            <YouTubeEmbed id={video.id} title={video.title} />
+            <h3 className="text-2xl font-bold text-primary mt-4 mb-3">{video.title}</h3>
+            <p>{video.description}</p>
           </li>)}
         </ul>
+        <p className="mt-8 mb-6">La lecture charge le lecteur YouTube et transmet des informations techniques à Google. <Link href="/politique-confidentialite" className="text-primary underline">Confidentialité</Link></p>
+        <Button asChild><Link href="/videos">Toutes les vidéos de Montreuil →</Link></Button>
       </div>
     </section>
     <section className="callout"><div className="site-container"><h2 className="section-title mb-6">Inviter l’harmonie à votre événement</h2><p className="mb-8 max-w-2xl text-lg">Un concert, une fête ou une commémoration : échangeons sur votre projet.</p><Button asChild variant="secondary"><Link href="/contact">Contacter l’harmonie</Link></Button></div></section>

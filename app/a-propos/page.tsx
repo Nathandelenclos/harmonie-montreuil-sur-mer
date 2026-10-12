@@ -154,23 +154,22 @@ export default function AboutPage() {
         <div className="site-container">
           <div className="section-heading">
             <h2 id="archives-title" className="section-title">Des générations en musique</h2>
-            <p className="section-subtitle">Deux souvenirs conservés sur le premier site de l’harmonie.</p>
+            <p className="section-subtitle">Les visages et les souvenirs d’une histoire musicale partagée.</p>
           </div>
           <div className="grid items-start gap-8 md:grid-cols-2">
             <figure>
               <Image src="/assets/archives/harmonie-1927.jpg" alt="Portrait ancien des musiciens réunis avec leurs instruments et la bannière de l’harmonie" width={1400} height={918} sizes="(max-width: 767px) 100vw, 50vw" className="h-auto w-full rounded-lg" />
-              <figcaption className="border-l-4 border-secondary pl-4 mt-4">1927 — légende du site d’archives</figcaption>
+              <figcaption className="border-l-4 border-secondary pl-4 mt-4">1927</figcaption>
             </figure>
             <figure>
               <Image src="/assets/archives/harmonie-1949.jpg" alt="Photographie ancienne de l’harmonie posant en groupe avec ses instruments" width={2048} height={1196} sizes="(max-width: 767px) 100vw, 50vw" className="h-auto w-full rounded-lg" />
-              <figcaption className="border-l-4 border-secondary pl-4 mt-4">1949 — légende du site d’archives</figcaption>
+              <figcaption className="border-l-4 border-secondary pl-4 mt-4">1949</figcaption>
             </figure>
           </div>
           <div className="mt-8 flex flex-wrap gap-x-8 gap-y-2">
-            <a className="home-text-link text-primary" href="https://harmoniemontreuils.wixsite.com/montreuilsurmer/multimedia">Parcourir les photos d’archives</a>
-            <Link className="home-text-link text-primary" href="/evenements#videos">Écouter nos concerts</Link>
+            <Link className="home-text-link text-primary" href="/galerie">Parcourir les photos d’archives</Link>
+            <Link className="home-text-link text-primary" href="/videos">Écouter nos concerts</Link>
           </div>
-          <p className="mt-2 text-sm text-muted-foreground">Les photos d’archives proviennent de l’ancien site, dont les informations pratiques ne sont plus à jour.</p>
         </div>
       </section>
 

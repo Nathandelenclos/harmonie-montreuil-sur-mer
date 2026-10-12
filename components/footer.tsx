@@ -64,16 +64,13 @@ export default function Footer() {
                   Concerts
                 </Link>
               </li>
-              {/*<li>
-                <Link href="/histoire" className="text-white hover:text-secondary transition-colors">
-                  Histoire
-                </Link>
+              <li>
+                <Link href="/galerie" className="text-white hover:text-secondary transition-colors">Photos</Link>
               </li>
-                <li>
-                <Link href="/galerie" className="text-white hover:text-secondary transition-colors">
-                Galerie
-                </Link>
-                </li>*/}
+              <li>
+                <Link href="/videos" className="text-white hover:text-secondary transition-colors">Vidéos</Link>
+              </li>
+
               <li>
                 <Link href="/ecole-de-musique" className="text-white hover:text-secondary transition-colors">
                   École de Musique

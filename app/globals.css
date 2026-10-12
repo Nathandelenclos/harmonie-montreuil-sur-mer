@@ -256,3 +256,8 @@
     to { opacity: 1; transform: translateY(0); }
   }
 }
+
+@layer components {
+  .photo-dialog { @apply max-w-6xl; width: calc(100% - theme('spacing.8')); max-height: calc(100dvh - theme('spacing.8')); }
+  .photo-dialog::backdrop { background: hsl(var(--primary) / 85%); }
+}

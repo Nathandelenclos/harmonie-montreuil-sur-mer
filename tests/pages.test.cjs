@@ -29,23 +29,23 @@ test('school shortcuts still reach the courses, instruments, prices and contacts
   assert.equal(document.querySelectorAll('h1').length, 1);
 });
 
-test('archive photos are labelled as historical sources and link back to the original site', () => {
+test('archive photos link to the locally hosted albums', () => {
   const About = require('../app/a-propos/page.tsx').default;
   const page = new JSDOM(renderToStaticMarkup(React.createElement(About))).window.document.body;
   const archives = getByRole(page, 'region', { name: 'Des générations en musique' });
   assert.equal(getAllByRole(archives, 'img').length, 2);
-  assert.match(archives.textContent, /1927 — légende du site d’archives/);
-  assert.match(archives.textContent, /1949 — légende du site d’archives/);
-  assert.match(archives.textContent, /informations pratiques ne sont plus à jour/);
-  assert.equal(getByRole(archives, 'link', { name: 'Parcourir les photos d’archives' }).getAttribute('href'), 'https://harmoniemontreuils.wixsite.com/montreuilsurmer/multimedia');
+  assert.match(archives.textContent, /1927/);
+  assert.match(archives.textContent, /1949/);
+  assert.doesNotMatch(archives.textContent, /ancien site|wix|site d’archives/i);
+  assert.equal(getByRole(archives, 'link', { name: 'Parcourir les photos d’archives' }).getAttribute('href'), '/galerie');
 });
 
-test('concert videos link only to the three recordings identified as Montreuil, not the mixed channel', () => {
+test('concerts provide three embedded video previews and a link to all recordings', () => {
   const Events = require('../app/evenements/page.tsx').default;
   const page = new JSDOM(renderToStaticMarkup(React.createElement(Events))).window.document.body;
   const videos = getByRole(page, 'region', { name: 'L’harmonie en concert' });
-  const links = getAllByRole(videos, 'link');
-  assert.deepEqual(links.map(link => link.getAttribute('href')), ['https://www.youtube.com/watch?v=0DapvwTHhz4', 'https://www.youtube.com/watch?v=XQZA28P2dxY', 'https://www.youtube.com/watch?v=8SaXsLgCffM']);
+  assert.equal(getAllByRole(videos, 'button', { name: /Lire sur cette page/ }).length, 3);
+  assert.equal(getByRole(videos, 'link', { name: /Toutes les vidéos/ }).getAttribute('href'), '/videos');
   assert.match(videos.textContent, /publiées par MARLENE47100/);
   assert.equal(videos.querySelector('iframe'), null);
 });
