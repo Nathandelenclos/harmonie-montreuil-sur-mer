@@ -3,6 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import MediaFeature from "@/components/media-feature"
 import YouTubeEmbed from "@/components/youtube-embed"
+import PhotoSlideshow from "@/components/photo-slideshow"
 
 import { Button } from "@/components/ui/button"
 import PageHeader from "@/components/page-header"
@@ -14,7 +15,13 @@ export default function AboutPage() {
     <div className="content-page">
       <PageHeader homeLink={<Link href="/">Accueil</Link>} eyebrow="Montreuil-sur-Mer · Depuis 1865" title="Une histoire de musique. Et de rencontres."
         description="Une trentaine de musiciens amateurs, de tous âges et de tous horizons, réunis par le plaisir de jouer ensemble et de faire vivre la musique à Montreuil."
-        media={<figure><Image src="/assets/sainte-cecile-2025.jpg" alt="L’Harmonie réunie pour la Sainte-Cécile 2025" width={1800} height={1349} priority sizes="(max-width: 911px) 100vw, 50vw" className="w-full h-auto rounded-lg" /><figcaption className="mt-3 border-l-4 border-secondary pl-3 text-sm">Les musiciens réunis pour la Sainte-Cécile 2025.</figcaption></figure>}
+        media={<PhotoSlideshow photos={[
+          { src: "/assets/sainte-cecile-2025.jpg", alt: "L’Harmonie réunie pour la Sainte-Cécile 2025", caption: "Les musiciens réunis pour la Sainte-Cécile 2025." },
+          { src: "/assets/archives/878fe25780b01788.webp", alt: "Les musiciens costumés sur scène au concert de printemps", caption: "Concert de printemps 2018." },
+          { src: "/assets/archives/eaced13a52ac384d.webp", alt: "L’orchestre et sa cheffe pendant le concert d’automne", caption: "Concert d’automne 2018." },
+          { src: "/assets/archives/e1b96b853f6ec045.webp", alt: "Les musiciens de l’harmonie jouent sous un kiosque", caption: "Festival du Touquet · 2018." },
+          { src: "/assets/archives/0b29b15e5107d464.webp", alt: "Les musiciens de l’harmonie réunis pour une photo de groupe", caption: "L’Harmonie de Montreuil-sur-Mer · 2018." },
+        ]} />}
         actions={<><Button asChild variant="secondary"><Link href="/rejoindre">Jouer avec nous</Link></Button><Link href="#equipe-harmonie" className="home-text-link">Rencontrer l’équipe →</Link></>}
       />
 

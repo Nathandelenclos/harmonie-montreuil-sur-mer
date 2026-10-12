@@ -4,7 +4,11 @@ Les couleurs de marque restent les tokens `primary` (bleu) et `secondary` (jaune
 
 ## Mouvements
 
-Le template Next.js renouvelle un fondu de 320 ms lors des changements de page ; la navigation et le pied de page restent stables. Les photos d’introduction entrent légèrement par le bas. Titres, albums, cours et aperçus apparaissent au défilement avec les animations CSS `view()`, uniquement si le navigateur les prend en charge. Le contenu reste visible sans ce support, sans JavaScript et pendant les effets. Le focus annule l’apparition d’un bloc interactif. Les survols sur les photos et boutons se limitent aux appareils avec survol. Aucun effet en boucle, aucune bibliothèque ajoutée ; `prefers-reduced-motion: reduce` supprime toutes les animations et transitions.
+Le template Next.js renouvelle un fondu de 320 ms lors des changements de page ; la navigation et le pied de page restent stables. Les photos d’introduction entrent légèrement par le bas. Un `IntersectionObserver` prépare uniquement les titres, albums, cours et aperçus situés sous l’écran initial. À leur entrée dans l’écran, un fondu de 650 ms accompagné d’un déplacement de 24 px se joue une seule fois ; remonter la page ne les masque plus. Le contenu initial, une position de défilement restaurée et le contenu ciblé au clavier restent immédiatement visibles. Sans JavaScript ou sans les API nécessaires, tout reste affiché. Aucun effet en boucle, aucune bibliothèque ajoutée. `prefers-reduced-motion: reduce` désactive les effets ; activer cette préférence pendant la visite révèle les éléments en attente et annule les animations en cours.
+
+## PhotoSlideshow — stable
+
+Les en-têtes École de musique et L’harmonie utilisent `PhotoSlideshow` : photos locales toutes les 7 secondes, fondu d’une seconde, cadre et espace de légende fixes. Une commande permet de mettre en pause et de reprendre. Seule la photo active et sa légende sont exposées aux lecteurs d’écran. La réduction des mouvements désactive le défilement automatique ; un onglet masqué ne change pas de photo. Les tests couvrent l’alternance, la pause, la préférence utilisateur et le nettoyage du minuteur.
 
 ## Button — stable
 

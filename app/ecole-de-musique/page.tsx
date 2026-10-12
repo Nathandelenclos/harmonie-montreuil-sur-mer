@@ -1,5 +1,6 @@
 import { pageMetadata } from "@/lib/metadata"
 import Image from "next/image"
+import PhotoSlideshow from "@/components/photo-slideshow"
 import Link from "next/link"
 import { MapPin, ChevronRight } from "lucide-react"
 
@@ -69,7 +70,13 @@ export default function MusicSchoolPage() {
     <div className="content-page">
       <PageHeader homeLink={<Link href="/">Accueil</Link>} eyebrow="École de musique de Montreuil-sur-Mer" title="La musique commence avec vous."
         description="Enfants, adultes, débutants ou confirmés : découvrir un instrument, trouver son rythme et prendre plaisir à jouer ensemble."
-        media={<figure><Image src="/assets/formation-musicale.jpg" alt="Les élèves réunis pendant un cours de formation musicale" width={1200} height={613} priority sizes="(max-width: 911px) 100vw, 50vw" className="w-full h-auto rounded-lg" /><figcaption className="mt-3 border-l-4 border-secondary pl-3 text-sm">Apprendre, écouter et progresser ensemble.</figcaption></figure>}
+        media={<PhotoSlideshow photos={[
+          { src: "/assets/formation-musicale.jpg", alt: "Les élèves réunis pendant un cours de formation musicale", caption: "Apprendre, écouter et progresser ensemble." },
+          { src: "/assets/archives/85c2087db2123161.webp", alt: "Les élèves et les musiciens réunis sur scène lors d’une audition", caption: "Audition 2018 · Archives de l’école de musique." },
+          { src: "/assets/archives/2b41b7e380ca5292.webp", alt: "Un ensemble de clarinettes sur scène pendant l’audition", caption: "Audition 2017 · Archives de l’école de musique." },
+          { src: "/assets/archives/cda43b50f8dd4d75.webp", alt: "Des familles découvrent le saxophone aux portes ouvertes", caption: "Portes ouvertes de l’école · 2016." },
+          { src: "/assets/archives/0f3f259e3e7667c7.webp", alt: "Les élèves et musiciens jouent ensemble lors d’un rassemblement", caption: "Rassemblement à Évin-Malmaison · 2018." },
+        ]} />}
         actions={<><Button asChild size="lg" variant="secondary"><a href="#cours">Trouver mon cours</a></Button><Button asChild size="lg" variant="outline" className="bg-white text-primary"><a href="#contacts">Parlons de votre projet</a></Button></>}
       />
 

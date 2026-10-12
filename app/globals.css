@@ -157,20 +157,11 @@
     .school-instruments li:hover img { transform: scale(1.025); }
   }
 
-  @supports (animation-timeline: view()) and (animation-range: entry 0% entry 80%) {
-    :is(.section-heading, .home-section-title, .school-course, .home-photo-grid, .home-orchestra, .event-card, .media-feature-layout, .school-instruments > li, #albums li, #captations li, .reading-content > section) {
-      animation: scroll-enter linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 80%;
-    }
-    :is(.school-course, .home-orchestra, .event-card, .media-feature-layout, #albums li, #captations li):focus-within { animation: none; }
-    @keyframes scroll-enter {
-      from { opacity: 0.65; transform: translateY(18px); }
-      to { opacity: 1; transform: none; }
-    }
-  }
 }
+[data-scroll-pending]:focus-within { opacity: 1 !important; }
+.slideshow-frame img { transition: opacity 1000ms ease-in-out; }
 @media (prefers-reduced-motion: reduce) {
+  [data-scroll-pending] { opacity: 1 !important; }
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
 
