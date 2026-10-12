@@ -152,3 +152,91 @@
   .event-card-layout { grid-template-columns: 2fr 3fr; }
   .event-card-content { padding: 2rem; }
 }
+
+@layer components {
+  .home-page {
+    --home-title-size: clamp(2.5rem, 1.5rem + 4vw, 5.5rem);
+    --home-section-size: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+    @apply bg-background;
+  }
+
+  .home-page a:not(.home-text-link):not(.home-discover) {
+    @apply h-auto min-h-12 whitespace-normal;
+  }
+
+  .home-page a:focus-visible {
+    outline: 3px solid currentColor;
+    outline-offset: 4px;
+  }
+
+  .home-hero {
+    @apply flex items-center border-b-8 border-secondary;
+    min-height: 40rem;
+  }
+
+  .home-hero-shade {
+    background: linear-gradient(180deg, hsl(var(--primary) / 94%), hsl(var(--primary) / 82%) 65%, hsl(var(--primary) / 70%));
+  }
+
+  .home-title {
+    font-size: var(--home-title-size);
+    line-height: 1.08;
+    max-width: 15ch;
+    letter-spacing: -0.035em;
+  }
+
+  .home-section-title {
+    font-size: var(--home-section-size);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+  }
+
+  .home-text-link {
+    @apply inline-flex min-h-12 items-center gap-2 py-3 text-sm font-semibold underline decoration-1 underline-offset-4 hover:decoration-2;
+  }
+
+  .home-concert .event-card {
+    @apply rounded-lg border-0 bg-white shadow-none;
+  }
+
+  .home-concert .event-card-content {
+    @apply border-t-4 border-secondary p-6 md:p-12;
+  }
+
+  .home-concert .event-card-content h3 {
+    @apply text-primary;
+    font-size: var(--home-section-size);
+    line-height: 1.15;
+  }
+
+  .home-photo-grid {
+    @apply border-l-4 border-secondary pl-4;
+  }
+
+  .home-orchestra {
+    @apply grid items-center;
+  }
+
+  @media (min-width: 48rem) {
+    .home-hero { min-height: 44rem; }
+    .home-hero-shade {
+      background: linear-gradient(90deg, hsl(var(--primary) / 96%), hsl(var(--primary) / 86%) 45%, hsl(var(--primary) / 12%));
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .home-orchestra { grid-template-columns: 3fr 2fr; }
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .home-hero-copy { animation: home-enter 650ms ease-out both; }
+  .home-hero-actions { animation: home-enter 650ms 120ms ease-out both; }
+  .home-discover { animation: home-enter 650ms 240ms ease-out both; }
+  .home-text-link svg { transition: transform 180ms ease-out; }
+  .home-text-link:is(:hover, :focus-visible) svg { transform: translate(2px, -2px); }
+  @keyframes home-enter {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
