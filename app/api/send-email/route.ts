@@ -1,88 +1,100 @@
-import {createTransport} from 'nodemailer';
-import {NextResponse} from "next/server";
+import nodemailer from "nodemailer"
 
-interface SendEmailBody {
-    reCaptchaToken: string;
-    to: string;
-    subject: string;
-    text: string;
-    apiSecret: string;
-}
+const siteOrigin = "https://harmonie-montreuil-sur-mer.fr"
+// shortcut: this limit is per instance; use the hosting firewall for a shared production quota.
+let attempts: number[] = []
 
 export async function POST(request: Request) {
-    const { to, subject, text, apiSecret, reCaptchaToken } = (await request.json()) as SendEmailBody;
+  const origin = request.headers.get("origin")
+  const isLocal = process.env.NODE_ENV !== "production" &&
+    (origin === "http://localhost:3000" || origin === "http://localhost:3001")
+  if (origin !== siteOrigin && !isLocal) {
+    return Response.json({ error: "Origine non autorisée." }, { status: 403 })
+  }
+  if (!request.headers.get("content-type")?.startsWith("application/json")) {
+    return Response.json({ error: "Format non pris en charge." }, { status: 415 })
+  }
 
-    if (!to ||!subject ||!text ||!apiSecret ||!reCaptchaToken) {
-        return new Response(JSON.stringify({ error: 'All fields are required' }), { status: 400 });
+  let body: unknown
+  try {
+    const reader = request.body?.getReader()
+    if (!reader) return Response.json({ error: "Message manquant." }, { status: 400 })
+    const chunks: Uint8Array[] = []
+    let size = 0
+    while (true) {
+      const { done, value } = await reader.read()
+      if (done) break
+      size += value.byteLength
+      if (size > 32768) {
+        await reader.cancel()
+        return Response.json({ error: "Message trop volumineux." }, { status: 413 })
+      }
+      chunks.push(value)
+    }
+    body = JSON.parse(Buffer.concat(chunks).toString("utf8"))
+  } catch {
+    return Response.json({ error: "Message invalide." }, { status: 400 })
+  }
+  if (!body || typeof body !== "object" || Array.isArray(body)) {
+    return Response.json({ error: "Message invalide." }, { status: 400 })
+  }
+  const { subject, text, email, reCaptchaToken } = body as Record<string, unknown>
+  if (typeof subject !== "string" || !subject.trim() || subject.length > 300 || /[\r\n]/.test(subject) ||
+      typeof text !== "string" || !text.trim() || text.length > 5000 ||
+      typeof email !== "string" || email.length > 254 || !/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(email) ||
+      typeof reCaptchaToken !== "string" || !reCaptchaToken || reCaptchaToken.length > 4096) {
+    return Response.json({ error: "Vérifiez votre adresse e-mail et la longueur du message (5 000 caractères maximum)." }, { status: 400 })
+  }
+
+  const now = Date.now()
+  attempts = attempts.filter(time => now - time < 60_000)
+  if (attempts.length >= 20) {
+    return Response.json({ error: "Trop de demandes. Réessayez dans une minute." }, { status: 429, headers: { "Retry-After": "60" } })
+  }
+  attempts.push(now)
+
+  const { RECAPTCHA_SECRET_KEY, SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS } = process.env
+  if (!RECAPTCHA_SECRET_KEY || !SMTP_HOST || !SMTP_USER || !SMTP_PASS || !SMTP_PORT) {
+    return Response.json({ error: "L’envoi est indisponible. Contactez-nous par téléphone ou par e-mail." }, { status: 503 })
+  }
+  try {
+    const verification = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+      method: "POST",
+      body: new URLSearchParams({ secret: RECAPTCHA_SECRET_KEY, response: reCaptchaToken }),
+      signal: AbortSignal.timeout(8000),
+      cache: "no-store",
+    })
+    if (!verification.ok) throw new Error("Captcha service unavailable")
+    const captcha = await verification.json()
+    const expectedHostname = isLocal ? "localhost" : "harmonie-montreuil-sur-mer.fr"
+    if (captcha.success !== true || typeof captcha.score !== "number" || captcha.score < 0.5 ||
+        captcha.action !== "submit_form" || captcha.hostname !== expectedHostname) {
+      return Response.json({ error: "La vérification anti-spam a échoué. Réessayez ou contactez-nous directement." }, { status: 403 })
     }
 
-    const referer = request.headers.get('referer') || '';
-    if (!(referer.startsWith('http://localhost:3001') || referer.startsWith('https://harmonie-montreuil-sur-mer.fr'))) {
-        return new Response(JSON.stringify({ error: 'Forbidden' }), { status: 403 });
-    }
-
-    if (apiSecret !== process.env.EMAIL_API_SECRET) {
-        return new Response(JSON.stringify({ error: 'Invalid token' }), { status: 403 });
-    }
-
-    const secretKey = process.env.RECAPTCHA_SECRET_KEY;
-    if (!secretKey) {
-        return NextResponse.json(
-            { error: 'Missing reCAPTCHA secret key' },
-            { status: 500 }
-        );
-    }
-
-    const verificationUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${reCaptchaToken}`;
-
-    const recaptchaRes = await fetch(verificationUrl, { method: 'POST' });
-    const recaptchaData = await recaptchaRes.json() as {
-        success: boolean;
-        score?: number;
-        action?: string;
-        [key: string]: unknown;
-    };
-
-    if (!recaptchaData.success) {
-        return NextResponse.json(
-            { error: 'reCAPTCHA failure' },
-            { status: 403 }
-        );
-    }
-    if ((recaptchaData.score ?? 0) < 0.5) {
-        return NextResponse.json(
-            { error: 'reCAPTCHA score too low. Bot suspected.' },
-            { status: 403 }
-        );
-    }
-    if (recaptchaData.action !== 'submit_form') {
-        return NextResponse.json(
-            { error: 'Action reCAPTCHA invalide' },
-            { status: 403 }
-        );
-    }
-
-    try {
-        const transporter = createTransport({
-            host: process.env.SMTP_HOST,
-            port: Number(process.env.SMTP_PORT),
-            secure: true,
-            auth: {
-                user: process.env.SMTP_USER,
-                pass: process.env.SMTP_PASS,
-            },
-        });
-
-        await transporter.sendMail({
-            from: process.env.SMTP_USER,
-            to,
-            subject,
-            text,
-        });
-
-        return new Response(JSON.stringify({ message: 'E-mail sent !' }), { status: 200 });
-    } catch (error) {
-        console.error('Error sending e-mail :', error);
-        return new Response(JSON.stringify({ message: 'Internal error' }), { status: 500 });
-    }
+    const transporter = nodemailer.createTransport({
+      host: SMTP_HOST,
+      port: Number(SMTP_PORT),
+      secure: Number(SMTP_PORT) === 465,
+      requireTLS: true,
+      auth: { user: SMTP_USER, pass: SMTP_PASS },
+      connectionTimeout: 8000,
+      greetingTimeout: 8000,
+      socketTimeout: 10000,
+    })
+    await transporter.sendMail({
+      from: SMTP_USER,
+      to: "harmoniemontreuilsurmer@orange.fr",
+      replyTo: email,
+      subject: subject.trim(),
+      text,
+      disableFileAccess: true,
+      disableUrlAccess: true,
+    })
+    return Response.json({ message: "Message envoyé." })
+  } catch {
+    // Never log message contents, credentials or provider responses containing personal data.
+    console.error("email_delivery_failed")
+    return Response.json({ error: "L’envoi a échoué. Votre saisie est conservée : réessayez ou contactez-nous directement." }, { status: 503 })
+  }
 }

@@ -11,7 +11,7 @@ export default function Footer() {
             <Link href="/" className="flex items-center gap-2 font-heading text-xl font-bold">
               <Music className="h-6 w-6 text-primary" />
               <span>
-                <span className="text-primary">Harmonie</span> <span className="text-secondary">Montreuil</span>
+                <span className="text-primary">Harmonie</span> <span className="text-primary">Montreuil</span>
               </span>
             </Link>
             <p className="text-muted-foreground">
@@ -23,7 +23,7 @@ export default function Footer() {
                 href="https://www.facebook.com/profile.php?id=100062936003912"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
+                className="inline-flex min-h-11 min-w-11 items-center justify-center text-muted-foreground hover:text-primary transition-colors"
               >
                 <Facebook className="h-5 w-5" />
                 <span className="sr-only">Facebook</span>
@@ -32,14 +32,14 @@ export default function Footer() {
                 href="https://www.instagram.com/harmoniemontreuilsurmer/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
+                className="inline-flex min-h-11 min-w-11 items-center justify-center text-muted-foreground hover:text-primary transition-colors"
               >
                 <Instagram className="h-5 w-5" />
                 <span className="sr-only">Instagram</span>
               </a>
               <a
                 href="mailto:harmoniemontreuilsurmer@orange.fr"
-                className="text-muted-foreground hover:text-primary transition-colors"
+                className="inline-flex min-h-11 min-w-11 items-center justify-center text-muted-foreground hover:text-primary transition-colors"
               >
                 <Mail className="h-5 w-5" />
                 <span className="sr-only">Email</span>
@@ -48,7 +48,7 @@ export default function Footer() {
           </div>
 
           <div className="space-y-4">
-            <h3 className="font-heading text-lg font-bold">Navigation</h3>
+            <h2 className="font-heading text-lg font-bold">Navigation</h2>
             <ul className="space-y-2">
               <li>
                 <Link href="/" className="text-muted-foreground hover:text-primary transition-colors">
@@ -57,12 +57,12 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/a-propos" className="text-muted-foreground hover:text-primary transition-colors">
-                  À propos
+                  L’harmonie
                 </Link>
               </li>
               <li>
                 <Link href="/evenements" className="text-muted-foreground hover:text-primary transition-colors">
-                  Événements
+                  Concerts
                 </Link>
               </li>
               {/*<li>
@@ -89,7 +89,7 @@ export default function Footer() {
           </div>
 
           <div className="space-y-4">
-            <h3 className="font-heading text-lg font-bold">Contact</h3>
+            <h2 className="font-heading text-lg font-bold">Contact</h2>
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-primary shrink-0 mt-0.5" />
@@ -104,7 +104,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-primary shrink-0" />
-                <a href="tel:+33668853079" className="text-muted-foreground hover:text-primary transition-colors">06 68 85 30 79</a>
+                <a href="tel:+33668853079" className="text-muted-foreground hover:text-primary transition-colors">+33 6 68 85 30 79</a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-primary shrink-0" />
@@ -119,7 +119,7 @@ export default function Footer() {
           </div>
 
           <div className="space-y-4">
-            <h3 className="font-heading text-lg font-bold">Répétitions</h3>
+            <h2 className="font-heading text-lg font-bold">Répétitions</h2>
             <p className="text-muted-foreground">
               Tous les vendredis de 20 h 30 à 22 h
               <br />
@@ -137,7 +137,7 @@ export default function Footer() {
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} Harmonie de Montreuil-sur-Mer. Tous droits réservés.
           </p>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap justify-center gap-6">
             <Link
               href="/mentions-legales"
               className="text-sm text-muted-foreground hover:text-primary transition-colors"

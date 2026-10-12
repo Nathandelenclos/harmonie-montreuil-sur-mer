@@ -23,7 +23,7 @@
     --accent-foreground: 210 40% 98%;
 
     --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
+    --muted-foreground: 215 20% 38%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
@@ -94,20 +94,12 @@
 }
 
 @layer components {
-  .hero-gradient {
-    @apply bg-gradient-to-r from-primary/90 via-accent/80 to-secondary/90;
-  }
-
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-secondary;
-  }
-
   .section-title {
-    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;
+    @apply text-3xl md:text-4xl font-bold tracking-tight;
   }
 
   .section-subtitle {
-    @apply text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto;
+    @apply text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto;
   }
 
   .card-hover {
@@ -115,7 +107,7 @@
   }
 
   .page-header {
-    @apply relative py-24 md:py-32 overflow-hidden;
+    @apply relative py-12 md:py-16 overflow-hidden;
   }
 
   .page-header-content {
@@ -123,7 +115,12 @@
   }
 
   .page-header-bg {
-    @apply absolute inset-0 bg-gradient-to-r from-primary/90 via-accent/80 to-secondary/90;
+    @apply absolute inset-0;
+  }
+
+  .brand-gradient {
+    /* Keep white text readable across the blue-to-yellow gradient. */
+    background-image: linear-gradient(rgb(0 0 0 / 45%), rgb(0 0 0 / 45%)), linear-gradient(to right, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--secondary)));
   }
 
   .page-header-pattern {
@@ -132,103 +129,26 @@
     background-size: 20px 20px;
   }
 
-  .music-note {
-    @apply absolute text-white/10 animate-float;
-  }
-
-  .internal-link {
-    @apply relative text-primary font-medium inline-flex items-center gap-1 
-           after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary 
-           after:transition-all after:duration-300 hover:after:w-full;
-  }
-
-  .card-equal {
-    @apply flex flex-col h-full;
-  }
-
-  .card-equal-body {
-    @apply flex-grow;
-  }
-
-  .card-equal-footer {
-    @apply mt-auto pt-4;
-  }
-
-  @keyframes float {
-    0% {
-      transform: translateY(0) rotate(0);
-      opacity: 0;
-    }
-    50% {
-      opacity: 0.3;
-    }
-    100% {
-      transform: translateY(-100px) rotate(20deg);
-      opacity: 0;
-    }
-  }
-
-  .animate-float {
-    animation: float 10s ease-in-out infinite;
-  }
-
-  @keyframes shimmer {
-    0% {
-      background-position: -200% 0;
-    }
-    100% {
-      background-position: 200% 0;
-    }
-  }
-
-  .shimmer-effect {
-    background: linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 0.2) 25%,
-      rgba(255, 255, 255, 0.2) 50%,
-      rgba(255, 255, 255, 0) 100%
-    );
-    background-size: 200% 100%;
-    animation: shimmer 3s infinite;
-  }
-
-  .hover-scale {
-    @apply transition-transform duration-300 hover:scale-105;
-  }
-
-  .hover-rotate {
-    @apply transition-transform duration-300 hover:rotate-3;
-  }
-
-  .hover-glow {
-    @apply transition-all duration-300;
-  }
-
-  .hover-glow:hover {
-    filter: drop-shadow(0 0 8px rgba(var(--primary), 0.5));
-  }
-
-  .page-transition-enter {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  .page-transition-enter-active {
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 300ms, transform 300ms;
-  }
-
-  .page-transition-exit {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .page-transition-exit-active {
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: opacity 300ms, transform 300ms;
-  }
 }
 
+@layer base {
+  html { scroll-padding-top: 5rem; }
+  [id] { scroll-margin-top: 5rem; }
+  :focus-visible { outline: 3px solid currentColor; outline-offset: 4px; }
+  .skip-link { @apply fixed left-4 top-4 z-[100] -translate-y-24 rounded bg-white p-3 font-bold text-primary focus:translate-y-0; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .page-header-content { animation: header-enter 250ms ease-out; }
+  @keyframes header-enter { from { transform: translateY(6px); } to { transform: translateY(0); } }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+.event-card { container-type: inline-size; }
+.event-card-layout { display: grid; }
+@container (min-width: 42rem) {
+  .event-card-layout { grid-template-columns: 2fr 3fr; }
+  .event-card-content { padding: 2rem; }
+}

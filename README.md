@@ -95,3 +95,66 @@ For any questions or suggestions, you can open an issue on GitHub or contact me 
 
 
 
+
+## Validation and deployment
+
+Use Node.js 22.12+ (Node.js 24 LTS recommended) and the tracked npm lockfile:
+
+```sh
+npm ci
+npm test
+npm run lint
+npm run build
+npm audit --omit=dev
+```
+
+The regression tests mock CAPTCHA and SMTP: they never send real email. Browser checks
+must cover a failed submission and retry, the mobile menu with Tab/Escape, 320px layouts,
+contrast, and the concert's date, booking link and metadata.
+
+The production application uses Next.js 15.5 and React 19. The npm overrides keep
+PostCSS and its selector parser on patched versions. As of 2026-10-12, seven audit
+alerts remain in development-only tooling through `braces` (no patched release).
+Do not run that tooling on untrusted source/glob expressions; revisit the dependency
+chain when an upstream fix is available. `npm audit --omit=dev` is clean.
+
+### Email configuration
+
+In the Vercel project environment, provide `NEXT_PUBLIC_RECAPTCHA_SITE_KEY` (public),
+`RECAPTCHA_SECRET_KEY`, `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER` and `SMTP_PASS` (server only).
+Register `harmonie-montreuil-sur-mer.fr` in reCAPTCHA; add localhost only to a separate
+development key. The production route allows the exact canonical origin, and the
+CAPTCHA hostname/action/score are verified. Preview domains are intentionally rejected.
+The recipient is fixed server-side to the association and cannot be supplied by visitors.
+
+Remove obsolete `NEXT_PUBLIC_EMAIL_API_SECRET` and `EMAIL_API_SECRET` from deployment
+settings: the previous public value is no longer used for authorization. Never reuse
+that value for another service. Do not print or commit environment values.
+
+The in-process cap is 20 attempts/minute, with bounded CAPTCHA/SMTP timeouts. On Vercel,
+configure a shared firewall rate-limit rule for POST `/api/send-email` if abuse occurs:
+the code-level quota is per instance and resets at deployment. It is not a distributed
+quota. CAPTCHA remains required. Review Vercel/SMTP operational limits before campaigns.
+
+The Vercel project owner manages secret rotation: generate a replacement SMTP credential
+or CAPTCHA secret in the provider console, update the server-only Vercel variable,
+redeploy, verify delivery with an authorized test, then revoke the old credential.
+If a secret leaks, revoke it immediately and replace it; never paste it into logs/issues.
+Use separate development/production credentials and review access at each bureau handover.
+
+### Content and privacy
+
+Events live in `data/Events.ts`. Use an explicit timezone in both `date` and `archiveAfter`.
+The homepage, list and event pages revalidate every five minutes: after `archiveAfter`,
+the concert moves to the archive and its booking button disappears (up to one cache
+refresh after the boundary). The sitemap lists published pages only.
+
+The site loads no audience analytics or social widget. The embedded Google Map loads
+only after the visitor activates it; reCAPTCHA loads only upon form submission. Legal details were supplied by the association; Vercel's
+address is sourced from https://vercel.com/legal/privacy-notice. The association remains
+responsible for mailbox retention and handling privacy requests; the site does not
+implement automatic mailbox deletion. The legal/privacy text is not a legal certification.
+
+Before publishing, verify the actual Vercel environment, DNS/canonical domain, SMTP
+credentials and CAPTCHA configuration. No deployment or live email test is implied by
+a successful local build.

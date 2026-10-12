@@ -1,10 +1,12 @@
+import { pageMetadata } from "@/lib/metadata"
 import Image from "next/image"
 import Link from "next/link"
 import { Music, Users, Award } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import PageHeader from "@/components/page-header"
-import AnimatedSection from "@/components/animated-section"
+
+export const metadata = pageMetadata("L’harmonie et son équipe", "Découvrez l’Harmonie de Montreuil-sur-Mer, ses chefs d’orchestre, son bureau et les musiciens qui font vivre la musique dans la cité.", "/a-propos")
 
 export default function AboutPage() {
   return (
@@ -17,7 +19,7 @@ export default function AboutPage() {
       <section className="py-16 md:py-24">
         <div className="container px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <AnimatedSection>
+            <div>
               <div className="space-y-6">
                 <h2 className="text-3xl md:text-4xl font-bold">Notre harmonie</h2>
                 <p className="text-muted-foreground">
@@ -37,9 +39,9 @@ export default function AboutPage() {
                   contribuant à la vie culturelle locale.
                 </p>
               </div>
-            </AnimatedSection>
+            </div>
 
-            <AnimatedSection delay={0.2}>
+            <div>
               <div className="relative">
                 <div className="absolute -top-4 -left-4 w-24 h-24 bg-primary/20 rounded-full -z-10"></div>
                 <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-secondary/20 rounded-full -z-10"></div>
@@ -51,23 +53,23 @@ export default function AboutPage() {
                   className="rounded-lg shadow-xl w-full object-cover"
                 />
               </div>
-            </AnimatedSection>
+            </div>
           </div>
         </div>
       </section>
 
       <section className="py-16 md:py-24 bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5">
         <div className="container px-4">
-          <AnimatedSection className="text-center mb-16">
+          <div className="text-center mb-16">
             <h2 className="section-title mb-4">Notre mission</h2>
             <p className="section-subtitle">
               L&#39;Harmonie de Montreuil-sur-Mer s&#39;engage à promouvoir la musique et à enrichir la vie culturelle locale
             </p>
-          </AnimatedSection>
+          </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <AnimatedSection delay={0.1} className="card-hover">
-              <div className="bg-white rounded-lg shadow-lg p-8 text-center">
+          <ul className="grid md:grid-cols-3 gap-8">
+            <li className="card-hover">
+              <div className="bg-white rounded-lg shadow-lg p-8">
                 <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-primary/10 flex items-center justify-center">
                   <Music className="h-8 w-8 text-primary" />
                 </div>
@@ -77,12 +79,12 @@ export default function AboutPage() {
                   travers nos concerts et nos participations aux événements locaux.
                 </p>
               </div>
-            </AnimatedSection>
+            </li>
 
-            <AnimatedSection delay={0.2} className="card-hover">
-              <div className="bg-white rounded-lg shadow-lg p-8 text-center">
+            <li className="card-hover">
+              <div className="bg-white rounded-lg shadow-lg p-8">
                 <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-secondary/10 flex items-center justify-center">
-                  <Users className="h-8 w-8 text-secondary" />
+                  <Users className="h-8 w-8 text-primary" />
                 </div>
                 <h3 className="text-xl font-bold mb-4">Former des musiciens</h3>
                 <p className="text-muted-foreground">
@@ -90,10 +92,10 @@ export default function AboutPage() {
                   collaboration avec l&#39;école de musique locale.
                 </p>
               </div>
-            </AnimatedSection>
+            </li>
 
-            <AnimatedSection delay={0.3} className="card-hover">
-              <div className="bg-white rounded-lg shadow-lg p-8 text-center">
+            <li className="card-hover">
+              <div className="bg-white rounded-lg shadow-lg p-8">
                 <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-accent/10 flex items-center justify-center">
                   <Award className="h-8 w-8 text-accent" />
                 </div>
@@ -103,17 +105,17 @@ export default function AboutPage() {
                   patrimoine culturel immatériel de notre région.
                 </p>
               </div>
-            </AnimatedSection>
-          </div>
+            </li>
+          </ul>
         </div>
       </section>
 
       <section className="py-16 md:py-24">
         <div className="container px-4">
-          <AnimatedSection className="text-center mb-16">
+          <div className="text-center mb-16">
             <h2 className="section-title mb-4">Notre équipe</h2>
             <p className="section-subtitle">Découvrez les personnes qui font vivre l&#39;Harmonie de Montreuil-sur-Mer</p>
-          </AnimatedSection>
+          </div>
 
           <ul className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,18rem),1fr))] gap-8">
             {[
@@ -130,9 +132,9 @@ export default function AboutPage() {
                 role: "Secrétaire",
                 image: "/placeholder.svg?height=300&width=300&text=Sophie",
               },
-            ].map((member, index) => (
+            ].map((member) => (
               <li key={member.name}>
-                <AnimatedSection delay={0.1 * index} className="card-hover">
+                <div className="card-hover">
                   <div className="bg-white rounded-lg shadow-lg overflow-hidden">
                     {/*<div className="aspect-square relative">
                       <Image src={member.image || "/placeholder.svg"} alt={member.name} fill className="object-cover"/>
@@ -142,24 +144,24 @@ export default function AboutPage() {
                       <p className="text-primary">{member.role}</p>
                     </div>
                   </div>
-                </AnimatedSection>
+                </div>
               </li>
             ))}
           </ul>
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-gradient-to-r from-primary via-accent to-secondary text-white">
+      <section className="py-16 md:py-24 brand-gradient text-white">
         <div className="container px-4 text-center">
-          <AnimatedSection>
+          <div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">Rejoignez notre harmonie</h2>
-            <p className="text-xl max-w-2xl mx-auto mb-8 text-white/90">
+            <p className="text-xl max-w-2xl mx-auto mb-8 text-white">
               Vous êtes musicien amateur ou confirmé ? Venez partager votre passion avec nous !
             </p>
-            <Button asChild size="lg" variant="outline" className="bg-white/10 border-white/30 hover:bg-white/20">
+            <Button asChild size="lg" variant="outline" className="bg-white text-primary">
               <Link href="/rejoindre">Nous rejoindre</Link>
             </Button>
-          </AnimatedSection>
+          </div>
         </div>
       </section>
     </div>
