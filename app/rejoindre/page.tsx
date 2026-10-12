@@ -7,12 +7,12 @@ import Image from "next/image"
 
 export default function JoinPage() {
   return (
-    <div className="flex flex-col">
-      <PageHeader title="Rejoignez-nous" description="Devenez membre de l&#39;Harmonie de Montreuil-sur-Mer" />
+    <div className="content-page">
+      <PageHeader homeLink={<Link href="/">Accueil</Link>} title="Rejoignez-nous" image="/assets/harmonie-dordogne.jpg" description="Devenez membre de l&#39;Harmonie de Montreuil-sur-Mer" />
 
       <section className="py-16 md:py-24">
-        <div className="container px-4">
-          <div className="text-center mb-16">
+        <div className="site-container">
+          <div className="section-heading">
             <h2 className="section-title mb-4">Pourquoi nous rejoindre ?</h2>
             <p className="section-subtitle">
               L&#39;Harmonie de Montreuil-sur-Mer vous offre l&#39;opportunité de partager votre passion pour la musique dans
@@ -20,10 +20,10 @@ export default function JoinPage() {
             </p>
           </div>
 
-          <ul className="grid md:grid-cols-3 gap-8 mb-20">
+          <ul className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,var(--card-min-default)),1fr))] gap-8 mb-20">
             <li className="card-hover">
-              <div className="bg-white rounded-lg shadow-lg p-8 h-full">
-                <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-primary/10 flex items-center justify-center">
+              <div className="surface p-8 h-full">
+                <div className="w-12 h-12 mb-6 rounded-full bg-primary/10 flex items-center justify-center">
                   <Music className="h-8 w-8 text-primary" />
                 </div>
                 <h3 className="text-xl font-bold mb-4">Pratiquer la musique</h3>
@@ -35,8 +35,8 @@ export default function JoinPage() {
             </li>
 
             <li className="card-hover">
-              <div className="bg-white rounded-lg shadow-lg p-8 h-full">
-                <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-secondary/10 flex items-center justify-center">
+              <div className="surface p-8 h-full">
+                <div className="w-12 h-12 mb-6 rounded-full bg-secondary/10 flex items-center justify-center">
                   <Users className="h-8 w-8 text-primary" />
                 </div>
                 <h3 className="text-xl font-bold mb-4">Intégrer une famille</h3>
@@ -48,8 +48,8 @@ export default function JoinPage() {
             </li>
 
             <li className="card-hover">
-              <div className="bg-white rounded-lg shadow-lg p-8 h-full">
-                <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-accent/10 flex items-center justify-center">
+              <div className="surface p-8 h-full">
+                <div className="w-12 h-12 mb-6 rounded-full bg-accent/10 flex items-center justify-center">
                   <BookOpen className="h-8 w-8 text-accent" />
                 </div>
                 <h3 className="text-xl font-bold mb-4">Progresser ensemble</h3>
@@ -61,7 +61,7 @@ export default function JoinPage() {
             </li>
           </ul>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="space-y-6">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">Qui peut nous rejoindre ?</h2>
@@ -101,15 +101,13 @@ export default function JoinPage() {
             </div>
 
             <div>
-              <div className="relative">
-                <div className="absolute -top-4 -left-4 w-24 h-24 bg-primary/20 rounded-full -z-10"></div>
-                <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-secondary/20 rounded-full -z-10"></div>
+              <div className="photo-frame">
                 <Image
                   src="/assets/harmonie-dordogne.jpg"
                   alt="Les musiciens de l’Harmonie au château en Dordogne"
                   width={1800}
                   height={1205}
-                  className="rounded-lg shadow-xl w-full object-cover"
+                  className="rounded-lg w-full h-auto"
                 />
               </div>
             </div>
@@ -118,26 +116,24 @@ export default function JoinPage() {
       </section>
 
       {/* École de Musique Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10">
-        <div className="container px-4">
-          <div className="text-center mb-16">
+      <section className="py-16 md:py-24 bg-muted">
+        <div className="site-container">
+          <div className="section-heading">
             <h2 className="section-title mb-4">Notre École de Musique</h2>
             <p className="section-subtitle">
               Débutez ou perfectionnez votre pratique musicale avant de rejoindre l&#39;harmonie
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="relative">
-                <div className="absolute -top-4 -left-4 w-24 h-24 bg-primary/20 rounded-full -z-10"></div>
-                <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-secondary/20 rounded-full -z-10"></div>
+              <div className="photo-frame">
                 <Image
                   src="/assets/cours-de-groupe.avif"
                   alt="École de Musique"
                   width={500}
                   height={600}
-                  className="rounded-lg shadow-xl w-full object-cover"
+                  className="rounded-lg w-full h-auto"
                 />
               </div>
             </div>
@@ -198,15 +194,15 @@ export default function JoinPage() {
 
       {/* Formulaire */}
       <section className="py-16 md:py-24">
-        <div className="container px-4">
-          <div className="text-center mb-16">
+        <div className="site-container">
+          <div className="section-heading">
             <h2 className="section-title mb-4">Contactez-nous</h2>
             <p className="section-subtitle">
               Vous souhaitez nous rejoindre ou obtenir plus d&#39;informations ? Remplissez le formulaire ci-dessous.
             </p>
           </div>
 
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-2xl mx-auto">
             <div>
               <JoinForm />
             </div>

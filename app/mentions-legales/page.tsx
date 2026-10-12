@@ -1,3 +1,4 @@
+import Link from "next/link"
 import PageHeader from "@/components/page-header"
 import { pageMetadata } from "@/lib/metadata"
 
@@ -5,8 +6,8 @@ export const metadata = pageMetadata("Mentions légales", "Éditeur, responsable
 
 export default function LegalPage() {
   return <>
-    <PageHeader title="Mentions légales" />
-    <div className="container max-w-3xl px-4 py-12 space-y-8 leading-relaxed">
+    <PageHeader homeLink={<Link href="/">Accueil</Link>} title="Mentions légales" />
+    <div className="reading-content">
       <section><h2 className="text-2xl font-bold mb-4">Éditeur du site</h2>
         <p>HARMONIE MUNICIPALE - ECOLE DE MUSIQUE DE MONTREUIL-SUR-MER</p>
         <p>Association — numéro RNA : W624000285.<br />Siège social : Mairie, 62170 Montreuil, France.</p>

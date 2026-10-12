@@ -45,7 +45,7 @@ export default function JoinForm() {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-xl p-8">
+    <div className="form-panel">
                 {isSubmitted ? (
                   <div role="status" className="text-center py-12">
                     <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -62,7 +62,7 @@ export default function JoinForm() {
                   <form onSubmit={handleSubmit} onBlur={validateField} onInvalid={validateField} className="space-y-6" aria-busy={isSubmitting}>
                     <p className="text-sm text-muted-foreground">Les champs marqués * sont obligatoires.</p>
                     {error && <p role="alert" className="rounded-md border border-red-800 bg-red-50 p-4 text-red-900">{error}</p>}
-                    <div className="grid gap-6 md:grid-cols-2">
+                    <div className="grid gap-6">
                       <div className="grid gap-2">
                         <label htmlFor="name" className="text-sm font-medium">
                         Nom complet *
@@ -104,7 +104,7 @@ export default function JoinForm() {
                       </div>
                     </div>
 
-                    <div className="grid gap-6 md:grid-cols-2">
+                    <div className="grid gap-6">
                       <div className="grid gap-2">
                         <label htmlFor="phone" className="text-sm font-medium">
                         Téléphone (facultatif)

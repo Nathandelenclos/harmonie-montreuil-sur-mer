@@ -1,3 +1,4 @@
+import Link from "next/link"
 import GoogleMap from "@/components/google-map"
 import ContactForm from "@/components/contact-form"
 import { MapPin, Mail, Phone, Calendar } from "lucide-react"
@@ -6,12 +7,12 @@ import PageHeader from "@/components/page-header"
 
 export default function ContactPage() {
   return (
-    <div className="flex flex-col">
-      <PageHeader title="Contactez-nous" description="Nous sommes à votre écoute pour toute question ou demande" />
+    <div className="content-page">
+      <PageHeader homeLink={<Link href="/">Accueil</Link>} title="Contactez-nous" image="/assets/montreuil.jpg" description="Nous sommes à votre écoute pour toute question ou demande" />
 
       <section className="py-16 md:py-24">
-        <div className="container px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-start">
+        <div className="site-container">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div className="min-w-0">
               <div className="space-y-8">
                 <div>

@@ -33,6 +33,11 @@
     --ring: 220 85% 30%;
 
     --radius: 0.5rem;
+    --card-min-compact: 14rem;
+    --card-min-default: 16rem;
+    --card-min-wide: 18rem;
+    --display-title-size: clamp(2.5rem, 1.5rem + 4vw, 4.5rem);
+    --section-title-size: clamp(2rem, 1.5rem + 2vw, 3.5rem);
   }
 
   .dark {
@@ -95,38 +100,31 @@
 
 @layer components {
   .section-title {
-    @apply text-3xl md:text-4xl font-bold tracking-tight;
+    @apply font-bold tracking-tight;
+    font-size: var(--section-title-size);
+    line-height: 1.15;
   }
 
   .section-subtitle {
-    @apply text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto;
+    @apply text-lg text-muted-foreground max-w-2xl leading-relaxed;
   }
 
   .card-hover {
-    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+    @apply h-full;
   }
 
   .page-header {
-    @apply relative py-12 md:py-16 overflow-hidden;
+    @apply relative isolate overflow-hidden border-b-8 border-secondary py-12 md:py-20;
   }
 
   .page-header-content {
-    @apply relative z-10 container mx-auto px-4 text-center;
+    @apply relative z-10 mx-auto w-full max-w-7xl px-6 md:px-12;
   }
 
-  .page-header-bg {
-    @apply absolute inset-0;
-  }
+  .page-header-content nav a { @apply inline-flex min-h-11 items-center underline underline-offset-4 hover:decoration-2; }
 
-  .brand-gradient {
-    /* Keep white text readable across the blue-to-yellow gradient. */
-    background-image: linear-gradient(rgb(0 0 0 / 45%), rgb(0 0 0 / 45%)), linear-gradient(to right, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--secondary)));
-  }
-
-  .page-header-pattern {
-    @apply absolute inset-0 opacity-10 bg-opacity-20;
-    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
-    background-size: 20px 20px;
+  .page-header-shade {
+    background: linear-gradient(90deg, hsl(var(--primary) / 96%), hsl(var(--primary) / 82%));
   }
 
 }
@@ -150,7 +148,7 @@
 .event-card-layout { display: grid; }
 @container (min-width: 42rem) {
   .event-card-layout { grid-template-columns: 2fr 3fr; }
-  .event-card-content { padding: 2rem; }
+  .event-card-content { padding: 3rem; }
 }
 
 @layer components {
@@ -195,18 +193,8 @@
     @apply inline-flex min-h-12 items-center gap-2 py-3 text-sm font-semibold underline decoration-1 underline-offset-4 hover:decoration-2;
   }
 
-  .home-concert .event-card {
-    @apply rounded-lg border-0 bg-white shadow-none;
-  }
-
-  .home-concert .event-card-content {
-    @apply border-t-4 border-secondary p-6 md:p-12;
-  }
-
-  .home-concert .event-card-content h3 {
-    @apply text-primary;
-    font-size: var(--home-section-size);
-    line-height: 1.15;
+  .event-card-content {
+    @apply border-t-4 border-secondary p-6;
   }
 
   .home-photo-grid {
@@ -226,6 +214,34 @@
 
   @media (min-width: 64rem) {
     .home-orchestra { grid-template-columns: 3fr 2fr; }
+  }
+}
+
+@layer components {
+  .site-container { @apply mx-auto w-full max-w-7xl px-6 md:px-12; }
+  .display-title { font-size: var(--display-title-size); line-height: 1.1; letter-spacing: -0.035em; }
+  .content-page { @apply flex flex-col; }
+  .section-heading { @apply mb-8 space-y-4 text-left md:mb-12; }
+  .surface { @apply h-full rounded-lg border border-border bg-white; }
+  .photo-frame { @apply border-l-4 border-secondary pl-4; }
+  .callout { @apply border-t-4 border-secondary bg-primary py-16 text-white md:py-20; }
+  .reading-content { @apply mx-auto w-full max-w-3xl space-y-12 px-6 py-16 leading-relaxed md:py-20; }
+  .reading-content h2 { @apply border-l-4 border-secondary pl-4 text-primary; }
+  .content-page p { @apply leading-relaxed; }
+  .content-page h2:not(.text-white) { @apply text-primary; }
+  .content-page .callout h2 { @apply text-white; }
+  .form-panel { @apply rounded-lg border border-border border-t-4 border-t-secondary bg-white p-6 md:p-8; }
+  .form-panel :is(input, select, textarea) { @apply min-h-12 border-primary/60 bg-white text-base; }
+  .form-panel :is(input, select, textarea)[aria-invalid="true"] { @apply border-red-800; }
+  .site-footer { @apply border-t-8 border-secondary bg-primary text-white; }
+  .site-footer a { @apply underline-offset-4 hover:underline; }
+  .site-footer a { @apply inline-flex min-h-11 items-center; }
+  .site-footer svg { @apply shrink-0 text-secondary; }
+  .instrument-card { @apply overflow-hidden rounded-lg border border-border bg-white; }
+  .instrument-card h4 { @apply text-primary; }
+  .instrument-card img { @apply transition-transform duration-300; }
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .instrument-card:hover img { transform: scale(1.04); }
   }
 }
 

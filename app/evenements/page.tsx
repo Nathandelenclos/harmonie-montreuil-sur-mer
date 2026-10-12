@@ -1,5 +1,7 @@
 import NoUpcomingEvents from "@/components/no-upcoming-events"
 import Link from "next/link"
+import Image from "next/image"
+import { Play } from "lucide-react"
 import { partitionEvents } from "@/data/Events"
 import { pageMetadata } from "@/lib/metadata"
 import PageHeader from "@/components/page-header"
@@ -12,15 +14,42 @@ export const revalidate = 300
 export default function EventsPage() {
   const { upcoming, past } = partitionEvents()
   return <>
-    <PageHeader title="Concerts et événements" description="Le programme de l’Harmonie de Montreuil-sur-Mer" />
-    <section className="container px-4 py-12 max-w-6xl">
-      <h2 className="section-title mb-8">Prochains concerts</h2>
+    <PageHeader homeLink={<Link href="/">Accueil</Link>} title="Concerts et événements" description="Le programme de l’Harmonie de Montreuil-sur-Mer" />
+    <section className="site-container py-16 md:py-24">
+      <h2 className="section-title mb-8 text-primary">Prochains concerts</h2>
       <ul className="space-y-8">
         {upcoming.map(event => <li key={event.slug}><EventCard event={event} /></li>)}
       </ul>
       {!upcoming.length && <NoUpcomingEvents />}
     </section>
-    {!!past.length && <section className="container px-4 py-12 max-w-6xl"><h2 className="section-title mb-8">Concerts passés</h2><ul className="space-y-8">{past.map(event => <li key={event.slug}><EventCard event={event} past /></li>)}</ul></section>}
-    <section className="bg-muted py-12"><div className="container px-4 max-w-6xl"><h2 className="text-2xl font-bold mb-4">Inviter l’harmonie à votre événement</h2><p className="mb-6">Un concert, une fête ou une commémoration : échangeons sur votre projet.</p><Button asChild><Link href="/contact">Contacter l’harmonie</Link></Button></div></section>
+    {!!past.length && <section className="site-container py-16"><h2 className="section-title mb-8 text-primary">Concerts passés</h2><ul className="space-y-8">{past.map(event => <li key={event.slug}><EventCard event={event} past /></li>)}</ul></section>}
+    <section id="videos" className="bg-muted py-16 md:py-24" aria-labelledby="videos-title">
+      <div className="site-container">
+        <div className="section-heading">
+          <h2 id="videos-title" className="section-title text-primary">L’harmonie en concert</h2>
+          <p className="section-subtitle">Trois captations de l’Harmonie de Montreuil-sur-Mer, publiées par MARLENE47100 sur YouTube.</p>
+        </div>
+        <ul className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,var(--card-min-default)),1fr))] gap-8">
+          {[
+            { id: "0DapvwTHhz4", title: "O’Connel’s Sacrée Soirée", description: "Projet Lille 3000 · 2025 · Simon Fache" },
+            { id: "XQZA28P2dxY", title: "Morgana", description: "Fabien Roger · Concert d’automne 2024" },
+            { id: "8SaXsLgCffM", title: "The Greatest Showman", description: "L’harmonie en concert à Fruges" },
+          ].map(video => <li key={video.id}>
+            <a href={`https://www.youtube.com/watch?v=${video.id}`} className="group block h-full overflow-hidden rounded-lg border bg-white text-primary hover:underline underline-offset-4">
+              <div className="relative aspect-[4/3]">
+                <Image src={`/assets/videos/${video.id}.jpg`} alt="" fill sizes="(max-width: 767px) 100vw, 33vw" className="object-contain" />
+                <span className="absolute bottom-4 left-4 flex h-12 w-12 items-center justify-center rounded-full bg-secondary text-primary"><Play aria-hidden="true" className="h-6 w-6" /></span>
+              </div>
+              <div className="border-t-4 border-secondary p-6">
+                <h3 className="text-2xl font-bold mb-3">{video.title}</h3>
+                <p className="text-foreground mb-4">{video.description}</p>
+                <span className="font-semibold">Voir sur YouTube ↗</span>
+              </div>
+            </a>
+          </li>)}
+        </ul>
+      </div>
+    </section>
+    <section className="callout"><div className="site-container"><h2 className="section-title mb-6">Inviter l’harmonie à votre événement</h2><p className="mb-8 max-w-2xl text-lg">Un concert, une fête ou une commémoration : échangeons sur votre projet.</p><Button asChild variant="secondary"><Link href="/contact">Contacter l’harmonie</Link></Button></div></section>
   </>
 }

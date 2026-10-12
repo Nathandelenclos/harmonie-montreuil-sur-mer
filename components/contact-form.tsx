@@ -43,7 +43,7 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-xl p-8">
+    <div className="form-panel">
                 <h2 className="text-2xl font-bold mb-6">Envoyez-nous un message</h2>
 
                 {isSubmitted ? (

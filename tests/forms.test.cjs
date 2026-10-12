@@ -145,3 +145,13 @@ for (const [name, Form, buttonLabel] of [['contact', ContactPage, 'Envoyer le me
     assert.equal(sent.mock.callCount(), 1);
   });
 }
+
+test('the redesigned error page lets visitors retry without exposing error details', () => {
+  const ErrorPage = require('../app/error.tsx').default;
+  const reset = mock.fn();
+  render(React.createElement(ErrorPage, { reset, error: new Error('private details') }));
+  assert.ok(screen.getByRole('heading', { level: 1, name: 'Cette page n’a pas pu s’afficher' }));
+  assert.equal(screen.queryByText('private details'), null);
+  fireEvent.click(screen.getByRole('button', { name: 'Réessayer' }));
+  assert.equal(reset.mock.callCount(), 1);
+});

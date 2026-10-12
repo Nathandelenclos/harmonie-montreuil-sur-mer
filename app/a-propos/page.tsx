@@ -10,15 +10,16 @@ export const metadata = pageMetadata("L’harmonie et son équipe", "Découvrez 
 
 export default function AboutPage() {
   return (
-    <div className="flex flex-col">
-      <PageHeader
-        title="À propos de nous"
+    <div className="content-page">
+      <PageHeader homeLink={<Link href="/">Accueil</Link>}
+        title="L’harmonie et son équipe"
+        image="/assets/harmonie-officiel.jpg"
         description="Découvrez l'Harmonie de Montreuil-sur-Mer, son histoire et ses musiciens"
       />
 
       <section className="py-16 md:py-24">
-        <div className="container px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="site-container">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="space-y-6">
                 <h2 className="text-3xl md:text-4xl font-bold">Notre harmonie</h2>
@@ -42,15 +43,13 @@ export default function AboutPage() {
             </div>
 
             <div>
-              <div className="relative">
-                <div className="absolute -top-4 -left-4 w-24 h-24 bg-primary/20 rounded-full -z-10"></div>
-                <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-secondary/20 rounded-full -z-10"></div>
+              <div className="photo-frame">
                 <Image
                   src="/assets/sainte-cecile-2025.jpg"
                   alt="L’Harmonie réunie pour la Sainte-Cécile 2025"
                   width={1800}
                   height={1350}
-                  className="rounded-lg shadow-xl w-full object-cover"
+                  className="rounded-lg w-full h-auto"
                 />
               </div>
             </div>
@@ -58,19 +57,19 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5">
-        <div className="container px-4">
-          <div className="text-center mb-16">
+      <section className="py-16 md:py-24 bg-muted">
+        <div className="site-container">
+          <div className="section-heading">
             <h2 className="section-title mb-4">Notre mission</h2>
             <p className="section-subtitle">
               L&#39;Harmonie de Montreuil-sur-Mer s&#39;engage à promouvoir la musique et à enrichir la vie culturelle locale
             </p>
           </div>
 
-          <ul className="grid md:grid-cols-3 gap-8">
+          <ul className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,var(--card-min-default)),1fr))] gap-8">
             <li className="card-hover">
-              <div className="bg-white rounded-lg shadow-lg p-8">
-                <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-primary/10 flex items-center justify-center">
+              <div className="surface p-8">
+                <div className="w-12 h-12 mb-6 rounded-full bg-primary/10 flex items-center justify-center">
                   <Music className="h-8 w-8 text-primary" />
                 </div>
                 <h3 className="text-xl font-bold mb-4">Promouvoir la musique</h3>
@@ -82,8 +81,8 @@ export default function AboutPage() {
             </li>
 
             <li className="card-hover">
-              <div className="bg-white rounded-lg shadow-lg p-8">
-                <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-secondary/10 flex items-center justify-center">
+              <div className="surface p-8">
+                <div className="w-12 h-12 mb-6 rounded-full bg-secondary/10 flex items-center justify-center">
                   <Users className="h-8 w-8 text-primary" />
                 </div>
                 <h3 className="text-xl font-bold mb-4">Former des musiciens</h3>
@@ -95,8 +94,8 @@ export default function AboutPage() {
             </li>
 
             <li className="card-hover">
-              <div className="bg-white rounded-lg shadow-lg p-8">
-                <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-accent/10 flex items-center justify-center">
+              <div className="surface p-8">
+                <div className="w-12 h-12 mb-6 rounded-full bg-accent/10 flex items-center justify-center">
                   <Award className="h-8 w-8 text-accent" />
                 </div>
                 <h3 className="text-xl font-bold mb-4">Préserver le patrimoine</h3>
@@ -111,13 +110,13 @@ export default function AboutPage() {
       </section>
 
       <section className="py-16 md:py-24">
-        <div className="container px-4">
-          <div className="text-center mb-16">
+        <div className="site-container">
+          <div className="section-heading">
             <h2 className="section-title mb-4">Notre équipe</h2>
             <p className="section-subtitle">Découvrez les personnes qui font vivre l&#39;Harmonie de Montreuil-sur-Mer</p>
           </div>
 
-          <ul className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,18rem),1fr))] gap-8">
+          <ul className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,var(--card-min-wide)),1fr))] gap-8">
             {[
               { name: "Raphaël MOREAU", role: "Président", image: "/placeholder.svg?height=300&width=300&text=Jean" },
               {
@@ -135,7 +134,7 @@ export default function AboutPage() {
             ].map((member) => (
               <li key={member.name}>
                 <div className="card-hover">
-                  <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+                  <div className="surface overflow-hidden">
                     {/*<div className="aspect-square relative">
                       <Image src={member.image || "/placeholder.svg"} alt={member.name} fill className="object-cover"/>
                     </div>*/}
@@ -151,11 +150,35 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 brand-gradient text-white">
-        <div className="container px-4 text-center">
+      <section className="bg-muted py-16 md:py-24" aria-labelledby="archives-title">
+        <div className="site-container">
+          <div className="section-heading">
+            <h2 id="archives-title" className="section-title">Des générations en musique</h2>
+            <p className="section-subtitle">Deux souvenirs conservés sur le premier site de l’harmonie.</p>
+          </div>
+          <div className="grid items-start gap-8 md:grid-cols-2">
+            <figure>
+              <Image src="/assets/archives/harmonie-1927.jpg" alt="Portrait ancien des musiciens réunis avec leurs instruments et la bannière de l’harmonie" width={1400} height={918} sizes="(max-width: 767px) 100vw, 50vw" className="h-auto w-full rounded-lg" />
+              <figcaption className="border-l-4 border-secondary pl-4 mt-4">1927 — légende du site d’archives</figcaption>
+            </figure>
+            <figure>
+              <Image src="/assets/archives/harmonie-1949.jpg" alt="Photographie ancienne de l’harmonie posant en groupe avec ses instruments" width={2048} height={1196} sizes="(max-width: 767px) 100vw, 50vw" className="h-auto w-full rounded-lg" />
+              <figcaption className="border-l-4 border-secondary pl-4 mt-4">1949 — légende du site d’archives</figcaption>
+            </figure>
+          </div>
+          <div className="mt-8 flex flex-wrap gap-x-8 gap-y-2">
+            <a className="home-text-link text-primary" href="https://harmoniemontreuils.wixsite.com/montreuilsurmer/multimedia">Parcourir les photos d’archives</a>
+            <Link className="home-text-link text-primary" href="/evenements#videos">Écouter nos concerts</Link>
+          </div>
+          <p className="mt-2 text-sm text-muted-foreground">Les photos d’archives proviennent de l’ancien site, dont les informations pratiques ne sont plus à jour.</p>
+        </div>
+      </section>
+
+      <section className="callout">
+        <div className="site-container">
           <div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">Rejoignez notre harmonie</h2>
-            <p className="text-xl max-w-2xl mx-auto mb-8 text-white">
+            <p className="text-lg max-w-2xl mb-8 text-white">
               Vous êtes musicien amateur ou confirmé ? Venez partager votre passion avec nous !
             </p>
             <Button asChild size="lg" variant="outline" className="bg-white text-primary">

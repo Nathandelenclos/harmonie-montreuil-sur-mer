@@ -32,10 +32,10 @@ export default function Navigation() {
     <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur-md" onKeyDown={event => {
       if (event.key === "Escape" && isOpen) { setIsOpen(false); button.current?.focus() }
     }}>
-      <div className="container px-4">
-        <div className="flex items-center justify-between min-h-16 gap-4">
+      <div className="site-container">
+        <div className="flex items-center justify-between min-h-20 gap-4">
           <Link href="/" className="flex items-center gap-2 text-lg font-bold text-primary" aria-label="Harmonie Montreuil — Accueil">
-            <Music aria-hidden="true" className="h-6 w-6 shrink-0" />
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-secondary"><Music aria-hidden="true" className="h-6 w-6" /></span>
             <span>Harmonie Montreuil</span>
           </Link>
           <nav aria-label="Navigation principale" className="hidden lg:flex items-center gap-6">

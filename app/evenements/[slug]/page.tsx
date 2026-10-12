@@ -31,20 +31,20 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
     performer: { "@type": "MusicGroup", name: "Harmonie de Montreuil-sur-Mer et École de musique" },
     ...(!past && { offers: { "@type": "Offer", url: event.bookingUrl, price: 10, priceCurrency: "EUR", description: "Gratuit pour les moins de 10 ans" } }),
   }
-  return <article className="container max-w-6xl px-4 py-10">
-    <nav aria-label="Fil d’Ariane" className="mb-8 text-sm"><Link href="/" className="underline">Accueil</Link> / <Link href="/evenements" className="underline">Concerts</Link> / <span aria-current="page">{event.title}</span></nav>
+  return <article className="site-container py-12 md:py-16">
+    <nav aria-label="Fil d’Ariane" className="mb-8 flex flex-wrap items-center gap-x-3 text-sm text-primary"><Link href="/" className="inline-flex min-h-11 items-center underline">Accueil</Link><span aria-hidden="true">/</span><Link href="/evenements" className="inline-flex min-h-11 items-center underline">Concerts</Link><span aria-hidden="true">/</span><span aria-current="page">{event.title}</span></nav>
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }} />
-    <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-      <div className="relative aspect-[4/5]">{event.image && <Image src={event.image} alt={`Affiche du concert ${event.title}`} fill priority sizes="(max-width: 767px) 100vw, 50vw" className="object-contain" />}</div>
-      <div className="space-y-6">
+    <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-12">
+      <div className="relative aspect-[4/5] overflow-hidden rounded-lg">{event.image && <Image src={event.image} alt={`Affiche du concert ${event.title}`} fill priority sizes="(max-width: 1023px) 100vw, 50vw" className="object-contain" />}</div>
+      <div className="space-y-6 border-t-4 border-secondary pt-6">
         {past && <p className="font-bold text-primary">Ce concert a eu lieu.</p>}
-        <h1 className="text-3xl md:text-4xl font-bold">{event.title}</h1>
+        <h1 className="display-title font-bold text-primary">{event.title}</h1>
         <p className="text-xl font-semibold"><time dateTime={event.date.toISOString()}>Samedi 28 novembre 2026 · {event.time}</time></p>
         <p>{event.location}</p><p className="font-bold">{event.price}</p>
         {!past && <Button asChild size="lg" variant="secondary"><a href={event.bookingUrl}>Réserver sur HelloAsso</a></Button>}
-        <h2 className="text-2xl font-bold">Un concert-spectacle légendaire</h2>
+        <h2 className="text-2xl font-bold text-primary">Un concert-spectacle légendaire</h2>
         <p className="leading-relaxed">{event.description}</p>
-        <h2 className="text-2xl font-bold">Renseignements</h2>
+        <h2 className="text-2xl font-bold text-primary">Renseignements</h2>
         <p><a href="tel:+33668853079" className="text-primary underline">+33 6 68 85 30 79</a><br /><a href="mailto:harmoniemontreuilsurmer@orange.fr" className="text-primary underline [overflow-wrap:anywhere]">harmoniemontreuilsurmer@orange.fr</a></p>
         <p>Écrivez-nous aussi sur <a className="text-primary underline" href="https://www.instagram.com/harmoniemontreuilsurmer/">Instagram</a> ou <a className="text-primary underline" href="https://www.facebook.com/profile.php?id=100062936003912">Facebook</a>.</p>
       </div>
