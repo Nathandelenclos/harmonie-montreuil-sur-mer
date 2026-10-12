@@ -12,10 +12,15 @@ première photo ; les autres pages sont définies dans `data/social-images.json`
 Le générateur reprend les couleurs des tokens CSS. Ses dimensions et espacements en pixels
 correspondent au canevas fixe d’export, avec la même échelle 12/16/24/48/96 que le site.
 
+Chaque `npm run build` (ou `pnpm run build`) régénère les images avant la compilation
+Next.js. Les nouveaux concerts et albums sont automatiquement repris depuis leurs catalogues ;
+aucune génération manuelle n’est nécessaire avant le déploiement. Une erreur de génération
+interrompt le build. Les pages fixes restent définies dans `data/social-images.json`.
+
 Après modification du blason, des couleurs, d’un concert, d’un album ou d’une carte :
 
 ```sh
-node --experimental-strip-types scripts/generate-brand-assets.cjs
+npm run build
 npm test
 ```
 
@@ -23,7 +28,9 @@ Node ≥ 22.12 et les dépendances existantes suffisent : React, `next/og` et Sh
 Le générateur produit aussi `app/favicon.ico` (16/32/48), `app/icon.png` (512) et
 `app/apple-icon.png` (180, fond opaque). Next expose automatiquement leurs balises.
 Les tests vérifient la couverture du sitemap, l’existence et les dimensions des images.
-Vérifier visuellement les PNG avant de committer les sorties avec leurs sources.
+Les PNG restent versionnés pour l’aperçu local. Le build les actualise depuis les sources,
+même si les images committées ne sont pas encore à jour. Pour vérifier uniquement les visuels,
+le script `node --experimental-strip-types scripts/generate-brand-assets.cjs` reste disponible.
 Les réseaux sociaux peuvent conserver une ancienne image en cache après publication.
 
 Les anciennes images d’instruments et les autres médias sans référence ont été retirés
