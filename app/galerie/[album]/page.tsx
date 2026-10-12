@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ album: st
   const { album: slug } = await params
   const album = albums.find(item => item.slug === slug)
   if (!album) notFound()
-  return pageMetadata(`${album.title} — Archives photos`, `Les souvenirs de l’Harmonie de Montreuil-sur-Mer : ${album.title}.`, `/galerie/${album.slug}`, album.photos[0].src)
+  return pageMetadata(`${album.title} — Archives photos`, `Les souvenirs de l’Harmonie de Montreuil-sur-Mer : ${album.title}.`, `/galerie/${album.slug}`)
 }
 
 export default async function AlbumPage({ params }: { params: Promise<{ album: string }> }) {

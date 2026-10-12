@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { Facebook, Instagram, Mail, MapPin, Music, Phone } from "lucide-react"
+import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react"
+import BrandLogo from "@/components/brand-logo"
 
 export default function Footer() {
   return (
@@ -8,10 +9,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2 font-heading text-xl font-bold">
-              <Music className="h-6 w-6 text-white" />
-              <span>
-                <span className="text-white">Harmonie</span> <span className="text-secondary">Montreuil</span>
-              </span>
+              <BrandLogo />
             </Link>
             <p className="text-white">
               Fondée en 1865, l&#39;Harmonie de Montreuil-sur-Mer est une formation musicale qui anime la vie culturelle de

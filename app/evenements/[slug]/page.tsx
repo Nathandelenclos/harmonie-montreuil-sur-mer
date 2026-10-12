@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params
   const event = events.find(event => event.slug === slug)
   if (!event) notFound()
-  return pageMetadata(event.title, "Concert-spectacle le 28 novembre 2026 à 20 h 30, salle Rheinberg à Montreuil-sur-Mer. 10 €, gratuit pour les moins de 10 ans. Réservez sur HelloAsso.", `/evenements/${slug}`, event.image)
+  return pageMetadata(event.title, "Concert-spectacle le 28 novembre 2026 à 20 h 30, salle Rheinberg à Montreuil-sur-Mer. 10 €, gratuit pour les moins de 10 ans. Réservez sur HelloAsso.", `/evenements/${slug}`)
 }
 
 export default async function EventPage({ params }: { params: Promise<{ slug: string }> }) {

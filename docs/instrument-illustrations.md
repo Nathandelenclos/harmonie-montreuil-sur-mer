@@ -2,7 +2,7 @@
 
 Série créée avec l’outil intégré `image_gen` à la demande de Nathan, le 12 octobre 2026.
 Fichiers publiés : `public/assets/instruments/studio/*.webp` (800 × 800, qualité 85).
-Les anciens visuels sont conservés. Ces illustrations ne représentent pas le matériel réel de l’école.
+Les anciens visuels inutilisés ont été supprimés du dossier public. Ces illustrations ne représentent pas le matériel réel de l’école.
 
 ## Prompt commun
 

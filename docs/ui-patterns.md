@@ -58,3 +58,11 @@ query déploie deux colonnes. Une seule balise h1 et le fil d’Ariane restent p
 les deux états. Aucun chargement ni état interactif propre : les liens et Button fournis
 gardent leur focus et leur cible tactile. Compositions réelles : école, harmonie,
 concerts, contact, rejoindre, albums et vidéos ; le test vérifie les slots et la navigation.
+
+## BrandLogo — stable
+
+Molécule d’identité partagée par l’en-tête et le pied de page. Blason décoratif à dimensions
+réservées (48 × 48) et nom en texte, couleurs héritées du contexte clair ou bleu. État
+statique uniquement : le lien d’accueil parent fournit la navigation, le survol et le focus
+visible global. Aucun chargement de données ni état vide. Les deux compositions restent
+lisibles sur mobile ; le menu garde sa cible tactile de 44 px.

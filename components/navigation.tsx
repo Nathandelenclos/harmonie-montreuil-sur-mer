@@ -3,7 +3,8 @@
 import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Music, Menu, X } from "lucide-react"
+import { Menu, X } from "lucide-react"
+import BrandLogo from "@/components/brand-logo"
 import { Button } from "@/components/ui/button"
 
 const links = [
@@ -36,9 +37,8 @@ export default function Navigation() {
     }}>
       <div className="site-container">
         <div className="flex items-center justify-between min-h-20 gap-4">
-          <Link href="/" className="flex items-center gap-2 text-lg font-bold text-primary" aria-label="Harmonie Montreuil — Accueil">
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-secondary"><Music aria-hidden="true" className="h-6 w-6" /></span>
-            <span>Harmonie Montreuil</span>
+          <Link href="/" className="flex items-center gap-2 text-lg font-bold text-primary">
+            <BrandLogo />
           </Link>
           <nav aria-label="Navigation principale" className="hidden xl:flex items-center gap-6">
             {links.map(link => <Link key={link.href} href={link.href} aria-current={isActive(link.href) ? "page" : undefined}

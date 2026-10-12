@@ -1,0 +1,12 @@
+[
+  { "path": "/", "title": "La musique, ensemble.", "label": "Harmonie municipale", "image": "/assets/sainte-cecile-2025.jpg" },
+  { "path": "/a-propos", "title": "Une harmonie, des générations.", "label": "L’orchestre", "image": "/assets/harmonie-dordogne.jpg" },
+  { "path": "/ecole-de-musique", "title": "Apprendre. Jouer. Partager.", "label": "L’école de musique", "image": "/assets/cours-instruments.jpg" },
+  { "path": "/evenements", "title": "La musique en scène.", "label": "Concerts & spectacles", "image": "/assets/sainte-cecile-2025.jpg" },
+  { "path": "/galerie", "title": "Nos souvenirs en images.", "label": "Les archives photos", "image": "/assets/harmonie-dordogne.jpg" },
+  { "path": "/videos", "title": "Retrouver l’émotion du concert.", "label": "Les vidéos", "image": "/assets/sainte-cecile-2025.jpg" },
+  { "path": "/rejoindre", "title": "Prenez place dans l’orchestre.", "label": "Nous rejoindre", "image": "/assets/pratique-collective.jpg" },
+  { "path": "/contact", "title": "Parlons musique.", "label": "Contact", "image": "/assets/montreuil.jpg" },
+  { "path": "/mentions-legales", "title": "Mentions légales", "label": "Harmonie municipale", "image": "/assets/montreuil.jpg" },
+  { "path": "/politique-confidentialite", "title": "Confidentialité", "label": "Harmonie municipale", "image": "/assets/montreuil.jpg" }
+]
