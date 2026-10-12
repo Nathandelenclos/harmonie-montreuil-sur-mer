@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useRef, useEffect } from "react"
-import { motion, useInView, useAnimation } from "framer-motion"
+import { motion, useInView, useAnimation, type Variants } from "framer-motion"
 
 interface AnimatedSectionProps {
   children: React.ReactNode
@@ -28,7 +28,7 @@ export default function AnimatedSection({
     }
   }, [isInView, controls])
 
-  const animations = {
+  const animations: Record<string, Variants> = {
     "fade-up": {
       hidden: { opacity: 0, y: 30 },
       visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay } },
