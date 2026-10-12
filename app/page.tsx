@@ -10,7 +10,7 @@ export default function Home() {
 
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col overflow-x-clip">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Image with Overlay */}
@@ -301,16 +301,16 @@ export default function Home() {
             <p className="section-subtitle">Retrouvez-nous lors de nos prochains concerts et manifestations</p>
           </AnimatedSection>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid gap-8 max-w-5xl mx-auto">
             {events.map((event, index) => (
               <AnimatedSection key={index} delay={0.2 * index} animation="zoom-in" className="card-hover">
-                <div className="bg-white rounded-lg shadow-lg overflow-hidden h-full card-equal">
-                  <div className="bg-gradient-to-r from-primary/90 via-accent/80 to-secondary/90 flex items-center justify-center h-40">
-                    {event.image && <Image src={event.image} alt={event.title} width={600} height={300} className="object-cover" />}
+                <div className="bg-white rounded-lg shadow-lg overflow-hidden h-full grid md:grid-cols-2">
+                  <div className="relative aspect-[4/5] bg-primary/5">
+                    {event.image && <Image src={event.image} alt={`Affiche du concert ${event.title}`} fill sizes="(max-width: 767px) 100vw, 50vw" className="object-contain" />}
                     {!event.image && <Music className="h-16 w-16 text-white hover-rotate" />}
 
                   </div>
-                  <div className="p-6 card-equal-body">
+                  <div className="p-6 flex flex-col justify-center">
                     <div className="flex items-center gap-2 text-primary mb-2">
                       <Calendar className="h-5 w-5" />
                       <span className="font-medium">
@@ -327,6 +327,11 @@ export default function Home() {
                       <MapPin className="h-4 w-4" />
                       <span>{event.location}</span>
                     </div>
+                    <p className="text-muted-foreground mt-2">Début du concert : {event.time}</p>
+                    <p className="font-semibold mt-4">{event.price}</p>
+                    <Button asChild className="mt-4 self-start">
+                      <a href={event.bookingUrl}>Réserver sur HelloAsso</a>
+                    </Button>
                   </div>
                 </div>
               </AnimatedSection>

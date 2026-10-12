@@ -103,10 +103,14 @@ export default function Footer() {
                 <span className="text-muted-foreground hover:text-primary transition-colors"><a href="tel:+33321860569">+33 3 21 86 05 69</a></span>
               </li>
               <li className="flex items-center gap-3">
+                <Phone className="h-5 w-5 text-primary shrink-0" />
+                <a href="tel:+33668853079" className="text-muted-foreground hover:text-primary transition-colors">06 68 85 30 79</a>
+              </li>
+              <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-primary shrink-0" />
                 <a
                   href="mailto:harmoniemontreuilsurmer@orange.fr"
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="min-w-0 break-words text-muted-foreground hover:text-primary transition-colors"
                 >
                   harmoniemontreuilsurmer@orange.fr
                 </a>
@@ -117,7 +121,7 @@ export default function Footer() {
           <div className="space-y-4">
             <h3 className="font-heading text-lg font-bold">Répétitions</h3>
             <p className="text-muted-foreground">
-              Tous les vendredis de 20h à 22h
+              Tous les vendredis de 20 h 30 à 22 h
               <br />
               Rue du Paon,
               <br />

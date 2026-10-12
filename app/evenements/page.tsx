@@ -27,21 +27,21 @@ export default function EventsPage() {
             <p className="section-subtitle">Nos concerts et manifestations phares de l&#39;année</p>
           </AnimatedSection>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid gap-8 max-w-5xl mx-auto">
             {featuredEvents.map((event, index) => (
               <AnimatedSection key={index} delay={0.1 * index} animation="zoom-in" className="card-hover">
-                <div className="bg-white rounded-lg shadow-lg overflow-hidden h-full card-equal">
-                  <div className="bg-gradient-to-r from-primary/90 via-accent/80 to-secondary/90 flex items-center justify-center h-48">
-                    {event.image && <Image src={event.image} alt={event.title} width={1400} height={600} className="object-cover" />}
+                <div className="bg-white rounded-lg shadow-lg overflow-hidden h-full grid md:grid-cols-2">
+                  <div className="relative aspect-[4/5] bg-primary/5">
+                    {event.image && <Image src={event.image} alt={`Affiche du concert ${event.title}`} fill sizes="(max-width: 767px) 100vw, 50vw" className="object-contain" />}
                     {!event.image && <Music className="h-16 w-16 text-white hover-rotate" />}
                   </div>
-                  <div className="p-6 flex flex-col card-equal-body">
+                  <div className="min-w-0 p-6 flex flex-col justify-center">
                     <div className="flex items-center gap-2 text-primary mb-2">
                       <Calendar className="h-5 w-5" />
                       <span className="font-medium">{formatDate(event.date)}</span>
                     </div>
                     <h3 className="text-xl font-bold mb-2">{event.title}</h3>
-                    <p className="text-muted-foreground mb-4 flex-grow">{event.description}</p>
+                    <p className="text-muted-foreground mb-4">{event.description}</p>
                     <div className="space-y-2 card-equal-footer">
                       <div className="flex items-center gap-2 text-muted-foreground">
                         <Clock className="h-4 w-4" />
@@ -52,6 +52,19 @@ export default function EventsPage() {
                         <span>{event.location}</span>
                       </div>
                     </div>
+                    <p className="font-semibold mt-4">{event.price}</p>
+                    <Button asChild className="mt-4 self-start">
+                      <a href={event.bookingUrl}>Réserver sur HelloAsso</a>
+                    </Button>
+                    <p className="text-sm text-muted-foreground mt-4">
+                      Informations par message privé sur{" "}
+                      <a href="https://www.instagram.com/harmoniemontreuilsurmer/" className="text-primary hover:underline">Instagram</a>
+                      {" "}ou{" "}
+                      <a href="https://www.facebook.com/profile.php?id=100062936003912" className="text-primary hover:underline">Facebook</a>, au{" "}
+                      <a href="tel:+33668853079" className="text-primary hover:underline">06 68 85 30 79</a>
+                      {" "}ou par email à{" "}
+                      <a href="mailto:harmoniemontreuilsurmer@orange.fr" className="text-primary hover:underline [overflow-wrap:anywhere]">harmoniemontreuilsurmer@orange.fr</a>.
+                    </p>
                   </div>
                 </div>
               </AnimatedSection>
@@ -70,7 +83,7 @@ export default function EventsPage() {
 
           <div className="bg-white rounded-lg shadow-xl overflow-hidden">
             <div className="bg-gradient-to-r from-primary via-accent to-secondary p-4 text-white">
-              <h3 className="text-xl font-bold">Programmation 2025</h3>
+              <h3 className="text-xl font-bold">Programmation 2026</h3>
             </div>
             <div className="divide-y">
               {sortedEvents.map((event, index) => (

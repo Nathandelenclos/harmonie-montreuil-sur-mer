@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Music, GraduationCap, Clock, Calendar, MapPin, ChevronRight, CheckCircle2, Users } from "lucide-react"
+import { Music, GraduationCap, Clock, Calendar, MapPin, ChevronRight, CheckCircle2 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import PageHeader from "@/components/page-header"
@@ -8,47 +8,57 @@ import AnimatedSection from "@/components/animated-section"
 import type React from "react";
 
 export default function MusicSchoolPage() {
-  const instruments = [
-    { name: "Piano", image: "/assets/instruments/piano.jpeg?height=300&width=300&text=Piano" },
-    { name: "Flûte", image: "/assets/instruments/flute.png?height=300&width=300&text=Flûte" },
-    { name: "Clarinette", image: "/assets/instruments/clarinette.jpg?height=300&width=300&text=Clarinette" },
-    { name: "Saxophone", image: "/assets/instruments/saxophone.jpg?height=300&width=300&text=Saxophone" },
-    { name: "Trompette", image: "/assets/instruments/trompette.jpeg?height=300&width=300&text=Trompette" },
-    { name: "Trombone", image: "/assets/instruments/trombone.jpg?height=300&width=300&text=Trombone" },
-    { name: "Tuba", image: "/assets/instruments/tuba.jpg?height=300&width=300&text=Trombone" },
-    { name: "Hautbois", image: "/assets/instruments/hautbois.webp?height=300&width=300&text=Trombone" },
-    { name: "Cor", image: "/assets/instruments/cor.avif?height=300&width=300&text=Trombone" },
-    { name: "Percussion", image: "/assets/instruments/percussion.jpg?height=300&width=300&text=Percussion" },
+  const instrumentFamilies = [
+    {
+      name: "Bois",
+      instruments: [
+        { name: "Flûte", image: "/assets/instruments/flute.png" },
+        { name: "Hautbois", image: "/assets/instruments/hautbois.webp" },
+        { name: "Clarinette", image: "/assets/instruments/clarinette.jpg" },
+        { name: "Saxophone", image: "/assets/instruments/saxophone.jpg" },
+      ],
+    },
+    {
+      name: "Cuivres",
+      instruments: [
+        { name: "Trompette", image: "/assets/instruments/trompette.jpeg" },
+        { name: "Trombone", image: "/assets/instruments/trombone.jpg" },
+        { name: "Cor", image: "/assets/instruments/cor.avif" },
+        { name: "Tuba", image: "/assets/instruments/tuba.jpg" },
+      ],
+    },
+    { name: "Percussions", instruments: [{ name: "Percussions", image: "/assets/instruments/percussion.jpg" }] },
+    { name: "Piano", instruments: [{ name: "Piano", image: "/assets/instruments/piano.jpeg" }] },
   ]
 
   const teachers = [
     {
       name: "Magalie DELMOTTE",
-      role: "Directrice, professeures de Formation musicale et eveil, professeures de Tuba et Trombone et professeures de Chorale",
+      role: "Directrice, professeure d’éveil et de formation musicale, professeure de chant choral, professeure de cuivres",
      },
     {
       name: "Fabien ROGER",
-      role: "Professeur de Formation musicale, professeur de Percussions, Trompette et Cor",
+      role: "Professeur de formation musicale, professeur de percussions, professeur de cuivres",
     },
     {
       name: "Jean-François AUBEL",
-      role: "Professeur de Clarinette",
+      role: "Professeur de clarinette",
     },
     {
-      name: "Gaëlle Delecroix",
-      role: "Professeures de Flûte",
+      name: "Gaëlle DELECROIX",
+      role: "Professeure de flûte",
     },
     {
       name: "Hugo MOREAU",
-      role: "Professeur de Saxophone, Clarinette et Piano",
+      role: "Professeur de saxophone et de clarinette",
     },
     {
       name: "Audrey BERNARD",
-      role: "Professeures d'eveil, professeures de Hautbois",
+      role: "Professeure d’éveil, professeure de hautbois",
     },
     {
       name: "Céline GRAY",
-      role: "Professeures de Piano",
+      role: "Professeure de piano",
     },
   ]
 
@@ -172,20 +182,20 @@ export default function MusicSchoolPage() {
           <div className="grid md:grid-cols-2 gap-12 mb-16">
             <AnimatedSection delay={0.1}>
               <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div className="h-48 bg-gradient-to-r from-primary/90 via-accent/80 to-secondary/90 flex items-center justify-center">
-                  <Music className="h-16 w-16 text-white" />
+                <div className="relative h-64 bg-primary/5">
+                  <Image src="/assets/formation-musicale.jpg" alt="Les élèves pendant un cours de formation musicale" fill sizes="(max-width: 767px) 100vw, 50vw" className="object-cover" />
                 </div>
                 <div className="p-8">
                   <h3 className="text-2xl font-bold mb-4">Formation musicale</h3>
                   <p className="text-muted-foreground mb-6">
                     La formation musicale est le socle de l&#39;apprentissage musical. Elle permet d&#39;acquérir les bases
                     théoriques et pratiques nécessaires à la pratique instrumentale : lecture de notes, rythme, écoute,
-                    culture musicale...
+                    culture musicale... Elle inclut également la pratique du chant choral.
                   </p>
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
                       <Clock className="h-5 w-5 text-primary" />
-                      <span>1h par semaine</span>
+                      <span>1 h 30 par semaine, chorale incluse</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <CheckCircle2 className="h-5 w-5 text-primary" />
@@ -202,15 +212,14 @@ export default function MusicSchoolPage() {
 
             <AnimatedSection delay={0.2}>
               <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div className="h-48 bg-gradient-to-r from-primary/90 via-accent/80 to-secondary/90 flex items-center justify-center">
-                  <GraduationCap className="h-16 w-16 text-white" />
+                <div className="relative h-64 bg-primary/5">
+                  <Image src="/assets/cours-instruments.jpg" alt="Les élèves de flûte en concert" fill sizes="(max-width: 767px) 100vw, 50vw" className="object-contain" />
                 </div>
                 <div className="p-8">
                   <h3 className="text-2xl font-bold mb-4">Cours d&#39;instruments</h3>
                   <p className="text-muted-foreground mb-6">
                     Les cours d&#39;instruments sont dispensés en cours individuels pour permettre un suivi personnalisé de
-                    chaque élève. Notre école propose l&#39;apprentissage de nombreux instruments à vent, à cordes et à
-                    percussion.
+                    chaque élève. Notre école propose l&#39;apprentissage de nombreux instruments à vent et à percussion.
                   </p>
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
@@ -234,8 +243,8 @@ export default function MusicSchoolPage() {
           <div className="grid md:grid-cols-2 gap-12">
             <AnimatedSection delay={0.3}>
               <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div className="h-48 bg-gradient-to-r from-primary/90 via-accent/80 to-secondary/90 flex items-center justify-center">
-                  <Users className="h-16 w-16 text-white" />
+                <div className="relative h-64 bg-primary/5">
+                  <Image src="/assets/pratique-collective.jpg" alt="Les élèves réunis pour la pratique collective" fill sizes="(max-width: 767px) 100vw, 50vw" className="object-cover" />
                 </div>
                 <div className="p-8">
                   <h3 className="text-2xl font-bold mb-4">Pratique collective</h3>
@@ -264,8 +273,8 @@ export default function MusicSchoolPage() {
 
             <AnimatedSection delay={0.4}>
               <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div className="h-48 bg-gradient-to-r from-primary/90 via-accent/80 to-secondary/90 flex items-center justify-center">
-                  <Music className="h-16 w-16 text-white" />
+                <div className="relative h-64 bg-primary/5">
+                  <Image src="/assets/eveil-musical.jpg" alt="Les enfants de l’éveil musical sur scène" fill sizes="(max-width: 767px) 100vw, 50vw" className="object-contain" />
                 </div>
                 <div className="p-8">
                   <h3 className="text-2xl font-bold mb-4">Éveil musical</h3>
@@ -304,26 +313,33 @@ export default function MusicSchoolPage() {
             </p>
           </AnimatedSection>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {instruments.map((instrument, index) => (
-              <AnimatedSection key={index} delay={0.1 * index} className="card-hover">
-                <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-                  <div className="aspect-square relative">
-                    <Image
-                      src={instrument.image || "/placeholder.svg"}
-                      alt={`Cours de ${instrument.name}`}
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                      <h3 className="text-white font-medium">{instrument.name}</h3>
-                    </div>
-                  </div>
-                  <div className="p-4 text-center">
-                    <h3 className="text-xl font-bold">{instrument.name}</h3>
-                  </div>
-                </div>
-              </AnimatedSection>
+          <div className="space-y-10">
+            {instrumentFamilies.map((family) => (
+              <section key={family.name}>
+                <h3 className="text-2xl font-bold mb-6">{family.name}</h3>
+                <ul className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,14rem),1fr))] gap-6">
+                  {family.instruments.map((instrument, index) => (
+                    <li key={instrument.name} className="max-w-80">
+                      <AnimatedSection delay={0.1 * index} className="card-hover">
+                        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+                          <div className="aspect-square relative">
+                            <Image
+                              src={instrument.image}
+                              alt={`Cours de ${instrument.name}`}
+                              fill
+                              sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 25vw"
+                              className="object-cover"
+                            />
+                          </div>
+                          <div className="p-4 text-center">
+                            <h4 className="text-xl font-bold">{instrument.name}</h4>
+                          </div>
+                        </div>
+                      </AnimatedSection>
+                    </li>
+                  ))}
+                </ul>
+              </section>
             ))}
           </div>
         </div>
@@ -339,18 +355,20 @@ export default function MusicSchoolPage() {
             </p>
           </AnimatedSection>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <ul className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,16rem),1fr))] gap-8">
             {teachers.map((teacher, index) => (
-              <AnimatedSection key={index} delay={0.1 * index} className="card-hover">
-                <div className="bg-white rounded-lg shadow-lg overflow-hidden h-full">
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold">{teacher.name}</h3>
-                    <p className="text-primary mb-4">{teacher.role}</p>
+              <li key={teacher.name}>
+                <AnimatedSection delay={0.1 * index} className="card-hover h-full">
+                  <div className="bg-white rounded-lg shadow-lg overflow-hidden h-full">
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold">{teacher.name}</h3>
+                      <p className="text-primary mb-4">{teacher.role}</p>
+                    </div>
                   </div>
-                </div>
-              </AnimatedSection>
+                </AnimatedSection>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
@@ -362,104 +380,93 @@ export default function MusicSchoolPage() {
         <div className="container px-4">
           <AnimatedSection className="text-center mb-16">
             <h2 className="section-title mb-4">Inscriptions</h2>
-            <p className="section-subtitle">Rejoignez notre école de musique pour l&#39;année 2025-2026</p>
+            <p className="section-subtitle">Rejoignez notre école de musique !</p>
           </AnimatedSection>
 
           <div className="grid md:grid-cols-2 gap-12 items-start">
-            <AnimatedSection delay={0.1}>
-              <div className="bg-white rounded-lg shadow-lg p-8">
+            <AnimatedSection delay={0.1} className="min-w-0">
+              <div className="bg-white rounded-lg shadow-lg p-5 sm:p-8">
                 <h3 className="text-2xl font-bold mb-6">Informations pratiques</h3>
 
                 <div className="space-y-6">
                   <div>
-                    <ul className="space-y-2">
-                      <li className="flex justify-between items-center pb-2">
-                        <h4 className="text-lg font-bold mb-2">Tarifs annuels</h4>
-                        <div className="flex gap-1">
-                          <span className="font-bold">Montreuil</span>
-                          <span>|</span>
-                          <span className="font-bold">Hors Montreuil</span>
-                        </div>
-                      </li>
-                      <li className="flex justify-between items-center border-b pb-2">
-                        <span>Eveil musical (4-6 ans)</span>
-                        <div className="flex gap-1">
-                          <span className="font-bold">80€</span>
-                          <span>|</span>
-                          <span className="font-bold">100€</span>
-                        </div>
-                      </li>
-                      <li className="flex justify-between items-center border-b pb-2">
-                        <span>Formation musicale</span>
-                        <div className="flex gap-1">
-                          <span className="font-bold">125€</span>
-                          <span>|</span>
-                          <span className="font-bold">160€</span>
-                        </div>
-                      </li>
-                      <li className="flex justify-between items-center border-b pb-2">
-                        <span>Formation instrumentale</span>
-                        <div className="flex gap-1">
-                          <span className="font-bold">180€</span>
-                          <span>|</span>
-                          <span className="font-bold">220€</span>
-                        </div>
-                      </li>
-                      <li className="flex justify-between items-center border-b pb-2">
-                        <span>Musicien intégré à l’harmonie</span>
-                        <div className="flex gap-1">
-                          <span className="font-bold">90€</span>
-                          <span>|</span>
-                          <span className="font-bold">   111€</span>
-                        </div>
-                      </li>
-                      <li className="flex justify-between items-center border-b pb-2">
-                        <span>Adhésion à l’association</span>
-                        <div className="flex gap-1">
-                          <span className="font-bold">5€</span>
-                          <span>|</span>
-                          <span className="font-bold">5€</span>
-                        </div>
-                      </li>
-                      <li className="flex justify-between items-center border-b pb-2">
-                        <span>Inscription aux examens</span>
-                        <div className="flex gap-1">
-                          <span className="font-bold">16€</span>
-                          <span>|</span>
-                          <span className="font-bold">16€</span>
-                        </div>
-                      </li>
-                      <li className="flex justify-between items-center border-b pb-2">
-                        <span>Caution Instrument</span>
-                        <div className="flex gap-1">
-                          <span className="font-bold">400€</span>
-                          <span>|</span>
-                          <span className="font-bold">400€</span>
-                        </div>
-                      </li>
-                      <li className="flex justify-between items-center">
-                        <span>Cours Particuliers</span>
-                        <div className="flex gap-1">
-                          <span className="font-bold">380€</span>
-                          <span>|</span>
-                          <span className="font-bold">445€</span>
-                        </div>
-                      </li>
-                    </ul>
-                    <p className="text-sm text-muted-foreground mt-2">
-                      Réduction de 10% pour le 2ème membre d&#39;une même famille, 20% pour le 3ème.
+                    <table className="w-full text-sm text-left">
+                      <caption className="text-lg font-bold text-left mb-4">Tarifs annuels</caption>
+                      <thead>
+                        <tr className="border-b">
+                          <th scope="col" className="py-3 pr-2">Formation / frais</th>
+                          <th scope="col" className="py-3 px-1 text-right">Montreuil</th>
+                          <th scope="col" className="py-3 pl-1 text-right">Hors Montreuil</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr className="border-b">
+                          <th scope="row" className="py-3 pr-2 font-normal">Éveil musical dès 4 ans (30 heures)</th>
+                          <td className="py-3 px-1 text-right whitespace-nowrap font-bold">85 €</td>
+                          <td className="py-3 pl-1 text-right whitespace-nowrap font-bold">105 €</td>
+                        </tr>
+                        <tr className="border-b">
+                          <th scope="row" className="py-3 pr-2 font-normal">Formation musicale et chant choral (45 heures)</th>
+                          <td className="py-3 px-1 text-right whitespace-nowrap font-bold">130 €</td>
+                          <td className="py-3 pl-1 text-right whitespace-nowrap font-bold">170 €</td>
+                        </tr>
+                        <tr className="border-b">
+                          <th scope="row" className="py-3 pr-2 font-normal">Instrument d’harmonie (30 cours de 30 minutes)</th>
+                          <td className="py-3 px-1 text-right whitespace-nowrap font-bold">190 €</td>
+                          <td className="py-3 pl-1 text-right whitespace-nowrap font-bold">230 €</td>
+                        </tr>
+                        <tr className="border-b">
+                          <th scope="row" className="py-3 pr-2 font-normal">Instrument — musicien intégré à l’harmonie</th>
+                          <td className="py-3 px-1 text-right whitespace-nowrap font-bold">95 €</td>
+                          <td className="py-3 pl-1 text-right whitespace-nowrap font-bold">115 €</td>
+                        </tr>
+                        <tr className="border-b">
+                          <th scope="row" className="py-3 pr-2 font-normal">Formation musicale appliquée avec instrument pour adultes (30 cours collectifs d’une heure)</th>
+                          <td className="py-3 px-1 text-right whitespace-nowrap font-bold">130 €</td>
+                          <td className="py-3 pl-1 text-right whitespace-nowrap font-bold">170 €</td>
+                        </tr>
+                        <tr className="border-b">
+                          <th scope="row" className="py-3 pr-2 font-normal">Formation musicale appliquée — musicien intégré à l’harmonie</th>
+                          <td className="py-3 px-1 text-right whitespace-nowrap font-bold">65 €</td>
+                          <td className="py-3 pl-1 text-right whitespace-nowrap font-bold">85 €</td>
+                        </tr>
+                        <tr className="border-b">
+                          <th scope="row" className="py-3 pr-2 font-normal">Adhésion à l’association</th>
+                          <td className="py-3 px-1 text-right whitespace-nowrap font-bold">5 €</td>
+                          <td className="py-3 pl-1 text-right whitespace-nowrap font-bold">5 €</td>
+                        </tr>
+                        <tr className="border-b">
+                          <th scope="row" className="py-3 pr-2 font-normal">Inscription aux examens</th>
+                          <td className="py-3 px-1 text-right whitespace-nowrap font-bold">16 €</td>
+                          <td className="py-3 pl-1 text-right whitespace-nowrap font-bold">16 €</td>
+                        </tr>
+                        <tr className="border-b">
+                          <th scope="row" className="py-3 pr-2 font-normal">Caution instrument</th>
+                          <td className="py-3 px-1 text-right whitespace-nowrap font-bold">400 €</td>
+                          <td className="py-3 pl-1 text-right whitespace-nowrap font-bold">400 €</td>
+                        </tr>
+                        <tr className="border-b">
+                          <th scope="row" className="py-3 pr-2 font-normal">Cours particuliers (30 cours de 30 minutes)</th>
+                          <td className="py-3 px-1 text-right whitespace-nowrap font-bold">400 €</td>
+                          <td className="py-3 pl-1 text-right whitespace-nowrap font-bold">470 €</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <p className="text-sm text-muted-foreground mt-4">
+                      Réduction de 10 % pour une famille à partir de deux membres.
+                      Possibilité de régler en plusieurs fois et en chèques-vacances.
                     </p>
-                    <p className="text-sm text-muted-foreground mt-2">
-                      Tarif horaire global : Formation Musicale + Instrument soit 60 heures de cours par an.
-                      <ul>
-                        <li>
-                          - Montreuillois: 305€ : 60 heures = 5,1€/heure
-                        </li>
-                        <li>
-                          - Non Montreuillois: 380€ : 60 heures = 6,3€/heure
-                        </li>
+                    <div className="text-sm text-muted-foreground mt-4 space-y-2">
+                      <p>Formation musicale + chant choral + instrument : 60 heures de cours par an.</p>
+                      <ul className="list-disc pl-5 space-y-1">
+                        <li>Montreuillois : 320 € par an, soit environ 5,33 €/heure.</li>
+                        <li>Non-Montreuillois : 400 € par an, soit environ 6,67 €/heure.</li>
                       </ul>
-                    </p>
+                      <p>
+                        30 heures de pratique collective en classe d’orchestre s’ajoutent après deux à trois années
+                        de formation instrumentale.
+                      </p>
+                    </div>
                   </div>
 
                   <div>
@@ -475,85 +482,58 @@ export default function MusicSchoolPage() {
                       </span>
                     </div>
                   </div>
-
-                  <div>
-                    <h4 className="text-lg font-bold mb-2">Calendrier</h4>
-                    <div className="space-y-2">
-                      <div className="flex items-center gap-2">
-                        <Calendar className="h-5 w-5 text-primary" />
-                        <span>Inscriptions : du 1er juin au 15 septembre 2025</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Calendar className="h-5 w-5 text-primary" />
-                        <span>Rentrée : semaine du 15 septembre 2025</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Calendar className="h-5 w-5 text-primary" />
-                        <span>Auditions : décembre 2025 et juin 2026</span>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </AnimatedSection>
 
-            <AnimatedSection delay={0.2}>
-              <div className="bg-white rounded-lg shadow-lg p-8">
-                <h3 className="text-2xl font-bold mb-6">Comment s&#39;inscrire ?</h3>
+            <AnimatedSection delay={0.2} className="min-w-0">
+              <div className="bg-white rounded-lg shadow-lg p-5 sm:p-8">
+                <h3 className="text-2xl font-bold mb-6">Contacts</h3>
 
                 <div className="space-y-6">
-                  <p className="text-muted-foreground">
-                    Pour vous inscrire à l&#39;École de Musique de Montreuil-sur-Mer, plusieurs options s&#39;offrent à vous :
-                  </p>
-
-                  <div className="space-y-4">
-                    <div className="flex items-start gap-4">
+                  <ol className="space-y-4">
+                    <li className="flex items-start gap-4">
                       <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-white font-bold">
                         1
                       </div>
-                      <div>
+                      <div className="min-w-0">
                         <h4 className="text-lg font-bold">Sur place</h4>
                         <p className="text-muted-foreground">
-                          Rendez-vous à l&#39;École de Musique pendant les permanences d&#39;inscription :
-                          <br />- Mercredis de 14h à 18h
-                          <br />- Samedis de 10h à 12h
-                          <br />
-                          (du 1er juin au 15 septembre 2025)
+                          Rendez-vous à l’école de musique pendant les horaires des cours : les mercredis de 14 h à 18 h.
                         </p>
                       </div>
-                    </div>
+                    </li>
 
-                    <div className="flex items-start gap-4">
+                    <li className="flex items-start gap-4">
                       <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-white font-bold">
                         2
                       </div>
-                      <div>
+                      <div className="min-w-0">
                         <h4 className="text-lg font-bold">Par téléphone</h4>
                         <p className="text-muted-foreground">
-                          Contactez-nous au <a href="tel:+33 3 21 86 05 69" className="text-primary hover:underline">+33 3 21 86 05 69</a> ou au <a href="tel:+33 6 12 13 0 89" className="text-primary hover:underline">+33 6 12 13 0 89</a> pour une pré-inscription par téléphone.
+                          Contactez-nous au <a href="tel:+33321860569" className="text-primary hover:underline">+33 3 21 86 05 69</a> ou au <a href="tel:+33612130889" className="text-primary hover:underline">+33 6 12 13 08 89</a>.
                         </p>
                       </div>
-                    </div>
+                    </li>
 
-                    <div className="flex items-start gap-4">
+                    <li className="flex items-start gap-4">
                       <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-white font-bold">
                         3
                       </div>
-                      <div>
+                      <div className="min-w-0">
                         <h4 className="text-lg font-bold">Par email</h4>
                         <p className="text-muted-foreground">
                           Envoyez-nous un email à{" "}
-                          <a href="mailto:harmoniemontreuilsurmer@orange.fr" className="text-primary hover:underline">
+                          <a href="mailto:harmoniemontreuilsurmer@orange.fr" className="text-primary hover:underline [overflow-wrap:anywhere]">
                             harmoniemontreuilsurmer@orange.fr
-                          </a>{" "}
-                          avec vos coordonnées et nous vous contacterons.
+                          </a>.
                         </p>
                       </div>
-                    </div>
-                  </div>
+                    </li>
+                  </ol>
 
                   <div className="pt-4">
-                    <Button asChild size="lg" className="w-full">
+                    <Button asChild size="lg" className="w-full h-auto whitespace-normal py-3 text-center">
                       <Link href="/contact" className="flex items-center justify-center gap-2">
                         Nous contacter pour plus d&#39;informations
                         <ChevronRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />

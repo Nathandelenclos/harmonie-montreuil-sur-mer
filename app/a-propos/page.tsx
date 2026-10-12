@@ -44,10 +44,10 @@ export default function AboutPage() {
                 <div className="absolute -top-4 -left-4 w-24 h-24 bg-primary/20 rounded-full -z-10"></div>
                 <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-secondary/20 rounded-full -z-10"></div>
                 <Image
-                  src="/assets/harmonie-montreuil-sur-mer.jpg?height=600&width=500"
-                  alt="L'Harmonie en répétition"
-                  width={500}
-                  height={600}
+                  src="/assets/sainte-cecile-2025.jpg"
+                  alt="L’Harmonie réunie pour la Sainte-Cécile 2025"
+                  width={1800}
+                  height={1350}
                   className="rounded-lg shadow-xl w-full object-cover"
                 />
               </div>
@@ -115,34 +115,37 @@ export default function AboutPage() {
             <p className="section-subtitle">Découvrez les personnes qui font vivre l&#39;Harmonie de Montreuil-sur-Mer</p>
           </AnimatedSection>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <ul className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,18rem),1fr))] gap-8">
             {[
-              { name: "Raphaël Moreau", role: "Président", image: "/placeholder.svg?height=300&width=300&text=Jean" },
+              { name: "Raphaël MOREAU", role: "Président", image: "/placeholder.svg?height=300&width=300&text=Jean" },
               {
-                name: "Magalie Birault",
+                name: "Magalie DELMOTTE",
                 role: "Cheffe d'orchestre",
                 image: "/placeholder.svg?height=300&width=300&text=Marie",
               },
-              { name: "Cyril Saison", role: "Trésorier", image: "/placeholder.svg?height=300&width=300&text=Pierre" },
+              { name: "Fabien ROGER", role: "Chef d’orchestre" },
+              { name: "Cyrille SAISON", role: "Trésorier", image: "/placeholder.svg?height=300&width=300&text=Pierre" },
               {
-                name: "Bertille Depre",
+                name: "Milo DELATTRE ISRAËL",
                 role: "Secrétaire",
                 image: "/placeholder.svg?height=300&width=300&text=Sophie",
               },
             ].map((member, index) => (
-              <AnimatedSection key={index} delay={0.1 * index} className="card-hover">
-                <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-                  {/*<div className="aspect-square relative">
-                    <Image src={member.image || "/placeholder.svg"} alt={member.name} fill className="object-cover"/>
-                  </div>*/}
-                  <div className="p-6 text-center">
-                    <h3 className="text-xl font-bold">{member.name}</h3>
-                    <p className="text-primary">{member.role}</p>
+              <li key={member.name}>
+                <AnimatedSection delay={0.1 * index} className="card-hover">
+                  <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+                    {/*<div className="aspect-square relative">
+                      <Image src={member.image || "/placeholder.svg"} alt={member.name} fill className="object-cover"/>
+                    </div>*/}
+                    <div className="p-6 text-center">
+                      <h3 className="text-xl font-bold">{member.name}</h3>
+                      <p className="text-primary">{member.role}</p>
+                    </div>
                   </div>
-                </div>
-              </AnimatedSection>
+                </AnimatedSection>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 

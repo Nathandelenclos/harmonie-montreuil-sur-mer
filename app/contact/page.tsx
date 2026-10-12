@@ -64,7 +64,7 @@ export default function ContactPage() {
       <section className="py-16 md:py-24">
         <div className="container px-4">
           <div className="grid md:grid-cols-2 gap-12 items-start">
-            <AnimatedSection>
+            <AnimatedSection className="min-w-0">
               <div className="space-y-8">
                 <div>
                   <h2 className="text-3xl md:text-4xl font-bold mb-6">Restons en contact</h2>
@@ -94,9 +94,9 @@ export default function ContactPage() {
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-secondary text-secondary-foreground">
                       <Mail className="h-5 w-5" />
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <h3 className="text-lg font-bold mb-1">Email</h3>
-                      <a href="mailto:harmoniemontreuilsurmer@orange.fr" className="text-primary hover:underline">
+                      <a href="mailto:harmoniemontreuilsurmer@orange.fr" className="text-primary hover:underline [overflow-wrap:anywhere]">
                         harmoniemontreuilsurmer@orange.fr
                       </a>
                     </div>
@@ -109,6 +109,8 @@ export default function ContactPage() {
                     <div>
                       <h3 className="text-lg font-bold mb-1">Téléphone</h3>
                       <a href="tel:+33321860569" className="text-muted-foreground">+33 3 21 86 05 69</a>
+                      <br />
+                      <a href="tel:+33668853079" className="text-muted-foreground">06 68 85 30 79</a>
                     </div>
                   </div>
 
@@ -119,7 +121,7 @@ export default function ContactPage() {
                     <div>
                       <h3 className="text-lg font-bold mb-1">Répétitions</h3>
                       <p className="text-muted-foreground">
-                        Tous les vendredis de 20h à 22h
+                        Tous les vendredis de 20 h 30 à 22 h
                         <br />
                         Rue du Paon,
                         <br />

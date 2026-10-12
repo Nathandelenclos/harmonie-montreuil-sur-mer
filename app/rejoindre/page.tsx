@@ -156,7 +156,7 @@ export default function JoinPage() {
                 </div>
 
                 <div className="pt-4">
-                  <Button asChild className="group">
+                  <Button asChild className="group h-auto whitespace-normal py-3 text-center">
                     <Link href="/contact" className="flex items-center gap-2">
                       Contactez-nous pour plus d&#39;informations
                       <ChevronRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -171,10 +171,10 @@ export default function JoinPage() {
                 <div className="absolute -top-4 -left-4 w-24 h-24 bg-primary/20 rounded-full -z-10"></div>
                 <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-secondary/20 rounded-full -z-10"></div>
                 <Image
-                  src="/assets/harmonie-officiel.jpg?height=600&width=500&text=Rejoignez-nous"
-                  alt="Musiciens de l&#39;Harmonie"
-                  width={500}
-                  height={600}
+                  src="/assets/harmonie-dordogne.jpg"
+                  alt="Les musiciens de l’Harmonie au château en Dordogne"
+                  width={1800}
+                  height={1205}
                   className="rounded-lg shadow-xl w-full object-cover"
                 />
               </div>
@@ -249,7 +249,7 @@ export default function JoinPage() {
                 </div>
 
                 <div className="pt-4">
-                  <Button asChild size="lg" className="group">
+                  <Button asChild size="lg" className="group h-auto whitespace-normal py-3 text-center">
                     <Link href="/ecole-de-musique" className="flex items-center gap-2">
                       Découvrir notre école de musique
                       <ChevronRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
