@@ -1,3 +1,4 @@
+import YouTubeEmbed from "@/components/youtube-embed"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
@@ -49,5 +50,9 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
         <p>Écrivez-nous aussi sur <a className="text-primary underline" href="https://www.instagram.com/harmoniemontreuilsurmer/">Instagram</a> ou <a className="text-primary underline" href="https://www.facebook.com/profile.php?id=100062936003912">Facebook</a>.</p>
       </div>
     </div>
+    <section className="mt-16 grid grid-cols-1 items-center gap-8 border-t border-primary/20 pt-12 lg:grid-cols-2" aria-labelledby="concert-preview-title">
+      <div><p className="mb-4 text-sm font-semibold text-primary">Un aperçu de l’orchestre</p><h2 id="concert-preview-title" className="section-title text-primary mb-6">Retrouvez-nous aussi en musique.</h2><p className="text-lg mb-6">Une captation de l’harmonie à Fruges pour découvrir un autre moment de scène.</p><Link href="/videos" className="home-text-link text-primary">Toutes les captations →</Link></div>
+      <figure><YouTubeEmbed id="8SaXsLgCffM" title="The Greatest Showman — l’harmonie à Fruges" /><figcaption className="mt-3 text-sm text-muted-foreground">Vidéo publiée en avril 2025 par MARLENE47100.</figcaption></figure>
+    </section>
   </article>
 }

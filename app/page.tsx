@@ -1,3 +1,4 @@
+import YouTubeEmbed from "@/components/youtube-embed"
 import NoUpcomingEvents from "@/components/no-upcoming-events"
 import Link from "next/link"
 import Image from "next/image"
@@ -14,17 +15,26 @@ export default function Home() {
     <section className="home-hero relative isolate overflow-hidden bg-primary text-white">
       <Image src="/assets/montreuil.jpg" alt="" fill priority sizes="100vw" className="object-cover" />
       <div className="home-hero-shade absolute inset-0" />
-      <div className="container relative max-w-7xl px-6 py-16 md:px-12 md:py-24">
-        <div className="home-hero-copy">
-          <p className="mb-6 flex items-center gap-3 text-sm font-semibold"><span aria-hidden="true" className="h-px w-8 bg-secondary" />Concerts, école de musique et orchestre</p>
-          <h1 className="home-title mb-8 font-bold">Harmonie de<br />Montreuil-sur-Mer</h1>
-          <p className="max-w-lg text-base leading-relaxed md:text-lg">Écouter un concert, apprendre un instrument ou jouer ensemble : la musique se partage à Montreuil depuis 1865.</p>
+      <div className="container relative max-w-7xl px-6 py-16 md:px-12 md:py-24 home-hero-layout">
+        <div>
+          <div className="home-hero-copy">
+            <p className="mb-6 flex items-center gap-3 text-sm font-semibold"><span aria-hidden="true" className="h-px w-8 bg-secondary" />Concerts, école de musique et orchestre</p>
+            <h1 className="home-title mb-8 font-bold">Harmonie de<br />Montreuil-sur-Mer</h1>
+            <p className="max-w-lg text-base leading-relaxed md:text-lg">Écouter un concert, apprendre un instrument ou jouer ensemble : la musique se partage à Montreuil depuis 1865.</p>
+          </div>
+          <div className="home-hero-actions mt-8 flex flex-wrap gap-4">
+            <Button asChild size="lg" variant="secondary" className="hover:bg-secondary hover:underline"><Link href={nextEvent ? `/evenements/${nextEvent.slug}` : "/evenements"}>{nextEvent ? "Découvrir le prochain concert" : "Voir les concerts"}</Link></Button>
+            <Button asChild size="lg" variant="outline" className="border-white bg-white text-primary hover:bg-white hover:text-primary hover:underline"><Link href="/ecole-de-musique">Cours et inscriptions</Link></Button>
+          </div>
+          <a href="#a-laffiche" className="home-discover mt-12 inline-flex min-h-11 items-center gap-3 text-sm font-semibold underline-offset-4 hover:underline"><ArrowDown aria-hidden="true" className="h-5 w-5" />Découvrir l’harmonie</a>
         </div>
-        <div className="home-hero-actions mt-8 flex flex-wrap gap-4">
-          <Button asChild size="lg" variant="secondary" className="hover:bg-secondary hover:underline"><Link href={nextEvent ? `/evenements/${nextEvent.slug}` : "/evenements"}>{nextEvent ? "Découvrir le prochain concert" : "Voir les concerts"}</Link></Button>
-          <Button asChild size="lg" variant="outline" className="border-white bg-white text-primary hover:bg-white hover:text-primary hover:underline"><Link href="/ecole-de-musique">Cours et inscriptions</Link></Button>
-        </div>
-        <a href="#a-laffiche" className="home-discover mt-12 inline-flex min-h-11 items-center gap-3 text-sm font-semibold underline-offset-4 hover:underline"><ArrowDown aria-hidden="true" className="h-5 w-5" />Découvrir l’harmonie</a>
+        <figure className="mt-10 min-w-0 lg:mt-0">
+          <YouTubeEmbed id="0DapvwTHhz4" title="O’Connel’s Sacrée Soirée — Simon Fache, Lille 3000" />
+          <figcaption className="mt-4 border-l-4 border-secondary pl-4">
+            <p className="text-sm">O’Connel’s Sacrée Soirée · Lille 3000, 2025</p>
+            <Link href="/videos" className="home-text-link">L’harmonie en vidéos<ArrowUpRight aria-hidden="true" className="h-5 w-5" /></Link>
+          </figcaption>
+        </figure>
       </div>
     </section>
 
@@ -49,8 +59,14 @@ export default function Home() {
         </div>
         <div className="home-photo-grid grid grid-cols-2 items-start gap-4">
           <Image src="/assets/formation-musicale.jpg" alt="Les élèves de l’école de musique en formation musicale" width={900} height={600} sizes="(max-width: 1023px) 100vw, 50vw" className="col-span-2 aspect-[3/2] w-full rounded-lg object-cover" />
-          <Image src="/assets/instruments/piano.jpeg" alt="Un piano" width={600} height={450} sizes="(max-width: 1023px) 50vw, 25vw" className="aspect-[4/3] w-full rounded-lg object-cover" />
-          <Image src="/assets/instruments/saxophone.jpg" alt="Un saxophone" width={600} height={450} sizes="(max-width: 1023px) 50vw, 25vw" className="mt-6 aspect-[4/3] w-full rounded-lg object-cover" />
+          <figure>
+            <Image src="/assets/cours-instruments.jpg" alt="Des flûtistes de l’école de musique réunies sur scène" width={675} height={1200} sizes="(max-width: 1023px) 50vw, 25vw" className="aspect-[4/3] w-full rounded-lg object-cover" />
+            <figcaption className="mt-2 text-sm text-muted-foreground">Partager la scène.</figcaption>
+          </figure>
+          <figure className="mt-6">
+            <Image src="/assets/archives/85c2087db2123161.webp" alt="Les élèves et les musiciens jouent ensemble à l’audition de 2018" width={1600} height={1063} sizes="(max-width: 1023px) 50vw, 25vw" className="aspect-[4/3] w-full rounded-lg object-cover" />
+            <figcaption className="mt-2 text-sm text-muted-foreground">Audition 2018.</figcaption>
+          </figure>
         </div>
       </div>
     </section>
@@ -66,6 +82,18 @@ export default function Home() {
             <Button asChild size="lg" variant="secondary" className="hover:bg-secondary hover:underline"><Link href="/rejoindre">Rejoindre l’orchestre</Link></Button>
             <Link href="/a-propos" className="home-text-link">L’harmonie et son équipe<ArrowUpRight aria-hidden="true" className="h-5 w-5" /></Link>
           </div>
+        </div>
+      </div>
+    </section>
+    <section className="bg-muted py-12 md:py-16" aria-labelledby="home-archives-title">
+      <div className="site-container">
+        <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
+          <div><p className="mb-3 text-sm font-semibold text-primary">Dans nos albums</p><h2 id="home-archives-title" className="home-section-title font-bold text-primary">La musique en images.</h2></div>
+          <Link href="/galerie" className="home-text-link text-primary">Tous les albums<ArrowUpRight aria-hidden="true" className="h-5 w-5" /></Link>
+        </div>
+        <div className="grid gap-6 md:grid-cols-2">
+          <figure><Image src="/assets/archives/878fe25780b01788.webp" alt="Les musiciens costumés sur scène dans une lumière bleue et jaune" width={1600} height={1059} sizes="(max-width: 767px) 100vw, 50vw" className="w-full h-auto rounded-lg" /><figcaption><Link href="/galerie/2018" className="home-text-link text-primary">Concert de printemps 2018 →</Link></figcaption></figure>
+          <figure><Image src="/assets/archives/5c7fa995c817cb7e.webp" alt="Le pupitre des tambours en costume sur scène" width={1600} height={1059} sizes="(max-width: 767px) 100vw, 50vw" className="w-full h-auto rounded-lg" /><figcaption><Link href="/galerie/tambours" className="home-text-link text-primary">Les tambours · Concert de printemps 2018 →</Link></figcaption></figure>
         </div>
       </div>
     </section>

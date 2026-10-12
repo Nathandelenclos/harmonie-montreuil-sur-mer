@@ -1,5 +1,6 @@
+import MediaFeature from "@/components/media-feature"
+import YouTubeEmbed from "@/components/youtube-embed"
 import JoinForm from "@/components/join-form"
-import { Music, Users, BookOpen, CheckCircle2, GraduationCap, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import PageHeader from "@/components/page-header"
 import Link from "next/link"
@@ -8,208 +9,44 @@ import Image from "next/image"
 export default function JoinPage() {
   return (
     <div className="content-page">
-      <PageHeader homeLink={<Link href="/">Accueil</Link>} title="Rejoignez-nous" image="/assets/harmonie-dordogne.jpg" description="Devenez membre de l&#39;Harmonie de Montreuil-sur-Mer" />
+      <PageHeader homeLink={<Link href="/">Accueil</Link>} eyebrow="Rejoindre l’harmonie" title="Votre place dans l’orchestre."
+        description="Vous jouez d’un instrument, vous reprenez après une pause ou vous souhaitez partager votre expérience ? Venez rencontrer les musiciens."
+        media={<figure><Image src="/assets/harmonie-dordogne.jpg" alt="Les musiciens de l’Harmonie réunis au château en Dordogne" width={1800} height={1205} priority sizes="(max-width: 911px) 100vw, 50vw" className="w-full h-auto rounded-lg" /><figcaption className="mt-3 border-l-4 border-secondary pl-3 text-sm">Un souvenir partagé en Dordogne.</figcaption></figure>}
+        actions={<><Button asChild variant="secondary"><a href="#rejoindre-formulaire">Faire connaissance</a></Button><Link className="home-text-link" href="/ecole-de-musique">Je souhaite apprendre →</Link></>}
+      />
 
-      <section className="py-16 md:py-24">
-        <div className="site-container">
-          <div className="section-heading">
-            <h2 className="section-title mb-4">Pourquoi nous rejoindre ?</h2>
-            <p className="section-subtitle">
-              L&#39;Harmonie de Montreuil-sur-Mer vous offre l&#39;opportunité de partager votre passion pour la musique dans
-              une ambiance conviviale
-            </p>
-          </div>
+      <section className="site-container py-12 md:py-16" aria-labelledby="join-reasons-title">
+        <div className="grid gap-8 lg:grid-cols-2 mb-12">
+          <h2 id="join-reasons-title" className="section-title">Un instrument.<br />Un groupe. Des moments partagés.</h2>
+          <div className="space-y-4 text-lg text-muted-foreground"><p>L’harmonie accueille des musiciens de tous niveaux et de tous âges : amateurs, jeunes issus de l’école de musique, musiciens confirmés ou anciens musiciens souhaitant reprendre.</p><p className="border-l-4 border-secondary pl-4 font-semibold text-primary">Répétitions le vendredi de 20 h 30 à 22 h, rue du Paon.</p></div>
+        </div>
+        <ul className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,var(--card-min-default)),1fr))] gap-8">
+          {[
+            ['Pratiquer régulièrement', 'Un ensemble, un répertoire varié et accessible, et le plaisir de faire de la musique chaque semaine.'],
+            ['Trouver un collectif', 'Bonne humeur, entraide et convivialité : la vie de l’harmonie se partage aussi au-delà des partitions.'],
+            ['Progresser ensemble', 'Les conseils de musiciens expérimentés pour avancer à votre rythme dans un cadre bienveillant.'],
+          ].map(([title, description]) => <li key={title} className="border-t-4 border-secondary pt-6"><h3 className="text-2xl font-bold text-primary mb-4">{title}</h3><p className="text-muted-foreground">{description}</p></li>)}
+        </ul>
+      </section>
 
-          <ul className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,var(--card-min-default)),1fr))] gap-8 mb-20">
-            <li className="card-hover">
-              <div className="surface p-8 h-full">
-                <div className="w-12 h-12 mb-6 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Music className="h-8 w-8 text-primary" />
-                </div>
-                <h3 className="text-xl font-bold mb-4">Pratiquer la musique</h3>
-                <p className="text-muted-foreground">
-                  Jouez régulièrement au sein d&#39;un ensemble et développez votre pratique musicale avec un répertoire
-                  varié et accessible.
-                </p>
-              </div>
-            </li>
-
-            <li className="card-hover">
-              <div className="surface p-8 h-full">
-                <div className="w-12 h-12 mb-6 rounded-full bg-secondary/10 flex items-center justify-center">
-                  <Users className="h-8 w-8 text-primary" />
-                </div>
-                <h3 className="text-xl font-bold mb-4">Intégrer une famille</h3>
-                <p className="text-muted-foreground">
-                  Rejoignez un groupe chaleureux où règnent bonne humeur, entraide et convivialité. Partagez des moments
-                  inoubliables.
-                </p>
-              </div>
-            </li>
-
-            <li className="card-hover">
-              <div className="surface p-8 h-full">
-                <div className="w-12 h-12 mb-6 rounded-full bg-accent/10 flex items-center justify-center">
-                  <BookOpen className="h-8 w-8 text-accent" />
-                </div>
-                <h3 className="text-xl font-bold mb-4">Progresser ensemble</h3>
-                <p className="text-muted-foreground">
-                  Bénéficiez des conseils de musiciens expérimentés et progressez à votre rythme dans un environnement
-                  bienveillant.
-                </p>
-              </div>
-            </li>
-          </ul>
-
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">Qui peut nous rejoindre ?</h2>
-                <p className="text-muted-foreground">
-                  L&#39;Harmonie de Montreuil-sur-Mer accueille tous les musiciens, quel que soit leur niveau ou leur âge.
-                  Que vous soyez débutant ou confirmé, jeune ou moins jeune, il y a une place pour vous parmi nous !
-                </p>
-
-                <ul className="space-y-3">
-                  <li className="flex items-center gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-primary" />
-                    <span>Musiciens amateurs de tous niveaux</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-primary" />
-                    <span>Jeunes musiciens issus de l&#39;école de musique</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-primary" />
-                    <span>Musiciens confirmés souhaitant partager leur expérience</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-primary" />
-                    <span>Anciens musiciens souhaitant reprendre une pratique</span>
-                  </li>
-                </ul>
-
-                <div className="pt-4">
-                  <Button asChild className="group h-auto whitespace-normal py-3 text-center">
-                    <Link href="/contact" className="flex items-center gap-2">
-                      Contactez-nous pour plus d&#39;informations
-                      <ChevronRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                    </Link>
-                  </Button>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <div className="photo-frame">
-                <Image
-                  src="/assets/harmonie-dordogne.jpg"
-                  alt="Les musiciens de l’Harmonie au château en Dordogne"
-                  width={1800}
-                  height={1205}
-                  className="rounded-lg w-full h-auto"
-                />
-              </div>
-            </div>
-          </div>
+      <section className="bg-muted py-12 md:py-16">
+        <div className="site-container grid items-center gap-8 lg:grid-cols-2">
+          <Image src="/assets/cours-de-groupe.avif" alt="Les élèves pendant un cours de musique en groupe" width={500} height={600} sizes="(max-width: 1023px) 100vw, 50vw" className="w-full max-h-96 object-contain rounded-lg" />
+          <div><p className="text-sm font-semibold text-primary mb-4">L’école de musique</p><h2 className="section-title mb-6">Avant la scène,<br />les premiers pas.</h2><p className="text-lg mb-4">Cours d’instruments, formation musicale et pratique collective : l’école accueille les élèves de tous âges, débutants ou confirmés.</p><p className="text-muted-foreground mb-6">Dès que votre niveau le permet, vous pouvez participer aux répétitions et intégrer progressivement l’harmonie.</p><Button asChild><Link href="/ecole-de-musique">Découvrir l’école de musique</Link></Button></div>
         </div>
       </section>
 
-      {/* École de Musique Section */}
-      <section className="py-16 md:py-24 bg-muted">
-        <div className="site-container">
-          <div className="section-heading">
-            <h2 className="section-title mb-4">Notre École de Musique</h2>
-            <p className="section-subtitle">
-              Débutez ou perfectionnez votre pratique musicale avant de rejoindre l&#39;harmonie
-            </p>
-          </div>
+      <MediaFeature id="join-stage-title" eyebrow="L’harmonie et la classe orchestre" title="Partager la scène."
+        media={<figure><YouTubeEmbed id="KGIi6CUYmLw" title="Wellerman — final avec la classe orchestre de Montreuil" /><figcaption className="mt-3 text-sm">Wellerman · Final avec la classe orchestre · Vidéo publiée en avril 2024 par MARLENE47100.</figcaption></figure>}
+        actions={<Button asChild variant="secondary"><a href="#rejoindre-formulaire">Rencontrer l’harmonie</a></Button>}
+      ><p>Un aperçu du plaisir de jouer ensemble, avec ce final réunissant l’harmonie et la classe orchestre.</p><Link href="/galerie" className="home-text-link">Découvrir aussi les photos du collectif →</Link></MediaFeature>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="photo-frame">
-                <Image
-                  src="/assets/cours-de-groupe.avif"
-                  alt="École de Musique"
-                  width={500}
-                  height={600}
-                  className="rounded-lg w-full h-auto"
-                />
-              </div>
-            </div>
-
-            <div>
-              <div className="space-y-6">
-                <div className="inline-block bg-secondary/20 text-primary px-4 py-1 rounded-full mb-2 font-medium">
-                  Inscriptions ouvertes
-                </div>
-                <h3 className="text-3xl font-bold mb-4">Formez-vous à la musique</h3>
-                <p className="text-muted-foreground">
-                  Notre école de musique est le tremplin idéal pour rejoindre l&#39;harmonie. Elle accueille les élèves de
-                  tous âges, débutants ou confirmés, désireux d&#39;apprendre ou de perfectionner leur pratique
-                  instrumentale.
-                </p>
-
-                <div className="space-y-4">
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary text-white">
-                      <GraduationCap className="h-6 w-6" />
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-bold">Formation complète</h4>
-                      <p className="text-muted-foreground">
-                        Cours d&#39;instruments, formation musicale, pratique collective... Notre offre pédagogique vous
-                        prépare à intégrer l&#39;harmonie.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-secondary text-secondary-foreground">
-                      <Music className="h-6 w-6" />
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-bold">Intégration progressive</h4>
-                      <p className="text-muted-foreground">
-                        Dès que votre niveau le permet, vous pourrez participer aux répétitions de l&#39;harmonie et
-                        progressivement intégrer l&#39;ensemble.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="pt-4">
-                  <Button asChild size="lg" className="group h-auto whitespace-normal py-3 text-center">
-                    <Link href="/ecole-de-musique" className="flex items-center gap-2">
-                      Découvrir notre école de musique
-                      <ChevronRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                    </Link>
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Formulaire */}
-      <section className="py-16 md:py-24">
-        <div className="site-container">
-          <div className="section-heading">
-            <h2 className="section-title mb-4">Contactez-nous</h2>
-            <p className="section-subtitle">
-              Vous souhaitez nous rejoindre ou obtenir plus d&#39;informations ? Remplissez le formulaire ci-dessous.
-            </p>
-          </div>
-
-          <div className="max-w-2xl mx-auto">
-            <div>
-              <JoinForm />
-            </div>
-          </div>
+      <section id="rejoindre-formulaire" className="site-container py-12 md:py-16">
+        <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-12">
+          <div><p className="text-sm font-semibold text-primary mb-4">Le premier contact</p><h2 className="section-title mb-6">Faisons connaissance.</h2><p className="text-lg max-w-lg">Présentez-nous votre instrument, votre parcours et vos envies. Ce formulaire permet de prendre contact avec l’association.</p><Link href="/contact" className="home-text-link text-primary mt-4">Retrouver nos coordonnées →</Link></div>
+          <JoinForm />
         </div>
       </section>
     </div>
   )
 }
-

@@ -21,7 +21,9 @@ test('YouTube loads only after activation and receives keyboard focus', () => {
   const poster = new URL(container.querySelector('img').getAttribute('src'), 'http://localhost:3000');
   assert.equal(poster.origin, 'http://localhost:3000');
   assert.equal(poster.searchParams.get('url'), '/assets/videos/0DapvwTHhz4.jpg');
-  fireEvent.click(screen.getByRole('button', { name: 'Lire sur cette page : Concert' }));
+  const play = screen.getByRole('button', { name: 'Lire avec YouTube sur cette page : Concert' });
+  assert.match(play.textContent, /Lire avec YouTube/);
+  fireEvent.click(play);
   const frame = screen.getByTitle('Concert');
   assert.equal(frame.src, 'https://www.youtube-nocookie.com/embed/0DapvwTHhz4?autoplay=1');
   assert.equal(document.activeElement, frame);

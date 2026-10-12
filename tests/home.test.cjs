@@ -21,6 +21,8 @@ test('the homepage presents the next concert and keeps access to lessons and the
   assert.equal(getByRole(page, 'link', { name: 'Consulter les tarifs' }).getAttribute('href'), '/ecole-de-musique#tarifs');
   assert.equal(getByRole(page, 'link', { name: 'Rejoindre l’orchestre' }).getAttribute('href'), '/rejoindre');
   assert.ok(getByRole(page, 'img', { name: 'Les élèves de l’école de musique en formation musicale' }));
+  assert.equal(new URL(getByRole(page, 'img', { name: 'Des flûtistes de l’école de musique réunies sur scène' }).getAttribute('src'), 'https://example.test').searchParams.get('url'), '/assets/cours-instruments.jpg');
+  assert.equal(new URL(getByRole(page, 'img', { name: 'Les élèves et les musiciens jouent ensemble à l’audition de 2018' }).getAttribute('src'), 'https://example.test').searchParams.get('url'), '/assets/archives/85c2087db2123161.webp');
   assert.ok(getByRole(page, 'img', { name: 'L’Harmonie réunie à la Sainte-Cécile 2025' }));
 });
 

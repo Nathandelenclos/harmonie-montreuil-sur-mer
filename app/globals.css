@@ -137,8 +137,38 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .page-header-content { animation: header-enter 250ms ease-out; }
-  @keyframes header-enter { from { transform: translateY(6px); } to { transform: translateY(0); } }
+  .page-transition { animation: page-enter 320ms ease-out; }
+  .page-header-layout > :last-child,
+  .home-hero-layout > figure { animation: photo-enter 650ms cubic-bezier(0.22, 1, 0.36, 1); }
+  @keyframes page-enter { from { opacity: 0.65; } to { opacity: 1; } }
+  @keyframes photo-enter { from { transform: translateY(16px); } to { transform: none; } }
+
+  .motion-button { transition: transform 180ms ease-out, background-color 180ms ease-out, color 180ms ease-out; }
+  .page-transition a img,
+  .youtube-preview img,
+  .school-instruments img { transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .photo-dialog[open] { animation: photo-enter 240ms ease-out; }
+
+  @media (hover: hover) {
+    .motion-button:not(:disabled):hover { transform: translateY(-2px); }
+    .motion-button:not(:disabled):active { transform: translateY(0); }
+    .page-transition a:hover img,
+    .youtube-preview:hover img,
+    .school-instruments li:hover img { transform: scale(1.025); }
+  }
+
+  @supports (animation-timeline: view()) and (animation-range: entry 0% entry 80%) {
+    :is(.section-heading, .home-section-title, .school-course, .home-photo-grid, .home-orchestra, .event-card, .media-feature-layout, .school-instruments > li, #albums li, #captations li, .reading-content > section) {
+      animation: scroll-enter linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 80%;
+    }
+    :is(.school-course, .home-orchestra, .event-card, .media-feature-layout, #albums li, #captations li):focus-within { animation: none; }
+    @keyframes scroll-enter {
+      from { opacity: 0.65; transform: translateY(18px); }
+      to { opacity: 1; transform: none; }
+    }
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
@@ -208,7 +238,7 @@
   @media (min-width: 48rem) {
     .home-hero { min-height: 44rem; }
     .home-hero-shade {
-      background: linear-gradient(90deg, hsl(var(--primary) / 96%), hsl(var(--primary) / 86%) 45%, hsl(var(--primary) / 12%));
+      background: linear-gradient(90deg, hsl(var(--primary) / 96%), hsl(var(--primary) / 86%) 45%, hsl(var(--primary) / 75%));
     }
   }
 
@@ -227,6 +257,7 @@
   .callout { @apply border-t-4 border-secondary bg-primary py-16 text-white md:py-20; }
   .reading-content { @apply mx-auto w-full max-w-3xl space-y-12 px-6 py-16 leading-relaxed md:py-20; }
   .reading-content h2 { @apply border-l-4 border-secondary pl-4 text-primary; }
+  .reading-content > section { @apply border-t border-primary/20 pt-8; }
   .content-page p { @apply leading-relaxed; }
   .content-page h2:not(.text-white) { @apply text-primary; }
   .content-page .callout h2 { @apply text-white; }
@@ -260,4 +291,31 @@
 @layer components {
   .photo-dialog { @apply max-w-6xl; width: calc(100% - theme('spacing.8')); max-height: calc(100dvh - theme('spacing.8')); }
   .photo-dialog::backdrop { background: hsl(var(--primary) / 85%); }
+}
+
+.media-feature { container-type: inline-size; }
+@container (min-width: 56rem) {
+  .media-feature-layout { grid-template-columns: 2fr 3fr; }
+}
+
+@layer components {
+  .school-course { @apply grid items-start gap-6 border-t border-primary/20 pt-6; }
+  .school-instruments {
+    @apply grid gap-4;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, max(theme('spacing.28'), calc((100% - theme('spacing.12')) / 4))), 1fr));
+  }
+  .concert-recordings { @apply grid-cols-1; }
+  @media (min-width: 48rem) {
+    .school-course { grid-template-columns: 2fr 3fr; }
+  }
+  @media (min-width: 64rem) {
+    .home-hero-layout { @apply grid grid-cols-2 items-center gap-12; }
+    .concert-recordings { grid-template-columns: 2fr 1fr; }
+    .concert-recordings > :first-child { @apply row-span-2; }
+  }
+}
+
+.page-header { container-type: inline-size; }
+@container (min-width: 56rem) {
+  .page-header-layout { grid-template-columns: 1fr 1fr; }
 }

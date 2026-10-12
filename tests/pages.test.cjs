@@ -44,8 +44,77 @@ test('concerts provide three embedded video previews and a link to all recording
   const Events = require('../app/evenements/page.tsx').default;
   const page = new JSDOM(renderToStaticMarkup(React.createElement(Events))).window.document.body;
   const videos = getByRole(page, 'region', { name: 'L’harmonie en concert' });
-  assert.equal(getAllByRole(videos, 'button', { name: /Lire sur cette page/ }).length, 3);
+  assert.equal(getAllByRole(videos, 'button', { name: /Lire avec YouTube sur cette page/ }).length, 3);
   assert.equal(getByRole(videos, 'link', { name: /Toutes les vidéos/ }).getAttribute('href'), '/videos');
   assert.match(videos.textContent, /publiées par MARLENE47100/);
   assert.equal(videos.querySelector('iframe'), null);
+});
+
+for (const [route, video] of [['', '0DapvwTHhz4'], ['a-propos/', 'tBcUdDxvP0k'], ['ecole-de-musique/', 'j591F-YCkBs'], ['rejoindre/', 'KGIi6CUYmLw']]) {
+  test(`${route || 'home'} showcases a catalogued Montreuil video without loading YouTube upfront`, () => {
+    const Page = require(`../app/${route}page.tsx`).default;
+    const page = new JSDOM(renderToStaticMarkup(React.createElement(Page))).window.document.body;
+    assert.ok(page.querySelector(`img[src*="${video}"]`));
+    assert.ok(require('../data/videos.json').some(item => item.id === video));
+    assert.ok(getAllByRole(page, 'button', { name: /Lire avec YouTube sur cette page/ }).length);
+    assert.equal(page.querySelector('iframe[src*="youtube"]'), null);
+  });
+}
+
+test('school retains course durations, all instruments, teachers and practical details', () => {
+  const School = require('../app/ecole-de-musique/page.tsx').default;
+  const page = new JSDOM(renderToStaticMarkup(React.createElement(School))).window.document.body;
+  for (const name of ['Éveil musical', 'Formation musicale', 'Cours d’instruments', 'Pratique collective'])
+    assert.ok(getByRole(page, 'heading', { name, exact: true }));
+  for (const name of ['Flûte', 'Hautbois', 'Clarinette', 'Saxophone', 'Trompette', 'Trombone', 'Cor', 'Tuba', 'Percussions', 'Piano'])
+  {
+    const image = getByRole(page, 'img', { name: `Illustration de l’instrument : ${name}` });
+    const source = new URL(image.getAttribute('src'), 'http://localhost').searchParams.get('url');
+    assert.ok(require('node:fs').existsSync(require('node:path').join(__dirname, '../public', source)), source);
+  }
+  for (const text of ['4 à 6 ans', '1 h 30', '30 min', '18 h à 19 h', 'Magalie DELMOTTE', 'Céline GRAY', '320 €', '400 €', '14 h à 18 h'])
+    assert.ok(page.textContent.includes(text), text);
+  assert.match(page.textContent, /Audition 2018/);
+  assert.ok(getByRole(page, 'link', { name: /Photos de l’école/ }));
+});
+
+test('page header composes a photographic introduction and real navigation actions', () => {
+  const page = new JSDOM(renderToStaticMarkup(React.createElement(PageHeader, {
+    homeLink: React.createElement('a', { href: '/' }, 'Accueil'), title: 'Jouer ensemble', eyebrow: 'Depuis 1865',
+    media: React.createElement('figure', null, React.createElement('img', { src: '/group.jpg', alt: 'Les musiciens' }), React.createElement('figcaption', null, 'Archive 2018')),
+    actions: React.createElement('a', { href: '#programme' }, 'Voir le programme'),
+  }))).window.document.body;
+  assert.ok(getByRole(page, 'heading', { level: 1, name: 'Jouer ensemble' }));
+  assert.ok(getByRole(page, 'img', { name: 'Les musiciens' }));
+  assert.equal(getByRole(page, 'link', { name: 'Voir le programme' }).getAttribute('href'), '#programme');
+  assert.match(page.textContent, /Archive 2018/);
+});
+
+test('the redesigned albums index preserves every album link exactly once', () => {
+  const Gallery = require('../app/galerie/page.tsx').default;
+  const page = new JSDOM(renderToStaticMarkup(React.createElement(Gallery))).window.document.body;
+  for (const album of require('../data/photo-albums.json'))
+    assert.equal(page.querySelectorAll(`a[href="/galerie/${album.slug}"]`).length, 1);
+  assert.equal(getAllByRole(page, 'heading', { level: 1 }).length, 1);
+});
+
+test('the contact redesign keeps the form, phone numbers, email and deferred map available', () => {
+  const Contact = require('../app/contact/page.tsx').default;
+  const page = new JSDOM(renderToStaticMarkup(React.createElement(Contact))).window.document.body;
+  for (const href of ['tel:+33321860569', 'tel:+33668853079', 'mailto:harmoniemontreuilsurmer@orange.fr'])
+    assert.ok(page.querySelector(`a[href="${href}"]`));
+  assert.ok(getByRole(page, 'heading', { name: 'Envoyez-nous un message' }));
+  assert.ok(getByRole(page, 'button', { name: 'Afficher la carte Google Maps' }));
+  assert.equal(page.querySelector('iframe'), null);
+});
+
+test('concert details preserve booking and show a dated, deferred recording', async t => {
+  t.mock.timers.enable({ apis: ['Date'], now: new Date('2026-10-12T12:00:00Z') });
+  const EventPage = require('../app/evenements/[slug]/page.tsx').default;
+  const page = new JSDOM(renderToStaticMarkup(await EventPage({ params: Promise.resolve({ slug: 'mille-legendes-en-harmonie' }) }))).window.document.body;
+  assert.ok(getByRole(page, 'heading', { level: 1, name: 'Mille Légendes en Harmonie' }));
+  assert.ok(getByRole(page, 'button', { name: /The Greatest Showman/ }));
+  assert.ok(getByRole(page, 'link', { name: 'Réserver sur HelloAsso' }));
+  assert.match(page.textContent, /avril 2025/);
+  assert.equal(page.querySelector('iframe'), null);
 });

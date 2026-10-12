@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import PageHeader from "@/components/page-header"
+import { Button } from "@/components/ui/button"
 import albums from "@/data/photo-albums.json"
 import { pageMetadata } from "@/lib/metadata"
 
@@ -8,21 +9,25 @@ export const metadata = pageMetadata("Les archives en images", "Retrouvez les co
 
 export default function GalleryPage() {
   return <>
-    <PageHeader homeLink={<Link href="/">Accueil</Link>} title="Les archives en images" description="Concerts, rencontres et souvenirs : la vie de l’harmonie au fil des années." />
-    <section className="site-container py-16 md:py-24" aria-labelledby="albums-title">
-      <div className="section-heading">
-        <h2 id="albums-title" className="section-title text-primary">Parcourir les albums</h2>
-        <p className="section-subtitle">Choisissez une période ou retrouvez les souvenirs de l’école de musique et des tambours.</p>
-      </div>
-      <ul className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,var(--card-min-default)),1fr))] gap-8">
-        {albums.map(album => <li key={album.slug}>
-          <Link href={`/galerie/${album.slug}`} className="block h-full overflow-hidden rounded-lg border bg-white text-primary hover:underline underline-offset-4">
-            <div className="relative aspect-[4/3] bg-muted"><Image src={album.photos[0].src} alt="" fill sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw" className="object-contain" /></div>
-            <div className="border-t-4 border-secondary p-6"><h3 className="text-2xl font-bold mb-2">{album.title}</h3><p>{album.photos.length} photos · Ouvrir l’album ↗</p></div>
-          </Link>
-        </li>)}
-      </ul>
-      <Link href="/videos" className="inline-flex min-h-11 items-center mt-12 font-semibold text-primary underline">Retrouver les concerts en vidéos →</Link>
-    </section>
+    <PageHeader homeLink={<Link href="/">Accueil</Link>} eyebrow="Les archives de l’harmonie" title="Ces moments qui restent." description="Des visages, des concerts et des souvenirs partagés. Parcourez les albums de l’harmonie, de l’école et des tambours."
+      media={<figure><Image src="/assets/archives/878fe25780b01788.webp" alt="Les musiciens costumés sur scène, éclairés en bleu et jaune" width={1600} height={1059} priority sizes="(max-width: 911px) 100vw, 50vw" className="w-full h-auto rounded-lg" /><figcaption className="mt-3 border-l-4 border-secondary pl-3 text-sm">Concert de printemps 2018</figcaption></figure>}
+      actions={<><Button asChild variant="secondary"><a href="#albums">Explorer les albums</a></Button><Link href="/videos" className="home-text-link">Et avec le son →</Link></>}
+    />
+    <div id="albums" className="site-container py-12 md:py-16 space-y-16">
+      {[
+        { title: 'Au cœur du collectif', description: 'Les souvenirs de l’école de musique et du pupitre des tambours.', albums: albums.filter(album => ['ecole-de-musique', 'tambours'].includes(album.slug)) },
+        { title: 'Remonter le fil des années', description: 'Choisissez une période, puis ouvrez les photos pour les regarder en grand.', albums: albums.filter(album => !['ecole-de-musique', 'tambours'].includes(album.slug)).slice().reverse() },
+      ].map(group => <section key={group.title}>
+        <div className="section-heading"><h2 className="section-title text-primary">{group.title}</h2><p className="section-subtitle">{group.description}</p></div>
+        <ul className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,var(--card-min-wide)),1fr))] gap-x-8 gap-y-10">
+          {group.albums.map(album => <li key={album.slug}>
+            <Link href={`/galerie/${album.slug}`} className="group block text-primary underline-offset-4 hover:underline">
+              <div className="relative aspect-[3/2] overflow-hidden rounded-lg bg-muted"><Image src={album.photos[0].src} alt="" fill sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw" className="object-contain" /></div>
+              <div className="flex items-start justify-between gap-4 border-b border-primary/20 py-4"><div><h3 className="text-2xl font-bold mb-2">{album.title}</h3><p className="text-sm text-muted-foreground">{album.photos.length} photos</p></div><span aria-hidden="true" className="text-2xl">↗</span></div>
+            </Link>
+          </li>)}
+        </ul>
+      </section>)}
+    </div>
   </>
 }

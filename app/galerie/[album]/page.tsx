@@ -20,8 +20,8 @@ export default async function AlbumPage({ params }: { params: Promise<{ album: s
   const album = albums.find(item => item.slug === slug)
   if (!album) notFound()
   return <>
-    <PageHeader homeLink={<Link href="/galerie">Tous les albums</Link>} title={album.title} description={`${album.photos.length} photos à parcourir. Sélectionnez une photo pour l’agrandir.`} />
-    <section className="site-container py-16 md:py-24" aria-label={`Photos : ${album.title}`}>
+    <PageHeader homeLink={<Link href="/galerie">Tous les albums</Link>} eyebrow="Archives photographiques" title={album.title} actions={<Link href="/galerie" className="home-text-link">Changer d’album →</Link>} description={`${album.photos.length} photos à parcourir. Sélectionnez une photo pour l’agrandir.`} />
+    <section className="site-container py-8 md:py-12" aria-label={`Photos : ${album.title}`}>
       <PhotoGallery photos={album.photos} title={album.title} />
       <Link href="/galerie" className="home-text-link mt-8 text-primary">Retour aux albums</Link>
     </section>

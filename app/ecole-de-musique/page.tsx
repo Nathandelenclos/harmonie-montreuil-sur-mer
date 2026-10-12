@@ -1,10 +1,12 @@
 import { pageMetadata } from "@/lib/metadata"
 import Image from "next/image"
 import Link from "next/link"
-import { Clock, MapPin, ChevronRight, CheckCircle2 } from "lucide-react"
+import { MapPin, ChevronRight } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import PageHeader from "@/components/page-header"
+import MediaFeature from "@/components/media-feature"
+import YouTubeEmbed from "@/components/youtube-embed"
 
 export const metadata = pageMetadata("École de musique : cours, tarifs et inscriptions", "Éveil dès 4 ans, formation musicale et chorale, instruments, tarifs et contacts de l’école de musique de Montreuil-sur-Mer.", "/ecole-de-musique")
 
@@ -13,23 +15,23 @@ export default function MusicSchoolPage() {
     {
       name: "Bois",
       instruments: [
-        { name: "Flûte", image: "/assets/instruments/flute.png" },
-        { name: "Hautbois", image: "/assets/instruments/hautbois.webp" },
-        { name: "Clarinette", image: "/assets/instruments/clarinette.jpg" },
-        { name: "Saxophone", image: "/assets/instruments/saxophone.jpg" },
+        { name: "Flûte", image: "/assets/instruments/studio/flute.webp" },
+        { name: "Hautbois", image: "/assets/instruments/studio/hautbois.webp" },
+        { name: "Clarinette", image: "/assets/instruments/studio/clarinette.webp" },
+        { name: "Saxophone", image: "/assets/instruments/studio/saxophone.webp" },
       ],
     },
     {
       name: "Cuivres",
       instruments: [
-        { name: "Trompette", image: "/assets/instruments/trompette.jpeg" },
-        { name: "Trombone", image: "/assets/instruments/trombone.jpg" },
-        { name: "Cor", image: "/assets/instruments/cor.avif" },
-        { name: "Tuba", image: "/assets/instruments/tuba.jpg" },
+        { name: "Trompette", image: "/assets/instruments/studio/trompette.webp" },
+        { name: "Trombone", image: "/assets/instruments/studio/trombone.webp" },
+        { name: "Cor", image: "/assets/instruments/studio/cor.webp" },
+        { name: "Tuba", image: "/assets/instruments/studio/tuba.webp" },
       ],
     },
-    { name: "Percussions", instruments: [{ name: "Percussions", image: "/assets/instruments/percussion.jpg" }] },
-    { name: "Piano", instruments: [{ name: "Piano", image: "/assets/instruments/piano.jpeg" }] },
+    { name: "Percussions", instruments: [{ name: "Percussions", image: "/assets/instruments/studio/percussions.webp" }] },
+    { name: "Piano", instruments: [{ name: "Piano", image: "/assets/instruments/studio/piano.webp" }] },
   ]
 
   const teachers = [
@@ -65,193 +67,77 @@ export default function MusicSchoolPage() {
 
   return (
     <div className="content-page">
-      <PageHeader homeLink={<Link href="/">Accueil</Link>} title="École de Musique" image="/assets/pratique-collective.jpg" description="Apprenez la musique dans un cadre convivial et bienveillant" />
+      <PageHeader homeLink={<Link href="/">Accueil</Link>} eyebrow="École de musique de Montreuil-sur-Mer" title="La musique commence avec vous."
+        description="Enfants, adultes, débutants ou confirmés : découvrir un instrument, trouver son rythme et prendre plaisir à jouer ensemble."
+        media={<figure><Image src="/assets/formation-musicale.jpg" alt="Les élèves réunis pendant un cours de formation musicale" width={1200} height={613} priority sizes="(max-width: 911px) 100vw, 50vw" className="w-full h-auto rounded-lg" /><figcaption className="mt-3 border-l-4 border-secondary pl-3 text-sm">Apprendre, écouter et progresser ensemble.</figcaption></figure>}
+        actions={<><Button asChild size="lg" variant="secondary"><a href="#cours">Trouver mon cours</a></Button><Button asChild size="lg" variant="outline" className="bg-white text-primary"><a href="#contacts">Parlons de votre projet</a></Button></>}
+      />
 
-      <section className="site-container py-12 md:py-16">
-        <h2 className="text-2xl font-bold mb-4">Cours de musique à Montreuil-sur-Mer</h2>
-        <p className="max-w-3xl mb-6">Éveil musical dès 4 ans, chant choral, instruments et orchestre : un parcours pour les enfants et les adultes, débutants ou confirmés.</p>
-        <dl className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,var(--card-min-default)),1fr))] gap-6 mb-8">
-          <div className="rounded-lg border bg-white p-6"><dt className="font-bold mb-2">Formule formation + instrument</dt><dd>320 € / an à Montreuil<br />400 € / an hors Montreuil<br /><span className="text-sm text-muted-foreground">Hors frais d’adhésion et d’examen</span></dd></div>
-          <div className="rounded-lg border bg-white p-6"><dt className="font-bold mb-2">Rencontrer l’équipe</dt><dd>Mercredi, 14 h – 18 h<br />École de musique, rue du Paon</dd></div>
-          <div className="rounded-lg border bg-white p-6"><dt className="font-bold mb-2">Parlons de votre projet</dt><dd><a className="text-primary underline" href="tel:+33612130889">06 12 13 08 89</a><br /><a className="text-primary underline" href="#contacts">Tous les contacts</a></dd></div>
-        </dl>
-        <nav aria-label="Dans la page école de musique" className="flex flex-wrap gap-3">
-          {[['#cours', 'Cours'], ['#instruments', 'Instruments'], ['#tarifs', 'Tarifs'], ['#contacts', 'Contacts'], ['#equipe', 'Équipe pédagogique']].map(([href, label]) => <a key={href} href={href} className="rounded-md border bg-white px-4 py-3 text-primary font-semibold hover:bg-muted">{label}</a>)}
+      <div className="border-b bg-white">
+        <nav aria-label="Dans la page école de musique" className="site-container flex flex-wrap gap-x-6 gap-y-1 py-3">
+          {[['#cours', 'Cours'], ['#instruments', 'Instruments'], ['#tarifs', 'Tarifs'], ['#contacts', 'Contacts'], ['#equipe', 'Équipe pédagogique']].map(([href, label]) => <a key={href} href={href} className="home-text-link text-primary">{label}</a>)}
         </nav>
-      </section>
+      </div>
 
-      {/* Nos cours */}
-      <section id="cours" className="py-12 md:py-16">
-        <div className="site-container">
-          <div className="section-heading">
-            <h2 className="section-title mb-4">Nos cours</h2>
-            <p className="section-subtitle">
-              Découvrez notre offre pédagogique complète pour tous les âges et tous les niveaux
-            </p>
-          </div>
-
-          <ul className="grid md:grid-cols-2 gap-12 mb-16">
-            <li>
-              <div className="surface overflow-hidden">
-                <div className="relative h-64 bg-primary/5">
-                  <Image src="/assets/formation-musicale.jpg" alt="Les élèves pendant un cours de formation musicale" fill sizes="(max-width: 767px) 100vw, 50vw" className="object-cover" />
-                </div>
-                <div className="p-8">
-                  <h3 className="text-2xl font-bold mb-4">Formation musicale</h3>
-                  <p className="text-muted-foreground mb-6">
-                    La formation musicale est le socle de l&#39;apprentissage musical. Elle permet d&#39;acquérir les bases
-                    théoriques et pratiques nécessaires à la pratique instrumentale : lecture de notes, rythme, écoute,
-                    culture musicale... Elle inclut également la pratique du chant choral.
-                  </p>
-                  <ul className="space-y-2">
-                    <li className="flex items-center gap-2">
-                      <Clock className="h-5 w-5 text-primary" />
-                      <span>1 h 30 par semaine, chorale incluse</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-5 w-5 text-primary" />
-                      <span>Cours collectifs par niveau</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-5 w-5 text-primary" />
-                      <span>Approche ludique et interactive</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </li>
-
-            <li>
-              <div className="surface overflow-hidden">
-                <div className="relative h-64 bg-primary/5">
-                  <Image src="/assets/cours-instruments.jpg" alt="Les élèves de flûte en concert" fill sizes="(max-width: 767px) 100vw, 50vw" className="object-contain" />
-                </div>
-                <div className="p-8">
-                  <h3 className="text-2xl font-bold mb-4">Cours d&#39;instruments</h3>
-                  <p className="text-muted-foreground mb-6">
-                    Les cours d&#39;instruments sont dispensés en cours individuels pour permettre un suivi personnalisé de
-                    chaque élève. Notre école propose l&#39;apprentissage de nombreux instruments à vent et à percussion.
-                  </p>
-                  <ul className="space-y-2">
-                    <li className="flex items-center gap-2">
-                      <Clock className="h-5 w-5 text-primary" />
-                      <span>30 min par semaine</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-5 w-5 text-primary" />
-                      <span>Cours individuels adaptés à chaque élève</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-5 w-5 text-primary" />
-                      <span>Répertoire varié et adapté aux goûts de l&#39;élève</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </li>
-          </ul>
-
-          <ul className="grid md:grid-cols-2 gap-12">
-            <li>
-              <div className="surface overflow-hidden">
-                <div className="relative h-64 bg-primary/5">
-                  <Image src="/assets/pratique-collective.jpg" alt="Les élèves réunis pour la pratique collective" fill sizes="(max-width: 767px) 100vw, 50vw" className="object-cover" />
-                </div>
-                <div className="p-8">
-                  <h3 className="text-2xl font-bold mb-4">Pratique collective</h3>
-                  <p className="text-muted-foreground mb-6">
-                    La pratique collective est essentielle dans l&#39;apprentissage musical. Elle permet de développer
-                    l&#39;écoute, le sens du rythme et le plaisir de jouer ensemble. Plusieurs ensembles sont proposés selon
-                    les niveaux.
-                  </p>
-                  <ul className="space-y-2">
-                    <li className="flex items-center gap-2">
-                      <Clock className="h-5 w-5 text-primary" />
-                      <span>1h par semaine le lundi de 18h à 19h</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-5 w-5 text-primary" />
-                      <span>Orchestre junior pour les débutants</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-5 w-5 text-primary" />
-                      <span>Harmonie pour les élèves plus avancés</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </li>
-
-            <li>
-              <div className="surface overflow-hidden">
-                <div className="relative h-64 bg-primary/5">
-                  <Image src="/assets/eveil-musical.jpg" alt="Les enfants de l’éveil musical sur scène" fill sizes="(max-width: 767px) 100vw, 50vw" className="object-contain" />
-                </div>
-                <div className="p-8">
-                  <h3 className="text-2xl font-bold mb-4">Éveil musical</h3>
-                  <p className="text-muted-foreground mb-6">
-                    L&#39;éveil musical s&#39;adresse aux enfants de 4 à 6 ans. Il permet de découvrir la musique de manière
-                    ludique et sensorielle à travers le chant, le rythme, l&#39;écoute et la découverte des instruments.
-                  </p>
-                  <ul className="space-y-2">
-                    <li className="flex items-center gap-2">
-                      <Clock className="h-5 w-5 text-primary" />
-                      <span>1h par semaine</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-5 w-5 text-primary" />
-                      <span>Approche ludique et sensorielle</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <CheckCircle2 className="h-5 w-5 text-primary" />
-                      <span>Découverte des instruments</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </li>
-          </ul>
+      <section id="cours" className="site-container py-12 md:py-16" aria-labelledby="courses-title">
+        <div className="section-heading">
+          <p className="text-sm font-semibold text-primary">À chacun son point de départ</p>
+          <h2 id="courses-title" className="section-title">Une envie, un premier pas.</h2>
+          <p className="section-subtitle">De la découverte des sons au plaisir de l’orchestre, quatre façons de faire de la musique.</p>
+        </div>
+        <div className="grid gap-x-12 gap-y-10 lg:grid-cols-2">
+          {[
+            { title: "Éveil musical", image: "/assets/eveil-musical.jpg", alt: "Les enfants de l’éveil musical sur scène", label: "Découvrir · 4 à 6 ans", duration: "1 h par semaine", description: "Chanter, écouter, explorer le rythme et découvrir les instruments : une approche ludique et sensorielle pour les premiers pas en musique." },
+            { title: "Formation musicale", image: "/assets/formation-musicale.jpg", alt: "Un cours collectif de formation musicale", label: "Comprendre · Cours collectifs par niveau", duration: "1 h 30 par semaine, chorale incluse", description: "Lecture de notes, rythme, écoute et culture musicale : les bases pour progresser à l’instrument, avec une approche ludique et la pratique du chant choral." },
+            { title: "Cours d’instruments", image: "/assets/cours-instruments.jpg", alt: "Les élèves de flûte en concert", label: "Pratiquer · Cours individuels", duration: "30 min par semaine", description: "Un suivi personnalisé, adapté à chaque élève, et un répertoire varié selon ses goûts. Instruments à vent, percussions ou piano : trouvez votre voix." },
+            { title: "Pratique collective", image: "/assets/pratique-collective.jpg", alt: "Les élèves réunis pour jouer en orchestre", label: "Partager · Jouer ensemble", duration: "1 h par semaine, le lundi de 18 h à 19 h", description: "Développer l’écoute, le sens du rythme et le plaisir de jouer en groupe. Orchestre junior pour les débutants, harmonie pour les élèves plus avancés." },
+          ].map(course => <article key={course.title} className="school-course">
+            <Image src={course.image} alt={course.alt} width={600} height={450} sizes="(max-width: 767px) 100vw, (max-width: 1023px) 40vw, 20vw" className="aspect-[4/3] w-full rounded-lg object-contain bg-muted" />
+            <div>
+              <p className="mb-2 text-sm font-semibold text-primary">{course.label}</p>
+              <h3 className="text-2xl font-bold mb-3">{course.title}</h3>
+              <p className="text-muted-foreground">{course.description}</p>
+              <p className="mt-4 border-l-4 border-secondary pl-3 text-sm font-semibold">{course.duration}</p>
+            </div>
+          </article>)}
         </div>
       </section>
 
-      {/* Nos instruments */}
-      <section className="py-12 md:py-16 bg-muted">
+      <MediaFeature id="school-stage-title" eyebrow="La classe orchestre en vidéo" title="Le plaisir de jouer ensemble."
+        media={<figure><YouTubeEmbed id="j591F-YCkBs" title="We don’t talk about Bruno — classe orchestre de Montreuil à Samer" /><figcaption className="mt-3 text-sm">Classe orchestre de Montreuil à Samer · Vidéo publiée en mars 2024 par MARLENE47100.</figcaption></figure>}
+        actions={<Button asChild variant="secondary"><Link href="/videos">Voir les autres captations</Link></Button>}
+      >
+        <p>Écouter les autres, trouver sa place dans l’ensemble et partager la scène : la pratique collective fait partie du parcours musical.</p>
+        <p>La classe d’orchestre complète la formation après deux à trois années de pratique instrumentale.</p>
+      </MediaFeature>
+
+      <section id="instruments" className="bg-muted py-12 md:py-16" aria-labelledby="instruments-title">
         <div className="site-container">
           <div className="section-heading">
-            <h2 id="instruments" className="section-title mb-4">Nos instruments</h2>
-            <p className="section-subtitle">
-              Découvrez les instruments que vous pouvez apprendre à notre école de musique
-            </p>
+            <p className="text-sm font-semibold text-primary">Bois, cuivres, percussions et piano</p>
+            <h2 id="instruments-title" className="section-title">Quel sera votre instrument ?</h2>
+            <p className="section-subtitle">Découvrez les instruments enseignés à l’école. L’équipe est là pour échanger avec vous sur votre choix.</p>
           </div>
+          <ul className="school-instruments">
+            {instrumentFamilies.flatMap(family => family.instruments.map(instrument => <li key={instrument.name} className="overflow-hidden rounded-lg bg-white border">
+              <Image src={instrument.image} alt={`Illustration de l’instrument : ${instrument.name}`} width={800} height={800} sizes="(max-width: 767px) 50vw, 25vw" className="w-full aspect-square object-contain" />
+              <div className="p-2 sm:p-4 border-t">{family.name !== instrument.name && <p className="text-sm text-muted-foreground">{family.name}</p>}<h3 className="text-base sm:text-xl font-bold text-primary">{instrument.name}</h3></div>
+            </li>))}
+          </ul>
+          <Button asChild className="mt-6"><a href="#contacts">Être accompagné dans mon choix</a></Button>
+        </div>
+      </section>
 
-          <div className="space-y-10">
-            {instrumentFamilies.map((family) => (
-              <section key={family.name}>
-                <h3 className="text-2xl font-bold mb-6">{family.name}</h3>
-                <ul className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,var(--card-min-compact)),1fr))] gap-6">
-                  {family.instruments.map((instrument) => (
-                    <li key={instrument.name} className="max-w-80">
-                      <div className="card-hover">
-                        <div className="instrument-card">
-                          <div className="aspect-square relative">
-                            <Image
-                              src={instrument.image}
-                              alt={`Cours de ${instrument.name}`}
-                              fill
-                              sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 25vw"
-                              className="object-cover"
-                            />
-                          </div>
-                          <div className="p-4 text-center">
-                            <h4 className="text-xl font-bold">{instrument.name}</h4>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            ))}
+      <section className="site-container py-12 md:py-16" aria-labelledby="school-photos-title">
+        <div className="grid items-center gap-8 lg:grid-cols-2">
+          <figure>
+            <Image src="/assets/archives/85c2087db2123161.webp" alt="Les élèves et les musiciens réunis sur scène lors d’une audition" width={1600} height={1063} sizes="(max-width: 1023px) 100vw, 50vw" className="w-full h-auto rounded-lg" />
+            <figcaption className="mt-3 border-l-4 border-secondary pl-3 text-sm text-muted-foreground">Audition 2018 · Archives de l’école de musique</figcaption>
+          </figure>
+          <div>
+            <h2 id="school-photos-title" className="section-title mb-6">Des notes, des visages,<br />des souvenirs.</h2>
+            <p className="text-lg mb-6">Les auditions et les moments partagés se retrouvent aussi en images. Parcourez les archives de l’école.</p>
+            <Button asChild variant="outline"><Link href="/galerie/ecole-de-musique">Photos de l’école de musique</Link></Button>
           </div>
         </div>
       </section>
@@ -263,8 +149,8 @@ export default function MusicSchoolPage() {
       >
         <div className="site-container">
           <div className="section-heading">
-            <h2 className="section-title mb-4">Tarifs et contacts</h2>
-            <p className="section-subtitle">Rejoignez notre école de musique !</p>
+            <h2 className="section-title mb-4">Préparons votre inscription</h2>
+            <p className="section-subtitle">Les tarifs, les horaires et les bons interlocuteurs, au même endroit.</p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
@@ -441,12 +327,12 @@ export default function MusicSchoolPage() {
             </p>
           </div>
 
-          <ul className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,var(--card-min-default)),1fr))] gap-8">
+          <ul className="grid gap-x-12 md:grid-cols-2">
             {teachers.map((teacher) => (
               <li key={teacher.name}>
-                <div className="card-hover h-full">
-                  <div className="surface overflow-hidden h-full">
-                    <div className="p-6">
+                <div className="border-t border-primary/20 py-6">
+                  <div>
+                    <div>
                       <h3 className="text-xl font-bold">{teacher.name}</h3>
                       <p className="text-primary mb-4">{teacher.role}</p>
                     </div>
