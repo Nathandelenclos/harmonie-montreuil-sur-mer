@@ -13,7 +13,7 @@ export const metadata = pageMetadata("L’harmonie et son équipe", "Découvrez 
 export default function AboutPage() {
   return (
     <div className="content-page">
-      <PageHeader homeLink={<Link href="/">Accueil</Link>} eyebrow="Montreuil-sur-Mer · Depuis 1865" title="Une histoire de musique. Et de rencontres."
+      <PageHeader homeLink={<Link href="/">Accueil</Link>} eyebrow="Montreuil-sur-Mer · Depuis 1854" title="Une histoire de musique. Et de rencontres."
         description="Une trentaine de musiciens amateurs, de tous âges et de tous horizons, réunis par le plaisir de jouer ensemble et de faire vivre la musique à Montreuil."
         media={<PhotoSlideshow photos={[
           { src: "/assets/sainte-cecile-2025.jpg", alt: "L’Harmonie réunie pour la Sainte-Cécile 2025", caption: "Les musiciens réunis pour la Sainte-Cécile 2025." },
@@ -30,7 +30,7 @@ export default function AboutPage() {
           <h2 className="section-title">La musique,<br />ça se partage.</h2>
           <div className="space-y-4 text-lg text-muted-foreground">
             <p>Œuvres classiques, musiques de films, variété et compositions pour orchestre d’harmonie : notre répertoire accompagne les concerts thématiques, les cérémonies et les animations locales.</p>
-            <p>Fondée en 1865, l’harmonie est aussi un lieu d’apprentissage et de convivialité. Chacun contribue, à sa manière, à la vie culturelle de la cité.</p>
+            <p>Fondée en 1854, l’harmonie est aussi un lieu d’apprentissage et de convivialité. Chacun contribue, à sa manière, à la vie culturelle de la cité.</p>
           </div>
         </div>
       </section>

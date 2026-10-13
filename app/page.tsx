@@ -20,7 +20,7 @@ export default function Home() {
           <div className="home-hero-copy">
             <p className="mb-6 flex items-center gap-3 text-sm font-semibold"><span aria-hidden="true" className="h-px w-8 bg-secondary" />Concerts, école de musique et orchestre</p>
             <h1 className="home-title mb-8 font-bold">Harmonie de<br />Montreuil-sur-Mer</h1>
-            <p className="max-w-lg text-base leading-relaxed md:text-lg">Écouter un concert, apprendre un instrument ou jouer ensemble : la musique se partage à Montreuil depuis 1865.</p>
+            <p className="max-w-lg text-base leading-relaxed md:text-lg">Écouter un concert, apprendre un instrument ou jouer ensemble : la musique se partage à Montreuil depuis 1854.</p>
           </div>
           <div className="home-hero-actions mt-8 flex flex-wrap gap-4">
             <Button asChild size="lg" variant="secondary" className="hover:bg-secondary hover:underline"><Link href={nextEvent ? `/evenements/${nextEvent.slug}` : "/evenements"}>{nextEvent ? "Découvrir le prochain concert" : "Voir les concerts"}</Link></Button>

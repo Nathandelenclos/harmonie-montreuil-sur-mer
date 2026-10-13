@@ -12,8 +12,8 @@ export default function Footer() {
               <BrandLogo />
             </Link>
             <p className="text-white">
-              Fondée en 1865, l&#39;Harmonie de Montreuil-sur-Mer est une formation musicale qui anime la vie culturelle de
-              notre belle cité depuis plus de 150 ans.
+              Fondée en 1854, l&#39;Harmonie de Montreuil-sur-Mer est une formation musicale qui anime la vie culturelle de
+              notre belle cité depuis plus de 170 ans.
             </p>
             <div className="flex gap-4">
               <a

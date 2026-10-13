@@ -80,7 +80,7 @@ test('school retains course durations, all instruments, teachers and practical d
 
 test('page header composes a photographic introduction and real navigation actions', () => {
   const page = new JSDOM(renderToStaticMarkup(React.createElement(PageHeader, {
-    homeLink: React.createElement('a', { href: '/' }, 'Accueil'), title: 'Jouer ensemble', eyebrow: 'Depuis 1865',
+    homeLink: React.createElement('a', { href: '/' }, 'Accueil'), title: 'Jouer ensemble', eyebrow: 'Depuis 1854',
     media: React.createElement('figure', null, React.createElement('img', { src: '/group.jpg', alt: 'Les musiciens' }), React.createElement('figcaption', null, 'Archive 2018')),
     actions: React.createElement('a', { href: '#programme' }, 'Voir le programme'),
   }))).window.document.body;
