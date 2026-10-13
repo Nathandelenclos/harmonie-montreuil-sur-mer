@@ -128,3 +128,61 @@ versions publiées**, conserver une sauvegarde et prévoir un délai de rétenti
 - Les rubriques publiques conservent leurs URL et les liens vers les archives existantes.
 
 - La validation des formulaires signale les erreurs après sortie du champ ; un refus de connexion conserve les saisies.
+
+## Demandes reçues (V1)
+
+Les formulaires Contact et Nous rejoindre alimentent **Administration → Demandes reçues**.
+Chaque demande conserve la date, l’origine, le nom, l’adresse e-mail, le sujet et le message complet
+(y compris instrument, expérience et téléphone pour Nous rejoindre). Les deux éditeurs peuvent
+lire les messages et choisir **Nouveau / Traité**. La liste affiche 50 demandes par page.
+La notification SMTP reste destinée à l’association ; son échec ne perd pas la demande.
+Les messages sont du texte encodé par React, jamais du HTML exécuté.
+
+Critères d’acceptation :
+- Une demande valide devient lisible par un éditeur dans les demandes reçues.
+- Une panne SMTP laisse la demande disponible avec un état de notification explicite.
+- Une panne de stockage affiche un échec au visiteur et conserve sa saisie.
+- Le rejeu d’une même demande ne crée pas de doublon.
+- Un visiteur ou un compte non autorisé ne peut ni lire ni modifier les demandes.
+- Un éditeur peut marquer une demande comme traitée et revenir à nouveau.
+- Un échec de changement de statut permet de réessayer sans perdre le message.
+- Les demandes au-delà de la première page restent accessibles par pagination.
+
+Appliquer `20261014000100_form_submissions.sql` avant de déployer cette version. Migration additive,
+compatible avec le code précédent ; retour arrière applicatif possible sans supprimer les messages.
+Utiliser le ledger Supabase, contrôler le contenu des migrations appliquées, ne jamais rejouer le SQL
+au démarrage. En cas de correction, ajouter une nouvelle migration (roll-forward).
+
+Ajouter `SUPABASE_SERVICE_ROLE_KEY` **uniquement côté serveur**, dans les variables sensibles Vercel.
+Cette clé sert à enregistrer les demandes après validation reCAPTCHA ; les lecteurs de l’admin
+utilisent leur session et les règles RLS. Ne jamais préfixer cette clé par `NEXT_PUBLIC_`.
+Propriétaire des secrets : Nathan. Rotation planifiée tous les 90 jours, prochaine échéance le
+11 janvier 2027 pour les secrets mis en place le 13 octobre 2026 ; vérifier cette échéance lors de
+chaque livraison. Révoquer immédiatement en cas de fuite, sans attendre cette échéance. Révoquer/remplacer la clé depuis Supabase, mettre à jour Vercel,
+redéployer puis vérifier le refus de l’ancienne clé. Aucun secret ni contenu de message dans les logs.
+
+Limites : la notification est une tentative SMTP sans relance automatique ; un crash peut laisser
+« envoi non confirmé ». La réception dans l’admin fait foi. Les clés de déduplication restent avec
+les demandes, sans expiration. Elles sont conservées dans la page du formulaire pour les retries,
+réinitialisées après succès ou modification de la saisie. Une ancienne page ouverte avant déploiement
+doit être rechargée avant l’envoi : toute demande sans identifiant est refusée sans effet. Les messages historiques
+reçus seulement par e-mail ne sont pas importés. Aucun export, suppression ou réponse depuis l’admin
+n’est inclus dans cette V1.
+
+## Contrôle quotidien de Supabase
+
+`vercel.json` appelle `/api/cron/supabase` chaque jour à 07:00 UTC (heure approximative en Hobby).
+La route exige `Authorization: Bearer <CRON_SECRET>` et effectue une lecture sans cache du catalogue
+public. Elle retourne 503 si la base est indisponible, 401 si le secret manque ou est incorrect.
+Vercel fournit automatiquement l’en-tête depuis la variable serveur `CRON_SECRET` ; générer une
+valeur aléatoire d’au moins 32 octets, distincte entre environnements. Rotation : remplacer la variable,
+redéployer, vérifier que l’ancien secret obtient 401. Consulter les exécutions dans Vercel Cron Jobs.
+Le cron ne s’exécute automatiquement **qu’en production**, pas sur les prévisualisations.
+Il génère de l’activité mais ne garantit pas l’absence de pause sur Supabase Free ; il ne restaure
+pas un projet déjà en pause. Aucun e-mail de contrôle n’est envoyé.
+
+## V2
+
+Analytics intégré au back-office, à définir séparément.
+
+Critères complémentaires : une demande sans identité de rejeu est refusée sans enregistrement ; le cron refuse les appels non autorisés et signale une panne de la base.

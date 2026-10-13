@@ -17,7 +17,8 @@ for (const [name, Page, buttonLabel] of [['contact', ContactPage, 'Envoyer le me
   test(`${name}: preserves entered details when sending fails and allows a successful retry`, async () => {
     process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY = 'test-public-key';
     window.grecaptcha = { ready: callback => callback(), execute: async () => 'test-token' };
-    mock.method(global, 'fetch', async () => Response.json({ error: 'L’envoi a échoué. Réessayez.' }, { status: 503 }));
+    const requests = [];
+    mock.method(global, 'fetch', async (_url, options) => { requests.push(JSON.parse(options.body)); return Response.json({ error: 'L’envoi a échoué. Réessayez.' }, { status: 503 }); });
     render(React.createElement(Page));
     fireEvent.change(screen.getByLabelText(/Nom.*\*/), { target: { value: 'Test visitor' } });
     fireEvent.change(screen.getByLabelText(/Email.*\*/), { target: { value: 'visitor@example.org' } });
@@ -34,10 +35,13 @@ for (const [name, Page, buttonLabel] of [['contact', ContactPage, 'Envoyer le me
     assert.equal(screen.queryByText(/^(Message|Demande) envoyé/), null);
     assert.equal(screen.getByLabelText(/Nom.*\*/).value, 'Test visitor');
     assert.equal(screen.getByLabelText(/Email.*\*/).value, 'visitor@example.org');
-    mock.method(global, 'fetch', async () => Response.json({ message: 'Message envoyé.' }));
+    mock.method(global, 'fetch', async (_url, options) => { requests.push(JSON.parse(options.body)); return Response.json({ message: 'Message envoyé.' }); });
     fireEvent.submit(screen.getByRole('button', { name: buttonLabel }).closest('form'));
     await waitFor(() => assert.ok(screen.getByRole('status').textContent.includes('envoyé')));
     assert.equal(screen.queryByRole('button', { name: buttonLabel }), null);
+    assert.equal(requests[0].id, requests[1].id);
+    assert.equal(requests[0].source, name);
+    assert.equal(requests[0].name, 'Test visitor');
   });
 }
 

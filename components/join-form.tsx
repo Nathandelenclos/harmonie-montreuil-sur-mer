@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useRef, useState } from "react"
 import type React from "react"
 import { CheckCircle2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -18,11 +18,13 @@ export default function JoinForm() {
     message: "",
   })
 
+  const requestId = useRef<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [error, setError] = useState("")
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    requestId.current = null
     clearFieldError(e.target)
     const { name, value } = e.target
     setFormState((prev) => ({ ...prev, [name]: value }))
@@ -34,7 +36,9 @@ export default function JoinForm() {
     setIsSubmitting(true)
     setError("")
     try {
-      await sendEmail(`Nous rejoindre - ${formState.name}`, `Nom : ${formState.name}\nTéléphone : ${formState.phone}\nInstrument : ${formState.instrument}\nExpérience : ${formState.experience}\n\n${formState.message}`, formState.email)
+      requestId.current ??= crypto.randomUUID()
+      await sendEmail(`Nous rejoindre - ${formState.name}`, `Nom : ${formState.name}\nTéléphone : ${formState.phone}\nInstrument : ${formState.instrument}\nExpérience : ${formState.experience}\n\n${formState.message}`, formState.email, { id: requestId.current, source: "join", name: formState.name })
+      requestId.current = null
       setIsSubmitted(true)
       setFormState({ name: "", email: "", phone: "", instrument: "", experience: "", message: "" })
     } catch (error) {

@@ -126,3 +126,53 @@ test('legacy import is atomic, retryable and never overwrites an edited entry', 
   assert.equal((await repository.get(entry.id)).draft.title, 'Edited');
   assert.ok((await editor.rpc('import_legacy_content', { items })).error);
 });
+
+const { SupabaseSubmissionRepository } = require('../src/submissions/infrastructure/supabase-submission-repository.ts');
+const requests = [];
+after(async () => { if (admin && requests.length) await admin.from('form_submissions').delete().in('id', requests); });
+async function receiveRequest() {
+  const input = { id: crypto.randomUUID(), source: 'join', name: 'Visiteur test', email: 'visitor@example.test', subject: 'Rejoindre', text: 'Instrument : flûte' };
+  requests.push(input.id);
+  const repository = new SupabaseSubmissionRepository(admin);
+  assert.equal(await repository.receive(input), true);
+  return input;
+}
+test('an authorized editor can read a received request and mark it as processed', async () => {
+  const input = await receiveRequest();
+  const repository = new SupabaseSubmissionRepository(editor);
+  assert.ok((await repository.list(1)).some(entry => entry.id === input.id && entry.text === input.text));
+  await repository.setStatus(input.id, 'processed');
+  assert.equal((await editor.from('form_submissions').select('status').eq('id', input.id).single()).data.status, 'processed');
+});
+for (const actor of ['anonymous', 'outsider']) {
+  test(`${actor} cannot read private form submissions`, async () => {
+    const input = await receiveRequest(); const client = actor === 'anonymous' ? anon : outsider;
+    const result = await client.from('form_submissions').select('*').eq('id', input.id);
+    assert.ok(result.error || result.data.length === 0);
+  });
+  test(`${actor} cannot change the treatment status of a request`, async () => {
+    const input = await receiveRequest(); const client = actor === 'anonymous' ? anon : outsider;
+    await client.from('form_submissions').update({ status: 'processed' }).eq('id', input.id);
+    assert.equal((await admin.from('form_submissions').select('status').eq('id', input.id).single()).data.status, 'new');
+  });
+  test(`${actor} cannot bypass anti-spam by submitting directly to Supabase`, async () => {
+    const input = { id: crypto.randomUUID(), source: 'contact', name: 'Forged', email: 'visitor@example.test', subject: 'Spam', text: 'Spam' };
+    requests.push(input.id); const client = actor === 'anonymous' ? anon : outsider;
+    assert.ok((await client.rpc('receive_submission', { submission: input })).error);
+    assert.ok((await client.from('form_submissions').insert(input)).error);
+    assert.equal((await admin.from('form_submissions').select('id').eq('id', input.id)).data.length, 0);
+  });
+}
+test('an editor cannot overwrite the original message or notification outcome', async () => {
+  const input = await receiveRequest();
+  assert.ok((await editor.from('form_submissions').update({ text: 'Changed', notification: 'sent' }).eq('id', input.id)).error);
+  assert.equal((await admin.from('form_submissions').select('text').eq('id', input.id).single()).data.text, input.text);
+});
+test('concurrent retries create a single received request and reject reuse for different contents', async () => {
+  const input = { id: crypto.randomUUID(), source: 'contact', name: 'Visiteur', email: 'visitor@example.test', subject: 'Bonjour', text: 'Question' };
+  requests.push(input.id); const repository = new SupabaseSubmissionRepository(admin);
+  assert.deepEqual((await Promise.all([repository.receive(input), repository.receive(input)])).sort(), [false, true]);
+  await assert.rejects(() => repository.receive({ ...input, text: 'Changed' }));
+  const rows = (await admin.from('form_submissions').select('*').eq('id', input.id)).data;
+  assert.equal(rows.length, 1); assert.equal(rows[0].text, input.text);
+});

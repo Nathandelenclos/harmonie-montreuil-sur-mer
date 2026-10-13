@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useRef, useState } from "react"
 import type React from "react"
 import { Send } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -16,11 +16,13 @@ export default function ContactForm() {
     message: "",
   })
 
+  const requestId = useRef<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [error, setError] = useState("")
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    requestId.current = null
     clearFieldError(e.target)
     const { name, value } = e.target
     setFormState((prev) => ({ ...prev, [name]: value }))
@@ -32,7 +34,9 @@ export default function ContactForm() {
     setIsSubmitting(true)
     setError("")
     try {
-      await sendEmail(formState.subject + ` - ${formState.name}`, formState.message, formState.email)
+      requestId.current ??= crypto.randomUUID()
+      await sendEmail(formState.subject + ` - ${formState.name}`, formState.message, formState.email, { id: requestId.current, source: "contact", name: formState.name })
+      requestId.current = null
       setIsSubmitted(true)
       setFormState({ name: "", email: "", subject: "", message: "" })
     } catch (error) {

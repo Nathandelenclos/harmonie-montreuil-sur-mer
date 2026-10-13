@@ -86,3 +86,16 @@ test('recovery codes use a labeled input without appearing in navigation URLs', 
   assert.equal(window.location.search, '');
   assert.equal(window.location.hash, '');
 });
+
+const SubmissionCard = require('../components/admin/submission-card.tsx').default;
+test('an editor can retry a failed status change without losing the request', async () => {
+  let attempts = 0;
+  render(React.createElement(SubmissionCard, { submission: { id: crypto.randomUUID(), source: 'join', name: 'Marie', email: 'marie@example.test', subject: 'Rejoindre', text: '<script>private message</script>', created_at: '2026-10-14T08:00:00Z', status: 'new', notification: 'failed' }, onStatusChange: async () => ({ ok: ++attempts > 1 }) }));
+  assert.ok(screen.getByText(/demande conservée ici/));
+  assert.ok(screen.getByText('<script>private message</script>'));
+  assert.equal(document.querySelector('script'), null);
+  fireEvent.click(screen.getByRole('button', { name: 'Marquer comme traité' }));
+  await screen.findByRole('alert'); assert.equal(screen.getByRole('status').textContent, 'Nouveau');
+  fireEvent.click(screen.getByRole('button', { name: 'Marquer comme traité' }));
+  await waitFor(() => assert.equal(screen.getByRole('status').textContent, 'Traité'));
+});

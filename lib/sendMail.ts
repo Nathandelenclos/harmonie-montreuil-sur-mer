@@ -29,7 +29,7 @@ async function getCaptchaToken(): Promise<string> {
   })
 }
 
-export async function sendEmail(subject: string, text: string, email: string) {
+export async function sendEmail(subject: string, text: string, email: string, details: { id: string; source: 'contact' | 'join'; name: string }) {
   let reCaptchaToken: string
   try {
     reCaptchaToken = await getCaptchaToken()
@@ -41,7 +41,7 @@ export async function sendEmail(subject: string, text: string, email: string) {
     response = await fetch("/api/send-email", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ reCaptchaToken, subject, text, email }),
+      body: JSON.stringify({ reCaptchaToken, subject, text, email, ...details }),
       signal: AbortSignal.timeout(30000),
     })
   } catch {

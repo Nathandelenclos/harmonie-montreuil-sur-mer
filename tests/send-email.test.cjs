@@ -1,10 +1,10 @@
 const { test, beforeEach, mock } = require('node:test');
 const assert = require('node:assert/strict');
 require('./register.cjs');
-const nodemailer = require('nodemailer');
+const receiver = require('../lib/receive-submission.ts');
 let POST;
 let sent;
-const payload = { subject: 'Question', text: 'Bonjour', email: 'visitor@example.org', reCaptchaToken: 'test-token' };
+const payload = { id: crypto.randomUUID(), subject: 'Question', text: 'Bonjour', email: 'visitor@example.org', reCaptchaToken: 'test-token' };
 const request = (body = payload, origin = 'https://harmonie-montreuil-sur-mer.fr') => new Request(`${origin}/api/send-email`, { method: 'POST', headers: { origin, 'content-type': 'application/json' }, body: JSON.stringify(body) });
 beforeEach(() => {
   mock.restoreAll();
@@ -16,14 +16,15 @@ beforeEach(() => {
   process.env.SMTP_USER = 'sender@example.org';
   process.env.SMTP_PASS = 'test-only';
   sent = [];
-  mock.method(nodemailer, 'createTransport', () => ({ sendMail: async message => { sent.push(message); } }));
+  mock.method(receiver, 'receiveSubmission', async message => { sent.push(message); });
   mock.method(global, 'fetch', async () => Response.json({ success: true, score: 0.9, action: 'submit_form', hostname: 'harmonie-montreuil-sur-mer.fr' }));
 });
 test('delivers only to the association, regardless of the submitted recipient', async () => {
   assert.equal((await POST(request({ ...payload, to: 'attacker@example.org', apiSecret: 'ignored' }))).status, 200);
   assert.equal(sent.length, 1);
-  assert.equal(sent[0].to, 'harmoniemontreuilsurmer@orange.fr');
-  assert.equal(sent[0].replyTo, payload.email);
+  assert.equal(sent[0].to, undefined);
+  assert.match(sent[0].id, /^[0-9a-f-]{36}$/);
+  assert.equal(sent[0].email, payload.email);
 });
 test('rejects malformed, oversized and header-injection fields before any delivery', async () => {
   for (const body of [null, [], { ...payload, text: {} }, { ...payload, text: 'x'.repeat(5001) }, { ...payload, subject: 'Subject\r\nBcc: attacker@example.org' }, { ...payload, email: 'not an email' }]) {
@@ -43,11 +44,11 @@ test('requires the captcha hostname, action and score', async () => {
   }
   assert.equal(sent.length, 0);
 });
-test('reports captcha and SMTP outages without a false success', async () => {
+test('reports captcha and storage outages without a false success', async () => {
   mock.method(global, 'fetch', async () => { throw new Error('offline'); });
   assert.equal((await POST(request())).status, 503);
   mock.method(global, 'fetch', async () => Response.json({ success: true, score: 0.9, action: 'submit_form', hostname: 'harmonie-montreuil-sur-mer.fr' }));
-  mock.method(nodemailer, 'createTransport', () => ({ sendMail: async () => { throw new Error('smtp offline'); } }));
+  mock.method(receiver, 'receiveSubmission', async () => { throw new Error('storage offline'); });
   assert.equal((await POST(request())).status, 503);
 });
 test('caps email attempts per server instance and recovers after the window', async () => {
@@ -60,5 +61,23 @@ test('caps email attempts per server instance and recovers after the window', as
 });
 test('rejects a body beyond the byte limit', async () => {
   assert.equal((await POST(request({ ...payload, text: 'x'.repeat(40_000) }))).status, 413);
+  assert.equal(sent.length, 0);
+});
+
+test('preserves the submission identity and source supplied by the form', async () => {
+  const id = crypto.randomUUID();
+  assert.equal((await POST(request({ ...payload, id, source: 'join', name: 'Marie' }))).status, 200);
+  assert.equal(sent[0].id, id); assert.equal(sent[0].source, 'join'); assert.equal(sent[0].name, 'Marie');
+});
+test('invalid metadata is rejected without storing the message', async () => {
+  for (const change of [{ id: 'bad' }, { source: 'private' }, { name: 'x'.repeat(201) }]) {
+    assert.equal((await POST(request({ ...payload, ...change }))).status, 400);
+  }
+  assert.equal(sent.length, 0);
+});
+
+test('an expired form without a request identity cannot create an undeduplicated message', async () => {
+  const { id, ...oldForm } = payload;
+  assert.equal((await POST(request(oldForm))).status, 400);
   assert.equal(sent.length, 0);
 });
