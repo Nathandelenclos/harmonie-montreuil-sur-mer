@@ -7,9 +7,9 @@ const { JSDOM } = require('jsdom');
 const { getByRole, queryByRole } = require('@testing-library/react');
 const Home = require('../app/page.tsx').default;
 
-test('the homepage presents the next concert and keeps access to lessons and the orchestra', t => {
+test('the homepage presents the next concert and keeps access to lessons and the orchestra', async t => {
   t.mock.timers.enable({ apis: ['Date'], now: new Date('2026-10-12T12:00:00Z') });
-  const { document } = new JSDOM(renderToStaticMarkup(React.createElement(Home))).window;
+  const { document } = new JSDOM(renderToStaticMarkup(await Home())).window;
   const page = document.body;
   assert.equal(document.querySelectorAll('h1').length, 1);
   assert.match(getByRole(page, 'heading', { level: 1 }).textContent, /Harmonie de.*Montreuil-sur-Mer/s);
@@ -26,9 +26,9 @@ test('the homepage presents the next concert and keeps access to lessons and the
   assert.ok(getByRole(page, 'img', { name: 'L’Harmonie réunie à la Sainte-Cécile 2025' }));
 });
 
-test('the homepage still invites visitors to concerts when no upcoming date remains', t => {
+test('the homepage still invites visitors to concerts when no upcoming date remains', async t => {
   t.mock.timers.enable({ apis: ['Date'], now: new Date('2026-12-01T12:00:00Z') });
-  const page = new JSDOM(renderToStaticMarkup(React.createElement(Home))).window.document.body;
+  const page = new JSDOM(renderToStaticMarkup(await Home())).window.document.body;
   assert.equal(getByRole(page, 'link', { name: 'Voir les concerts' }).getAttribute('href'), '/evenements');
   assert.ok(getByRole(page, 'heading', { name: 'La prochaine programmation arrive bientôt' }));
   assert.ok(getByRole(page, 'link', { name: /Instagram/ }));

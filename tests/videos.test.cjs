@@ -15,7 +15,7 @@ const YouTubeEmbed = require('../components/youtube-embed.tsx').default;
 const videos = require('../data/videos.json');
 afterEach(cleanup);
 
-test('YouTube loads only after activation and receives keyboard focus', () => {
+test('YouTube loads only after activation and receives keyboard focus', async () => {
   const { container } = render(React.createElement(YouTubeEmbed, { id: '0DapvwTHhz4', title: 'Concert' }));
   assert.equal(container.querySelector('iframe'), null);
   const poster = new URL(container.querySelector('img').getAttribute('src'), 'http://localhost:3000');
@@ -31,7 +31,7 @@ test('YouTube loads only after activation and receives keyboard focus', () => {
   assert.equal(screen.queryByRole('button'), null);
 });
 
-test('the catalog contains all 81 identified recordings with local thumbnails and source evidence', () => {
+test('the catalog contains all 81 identified recordings with local thumbnails and source evidence', async () => {
   assert.equal(videos.length, 81);
   assert.equal(new Set(videos.map(video => video.id)).size, videos.length);
   for (const video of videos) {
@@ -43,9 +43,9 @@ test('the catalog contains all 81 identified recordings with local thumbnails an
   }
 });
 
-test('the video page renders every recording once, groups by publication year and defers players', () => {
+test('the video page renders every recording once, groups by publication year and defers players', async () => {
   const { default: VideosPage, metadata } = require('../app/videos/page.tsx');
-  const page = new JSDOM(renderToStaticMarkup(React.createElement(VideosPage))).window.document;
+  const page = new JSDOM(renderToStaticMarkup(await VideosPage())).window.document;
   assert.equal(page.querySelectorAll('button').length, videos.length + require('../data/recordings.json').flatMap(group => group.recordings).filter(recording => recording.provider !== 'YouTube').length);
   assert.equal(page.querySelectorAll('iframe').length, 0);
   assert.equal(page.querySelectorAll('h1').length, 1);
@@ -55,12 +55,12 @@ test('the video page renders every recording once, groups by publication year an
     assert.ok(section.querySelector(`a[href="https://www.youtube.com/watch?v=${video.id}"]`));
   }
   assert.match(metadata.alternates.canonical, /\/videos$/);
-  assert.ok(require('../app/sitemap.ts').default().some(item => item.url.endsWith('/videos')));
+  assert.ok((await require('../app/sitemap.ts').default()).some(item => item.url.endsWith('/videos')));
 });
 
-test('new recordings share the year timeline with YouTube and keep event context', () => {
+test('new recordings share the year timeline with YouTube and keep event context', async () => {
   const { default: VideosPage } = require('../app/videos/page.tsx');
-  const page = new JSDOM(renderToStaticMarkup(React.createElement(VideosPage))).window.document;
+  const page = new JSDOM(renderToStaticMarkup(await VideosPage())).window.document;
   const nav = page.querySelector('nav[aria-label="Années des vidéos"]');
   assert.ok(nav);
   assert.ok(nav.parentElement.contains(page.getElementById('videos-2011')));
@@ -74,7 +74,7 @@ test('new recordings share the year timeline with YouTube and keep event context
   assert.equal(page.querySelectorAll('nav[aria-label="Collections de vidéos"]').length, 0);
 });
 
-test('the year navigation follows scrolling in both directions and reveals the active year without moving focus', () => {
+test('the year navigation follows scrolling in both directions and reveals the active year without moving focus', async () => {
   const VideoYearNavigation = require('../components/video-year-navigation.tsx').default;
   let pending = null;
   window.requestAnimationFrame = callback => { pending = callback; return 1; };

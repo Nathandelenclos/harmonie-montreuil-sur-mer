@@ -2,6 +2,7 @@ import Image from "next/image"
 import NoUpcomingEvents from "@/components/no-upcoming-events"
 import Link from "next/link"
 import YouTubeEmbed from "@/components/youtube-embed"
+import { publishedEvents } from "@/lib/published-content"
 import { partitionEvents } from "@/data/Events"
 import { pageMetadata } from "@/lib/metadata"
 import PageHeader from "@/components/page-header"
@@ -11,8 +12,8 @@ import { Button } from "@/components/ui/button"
 export const metadata = pageMetadata("Concerts et événements", "Les concerts de l’Harmonie de Montreuil-sur-Mer : programmation, dates, lieux, tarifs et réservation en ligne.", "/evenements")
 export const revalidate = 300
 
-export default function EventsPage() {
-  const { upcoming, past } = partitionEvents()
+export default async function EventsPage() {
+  const { upcoming, past } = partitionEvents(new Date(), await publishedEvents())
   return <>
     <PageHeader homeLink={<Link href="/">Accueil</Link>} eyebrow="À l’affiche et en souvenirs" title="La musique se vit ensemble." description="Retrouvez les prochains rendez-vous de l’harmonie et prolongez le concert avec nos captations."
       media={<figure><Image src="/assets/archives/911bcb816da624c3.webp" alt="L’harmonie en concert à la Chartreuse de Neuville en 2026" width={1600} height={1071} priority sizes="(max-width: 911px) 100vw, 50vw" className="w-full h-auto rounded-lg" /><figcaption className="mt-3 border-l-4 border-secondary pl-3 text-sm">Chartreuse de Neuville · 2026</figcaption></figure>}

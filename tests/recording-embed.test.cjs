@@ -13,7 +13,7 @@ afterEach(cleanup);
 for (const [provider, source, expectedHost] of [
   ['Facebook', 'https://www.facebook.com/reel/1137310918577428', 'www.facebook.com'],
   ['Google Drive', 'https://drive.google.com/file/d/1er53uKDy7A1UBceTE2GS5qMqC9PFQoHz/preview', 'drive.google.com'],
-]) test(`${provider} loads only on activation, receives focus and keeps an alternative link`, () => {
+]) test(`${provider} loads only on activation, receives focus and keeps an alternative link`, async () => {
   const { container } = render(React.createElement(RecordingEmbed, { provider, source, title: 'Concert de Montreuil', poster: '/assets/videos/fiesta-1.jpg' }));
   assert.equal(container.querySelector('iframe'), null);
   const link = screen.getByRole('link', { name: `Ouvrir sur ${provider}: Concert de Montreuil` });
@@ -27,7 +27,7 @@ for (const [provider, source, expectedHost] of [
   assert.ok(screen.getByRole('link', { name: `Ouvrir sur ${provider}: Concert de Montreuil` }));
 });
 
-test('imported collections have local posters, known hosts, unique recordings and working page anchors', () => {
+test('imported collections have local posters, known hosts, unique recordings and working page anchors', async () => {
   const fs = require('node:fs');
   const path = require('node:path');
   const { renderToStaticMarkup } = require('react-dom/server');
@@ -35,7 +35,7 @@ test('imported collections have local posters, known hosts, unique recordings an
   const recordings = groups.flatMap(group => group.recordings);
   assert.equal(recordings.length, 24);
   assert.equal(new Set(recordings.map(recording => recording.source)).size, recordings.length);
-  const page = new JSDOM(renderToStaticMarkup(React.createElement(require('../app/videos/page.tsx').default))).window.document;
+  const page = new JSDOM(renderToStaticMarkup(await require('../app/videos/page.tsx').default())).window.document;
   for (const group of groups) {
     assert.ok(page.getElementById(group.id));
     if (group.album) assert.ok(require('../data/photo-albums.json').some(album => album.slug === group.album));

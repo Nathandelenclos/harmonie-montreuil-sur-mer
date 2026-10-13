@@ -8,7 +8,7 @@ const { getByRole, getAllByRole, within } = require('@testing-library/react');
 const PageHeader = require('../components/page-header.tsx').default;
 
 for (const image of [undefined, '/assets/montreuil.jpg']) {
-  test(`page header provides a title and home breadcrumb ${image ? 'with' : 'without'} a decorative photo`, () => {
+  test(`page header provides a title and home breadcrumb ${image ? 'with' : 'without'} a decorative photo`, async () => {
     const page = new JSDOM(renderToStaticMarkup(React.createElement(PageHeader, { homeLink: React.createElement('a', { href: '/' }, 'Accueil'), title: 'Notre harmonie', description: 'Les musiciens', image }))).window.document.body;
     assert.ok(getByRole(page, 'heading', { level: 1, name: 'Notre harmonie' }));
     const breadcrumb = getByRole(page, 'navigation', { name: 'Fil d’Ariane' });
@@ -18,7 +18,7 @@ for (const image of [undefined, '/assets/montreuil.jpg']) {
   });
 }
 
-test('school shortcuts still reach the courses, instruments, prices and contacts after reordering', () => {
+test('school shortcuts still reach the courses, instruments, prices and contacts after reordering', async () => {
   const School = require('../app/ecole-de-musique/page.tsx').default;
   const document = new JSDOM(renderToStaticMarkup(React.createElement(School))).window.document;
   const shortcuts = getByRole(document.body, 'navigation', { name: 'Dans la page école de musique' });
@@ -29,7 +29,7 @@ test('school shortcuts still reach the courses, instruments, prices and contacts
   assert.equal(document.querySelectorAll('h1').length, 1);
 });
 
-test('archive photos link to the locally hosted albums', () => {
+test('archive photos link to the locally hosted albums', async () => {
   const About = require('../app/a-propos/page.tsx').default;
   const page = new JSDOM(renderToStaticMarkup(React.createElement(About))).window.document.body;
   const archives = getByRole(page, 'region', { name: 'Des générations en musique' });
@@ -40,9 +40,9 @@ test('archive photos link to the locally hosted albums', () => {
   assert.equal(getByRole(archives, 'link', { name: 'Parcourir les photos d’archives' }).getAttribute('href'), '/galerie');
 });
 
-test('concerts provide three embedded video previews and a link to all recordings', () => {
+test('concerts provide three embedded video previews and a link to all recordings', async () => {
   const Events = require('../app/evenements/page.tsx').default;
-  const page = new JSDOM(renderToStaticMarkup(React.createElement(Events))).window.document.body;
+  const page = new JSDOM(renderToStaticMarkup(await Events())).window.document.body;
   const videos = getByRole(page, 'region', { name: 'L’harmonie en concert' });
   assert.equal(getAllByRole(videos, 'button', { name: /Lire avec YouTube sur cette page/ }).length, 3);
   assert.equal(getByRole(videos, 'link', { name: /Toutes les vidéos/ }).getAttribute('href'), '/videos');
@@ -51,9 +51,9 @@ test('concerts provide three embedded video previews and a link to all recording
 });
 
 for (const [route, video] of [['', '0DapvwTHhz4'], ['a-propos/', 'tBcUdDxvP0k'], ['ecole-de-musique/', 'j591F-YCkBs'], ['rejoindre/', 'KGIi6CUYmLw']]) {
-  test(`${route || 'home'} showcases a catalogued Montreuil video without loading YouTube upfront`, () => {
+  test(`${route || 'home'} showcases a catalogued Montreuil video without loading YouTube upfront`, async () => {
     const Page = require(`../app/${route}page.tsx`).default;
-    const page = new JSDOM(renderToStaticMarkup(React.createElement(Page))).window.document.body;
+    const page = new JSDOM(renderToStaticMarkup(await Page())).window.document.body;
     assert.ok(page.querySelector(`img[src*="${video}"]`));
     assert.ok(require('../data/videos.json').some(item => item.id === video));
     assert.ok(getAllByRole(page, 'button', { name: /Lire avec YouTube sur cette page/ }).length);
@@ -61,7 +61,7 @@ for (const [route, video] of [['', '0DapvwTHhz4'], ['a-propos/', 'tBcUdDxvP0k'],
   });
 }
 
-test('school retains course durations, all instruments, teachers and practical details', () => {
+test('school retains course durations, all instruments, teachers and practical details', async () => {
   const School = require('../app/ecole-de-musique/page.tsx').default;
   const page = new JSDOM(renderToStaticMarkup(React.createElement(School))).window.document.body;
   for (const name of ['Éveil musical', 'Formation musicale', 'Cours d’instruments', 'Pratique collective'])
@@ -78,7 +78,7 @@ test('school retains course durations, all instruments, teachers and practical d
   assert.ok(getByRole(page, 'link', { name: /Photos de l’école/ }));
 });
 
-test('page header composes a photographic introduction and real navigation actions', () => {
+test('page header composes a photographic introduction and real navigation actions', async () => {
   const page = new JSDOM(renderToStaticMarkup(React.createElement(PageHeader, {
     homeLink: React.createElement('a', { href: '/' }, 'Accueil'), title: 'Jouer ensemble', eyebrow: 'Depuis 1854',
     media: React.createElement('figure', null, React.createElement('img', { src: '/group.jpg', alt: 'Les musiciens' }), React.createElement('figcaption', null, 'Archive 2018')),
@@ -90,15 +90,15 @@ test('page header composes a photographic introduction and real navigation actio
   assert.match(page.textContent, /Archive 2018/);
 });
 
-test('the redesigned albums index preserves every album link exactly once', () => {
+test('the redesigned albums index preserves every album link exactly once', async () => {
   const Gallery = require('../app/galerie/page.tsx').default;
-  const page = new JSDOM(renderToStaticMarkup(React.createElement(Gallery))).window.document.body;
+  const page = new JSDOM(renderToStaticMarkup(await Gallery())).window.document.body;
   for (const album of require('../data/photo-albums.json'))
     assert.equal(page.querySelectorAll(`a[href="/galerie/${album.slug}"]`).length, 1);
   assert.equal(getAllByRole(page, 'heading', { level: 1 }).length, 1);
 });
 
-test('the contact redesign keeps the form, phone numbers, email and deferred map available', () => {
+test('the contact redesign keeps the form, phone numbers, email and deferred map available', async () => {
   const Contact = require('../app/contact/page.tsx').default;
   const page = new JSDOM(renderToStaticMarkup(React.createElement(Contact))).window.document.body;
   for (const href of ['tel:+33321860569', 'tel:+33668853079', 'mailto:harmoniemontreuilsurmer@orange.fr'])
@@ -117,4 +117,18 @@ test('concert details preserve booking and show a dated, deferred recording', as
   assert.ok(getByRole(page, 'link', { name: 'Réserver sur HelloAsso' }));
   assert.match(page.textContent, /avril 2025/);
   assert.equal(page.querySelector('iframe'), null);
+});
+
+test('a concert without a description still has descriptive sharing metadata', async () => {
+  const { events } = require('../data/Events.ts');
+  const event = events[0];
+  const previous = event.description;
+  try {
+    event.description = '';
+    const { generateMetadata } = require('../app/evenements/[slug]/page.tsx');
+    const metadata = await generateMetadata({ params: Promise.resolve({ slug: event.slug }) });
+    assert.ok(metadata.description.includes(event.title));
+    assert.ok(metadata.description.includes(event.location));
+    assert.equal(metadata.openGraph.description, metadata.description);
+  } finally { event.description = previous; }
 });

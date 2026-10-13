@@ -28,8 +28,8 @@ export const events: Event[] = [
     },
 ]
 
-export function partitionEvents(now = new Date()) {
-  const sorted = [...events].sort((a, b) => a.date.getTime() - b.date.getTime())
+export function partitionEvents(now = new Date(), source: Event[] = events) {
+  const sorted = [...source].sort((a, b) => a.date.getTime() - b.date.getTime())
   return {
     upcoming: sorted.filter(event => new Date(event.archiveAfter) > now),
     past: sorted.filter(event => new Date(event.archiveAfter) <= now).reverse(),

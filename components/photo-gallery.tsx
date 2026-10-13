@@ -25,7 +25,7 @@ export default function PhotoGallery({ photos, title }: { photos: Photo[]; title
       {photos.map((item, index) => <li key={item.src}>
         <Button type="button" variant="outline" onClick={() => setSelected(index)} className="block h-full w-full overflow-hidden rounded-lg bg-white p-0 text-left text-base font-normal whitespace-normal hover:bg-white hover:text-primary hover:underline underline-offset-4" aria-label={`Agrandir : ${item.title} — photo ${index + 1}`}>
           <span className="relative block aspect-[4/3] bg-muted">
-            <Image src={item.src} alt="" fill sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw" className="object-contain" />
+            <Image src={item.src} unoptimized={item.src.startsWith("/media/")} alt="" fill sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw" className="object-contain" />
           </span>
           <span className="block border-t-4 border-secondary p-4 font-semibold text-primary">{item.title}</span>
         </Button>
@@ -41,7 +41,7 @@ export default function PhotoGallery({ photos, title }: { photos: Photo[]; title
         <Button type="button" variant="outline" onClick={() => dialog.current?.close()}>Fermer</Button>
       </div>
       {photo && <figure>
-        <Image src={photo.src} alt={photo.title} width={photo.width} height={photo.height} sizes="100vw" className="mx-auto h-auto max-h-[65dvh] w-auto max-w-full object-contain" />
+        <Image src={photo.src} unoptimized={photo.src.startsWith("/media/")} alt={photo.title} width={photo.width} height={photo.height} sizes="100vw" className="mx-auto h-auto max-h-[65dvh] w-auto max-w-full object-contain" />
         <figcaption id="photo-title" className="mt-4 font-semibold text-primary" aria-live="polite">{photo.title}</figcaption>
       </figure>}
       <div className="mt-4 flex flex-wrap items-center justify-between gap-3">

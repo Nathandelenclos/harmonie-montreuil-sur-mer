@@ -21,7 +21,7 @@ export default function RecordingEmbed({ provider, source, title, poster }: {
       {playing ? <iframe src={playerUrl} title={title} className="absolute inset-0 h-full w-full border-0"
         allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowFullScreen
         referrerPolicy="strict-origin-when-cross-origin" ref={frame => frame?.focus()} /> : <>
-        <Image src={poster} alt="" fill sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw" className="object-contain" />
+        <Image src={poster} unoptimized={poster.startsWith("/media/")} alt="" fill sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw" className="object-contain" />
         <Button type="button" variant="secondary" className="absolute bottom-4 left-4"
           onClick={() => setPlaying(true)}>
           <Play className="h-5 w-5" aria-hidden="true" /> Lire avec {provider}<span className="sr-only"> : {title}</span>

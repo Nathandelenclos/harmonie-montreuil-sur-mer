@@ -1,0 +1,22 @@
+.admin-workspace { --admin-line: #d7e1df; }
+.admin-workspace h1 { font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 700; color: hsl(var(--primary)); margin-bottom: 1rem; }
+.admin-workspace h2 { font-size: 1.5rem; font-weight: 700; color: hsl(var(--primary)); }
+.admin-auth { max-width: 32rem; margin: 1rem auto 5rem; }
+.admin-form { display: grid; gap: 1.35rem; max-width: 48rem; }
+.admin-form label { display: grid; gap: .5rem; font-weight: 600; }
+.admin-form input:not([type=checkbox]), .admin-form textarea, .admin-form select { width: 100%; border: 1px solid #70827e; border-radius: .375rem; background: white; padding: .75rem; color: #162d27; font-weight: 400; min-height: 2.75rem; }
+.admin-form textarea { min-height: 8rem; resize: vertical; }
+.admin-form input:focus-visible, .admin-form textarea:focus-visible, .admin-form select:focus-visible { outline: 3px solid hsl(var(--primary)); outline-offset: 3px; }
+.admin-error { color: #a11c21; font-weight: 500; }
+.admin-link { display: inline-flex; align-items: center; min-height: 2.75rem; color: hsl(var(--primary)); text-decoration: underline; text-underline-offset: .2em; }
+.admin-nav { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; border-bottom: 1px solid var(--admin-line); margin-bottom: 2rem; }
+.admin-nav a { display: inline-flex; align-items: center; min-height: 3rem; color: hsl(var(--primary)); }
+.admin-nav [aria-current=page] { border-bottom: 3px solid hsl(var(--primary)); font-weight: 700; }
+.admin-list { width: 100%; border-collapse: collapse; }
+.admin-list th, .admin-list td { padding: 1rem .5rem; text-align: left; border-bottom: 1px solid var(--admin-line); }
+.admin-list caption { text-align: left; margin-bottom: 1rem; }
+.admin-actions { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; }
+.admin-photo { display: grid; grid-template-columns: 7rem 1fr; gap: 1rem; padding-block: 1rem; border-bottom: 1px solid var(--admin-line); }
+.admin-photo img { width: 7rem; height: 6rem; object-fit: contain; background: hsl(var(--muted)); }
+.admin-preview-banner { padding: 1rem; margin-bottom: 2rem; background: hsl(var(--muted)); border-left: 4px solid hsl(var(--primary)); }
+@media(max-width: 600px) { .admin-photo { grid-template-columns: 1fr; } .admin-list th:nth-child(3), .admin-list td:nth-child(3) { display: none; } }

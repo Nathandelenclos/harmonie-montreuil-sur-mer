@@ -21,7 +21,7 @@ const photos = [
   { src: '/assets/archives/harmonie-1949.jpg', title: '1949', width: 2048, height: 1196 },
 ];
 
-test('visitors can enlarge a photo, browse in both directions and close the gallery', () => {
+test('visitors can enlarge a photo, browse in both directions and close the gallery', async () => {
   render(React.createElement(PhotoGallery, { photos, title: 'Le XXe siècle' }));
   assert.equal(screen.queryByRole('dialog'), null);
   const opener = screen.getByRole('button', { name: 'Agrandir : 1927 — photo 1' });
@@ -42,7 +42,7 @@ test('visitors can enlarge a photo, browse in both directions and close the gall
   assert.ok(screen.getByRole('dialog', { name: '1927' }));
 });
 
-test('closing a native dialog and unmounting both restore scrolling', () => {
+test('closing a native dialog and unmounting both restore scrolling', async () => {
   const view = render(React.createElement(PhotoGallery, { photos: photos.slice(0, 1), title: 'Album' }));
   fireEvent.click(screen.getByRole('button', { name: /Agrandir/ }));
   const dialog = screen.getByRole('dialog');
@@ -54,7 +54,7 @@ test('closing a native dialog and unmounting both restore scrolling', () => {
   assert.equal(document.body.style.overflow, '');
 });
 
-test('every imported album has local, dimensioned photos and a unique published URL', () => {
+test('every imported album has local, dimensioned photos and a unique published URL', async () => {
   assert.equal(albums.length, 18);
   assert.equal(new Set(albums.map(album => album.slug)).size, albums.length);
   const files = new Set();
@@ -70,13 +70,13 @@ test('every imported album has local, dimensioned photos and a unique published 
     }
   }
   assert.equal(files.size, 331);
-  const sitemap = require('../app/sitemap.ts').default().map(item => item.url);
+  const sitemap = (await require('../app/sitemap.ts').default()).map(item => item.url);
   for (const album of albums) assert.ok(sitemap.some(url => url.endsWith(`/galerie/${album.slug}`)));
 });
 
 test('album routes publish metadata and reject unknown albums', async () => {
   const { generateMetadata, generateStaticParams, default: AlbumPage } = require('../app/galerie/[album]/page.tsx');
-  assert.equal(generateStaticParams().length, albums.length);
+  assert.equal((await generateStaticParams()).length, albums.length);
   const meta = await generateMetadata({ params: Promise.resolve({ album: '20e-siecle' }) });
   assert.match(meta.alternates.canonical, /\/galerie\/20e-siecle$/);
   await assert.rejects(() => AlbumPage({ params: Promise.resolve({ album: 'missing' }) }), /404/);

@@ -4,13 +4,15 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import EventCard from "@/components/event-card"
+import { publishedEvents } from "@/lib/published-content"
 import { partitionEvents } from "@/data/Events"
 import { ArrowDown, ArrowUpRight } from "lucide-react"
 
 export const revalidate = 300
 
-export default function Home() {
-  const nextEvent = partitionEvents().upcoming[0]
+export default async function Home() {
+  const upcoming = partitionEvents(new Date(), await publishedEvents()).upcoming
+  const nextEvent = upcoming.find(event => event.featured) || upcoming[0]
   return <div className="home-page">
     <section className="home-hero relative isolate overflow-hidden bg-primary text-white">
       <Image src="/assets/montreuil.jpg" alt="" fill priority sizes="100vw" className="object-cover" />

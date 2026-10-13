@@ -9,9 +9,9 @@ const pages = require('../data/social-images.json');
 const albums = require('../data/photo-albums.json');
 const { events } = require('../data/Events.ts');
 
-test('every published page shares an existing 1200 × 630 PNG with matching Open Graph and Twitter metadata', () => {
+test('every published page shares an existing 1200 × 630 PNG with matching Open Graph and Twitter metadata', async () => {
   const paths = [...pages.map(page => page.path), ...albums.map(album => `/galerie/${album.slug}`), ...events.map(event => `/evenements/${event.slug}`)];
-  assert.deepEqual(paths.sort(), sitemap().map(item => new URL(item.url).pathname).sort());
+  assert.deepEqual(paths.sort(), (await sitemap()).map(item => new URL(item.url).pathname).sort());
   for (const pagePath of paths) {
     const meta = pageMetadata('Titre de la page', 'Description', pagePath);
     const image = meta.openGraph.images[0];
@@ -29,7 +29,7 @@ test('every published page shares an existing 1200 × 630 PNG with matching Open
   }
 });
 
-test('brand sources and social photos exist; browser and Apple icons use the intended sizes', () => {
+test('brand sources and social photos exist; browser and Apple icons use the intended sizes', async () => {
   for (const page of pages) assert.ok(fs.existsSync(path.join(__dirname, '../public', page.image)), page.image);
   for (const [file, size] of [['icon.png', 512], ['apple-icon.png', 180]]) {
     const png = fs.readFileSync(path.join(__dirname, '../app', file));
@@ -42,7 +42,7 @@ test('brand sources and social photos exist; browser and Apple icons use the int
   assert.deepEqual([ico[6], ico[22], ico[38]], [16, 32, 48]);
 });
 
-test('the shared brand has visible identifying text and a decorative crest inside its home link', () => {
+test('the shared brand has visible identifying text and a decorative crest inside its home link', async () => {
   const React = require('react');
   const { renderToStaticMarkup } = require('react-dom/server');
   const { JSDOM } = require('jsdom');
@@ -58,7 +58,7 @@ test('the shared brand has visible identifying text and a decorative crest insid
   assert.ok(fs.existsSync(path.join(__dirname, '../public', new URL(logo.src, 'http://localhost').searchParams.get('url'))));
 });
 
-test('header and footer home links expose the same complete visible brand name', () => {
+test('header and footer home links expose the same complete visible brand name', async () => {
   const React = require('react');
   const { renderToStaticMarkup } = require('react-dom/server');
   const { JSDOM } = require('jsdom');
