@@ -13,8 +13,10 @@ export class SupabaseSubmissionRepository implements SubmissionRepository {
     const { error } = await this.client.from('form_submissions').update({ notification }).eq('id', id)
     if (error) throw new Error('Unable to record notification')
   }
-  async list(page: number): Promise<Submission[]> {
-    const { data, error } = await this.client.from('form_submissions').select('*').order('created_at', { ascending: false }).order('id').range((page - 1) * 50, page * 50)
+  async list(page: number, status?: 'new'): Promise<Submission[]> {
+    let query = this.client.from('form_submissions').select('*')
+    if (status) query = query.eq('status', status)
+    const { data, error } = await query.order('created_at', { ascending: false }).order('id').range((page - 1) * 50, page * 50)
     if (error) throw new Error('Unable to load submissions')
     return data as Submission[]
   }

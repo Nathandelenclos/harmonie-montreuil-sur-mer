@@ -99,3 +99,26 @@ test('an editor can retry a failed status change without losing the request', as
   fireEvent.click(screen.getByRole('button', { name: 'Marquer comme traité' }));
   await waitFor(() => assert.equal(screen.getByRole('status').textContent, 'Traité'));
 });
+
+const Dashboard = require('../components/admin/dashboard.tsx').default;
+const AdminShell = require('../components/admin/admin-shell.tsx').default;
+test('the dashboard shows incoming work and direct creation shortcuts', () => {
+  render(React.createElement(Dashboard, { data: { newRequestsCount: 7, draftsCount: 2, newRequests: [{ id: 'request', name: 'Marie', subject: 'Rejoindre la flûte', created_at: '2026-10-13T12:00:00Z' }], drafts: [{ id: 'draft', kind: 'event', title: 'Concert de printemps' }] } }));
+  assert.ok(screen.getByRole('heading', { level: 1, name: 'Tableau de bord' }));
+  assert.ok(screen.getByText('7')); assert.ok(screen.getByText('nouvelles demandes'));
+  assert.equal(screen.getByRole('link', { name: /Concert de printemps/ }).getAttribute('href'), '/admin/event/draft');
+  assert.equal(screen.getByRole('link', { name: /Rejoindre la flûte/ }).getAttribute('href'), '/admin/submissions?status=new#request-request');
+  assert.ok(screen.getByRole('link', { name: /Créer un album photo/ }));
+});
+test('an empty dashboard explains where future requests appear and offers a first draft', () => {
+  render(React.createElement(Dashboard, { data: { newRequestsCount: 0, draftsCount: 0, newRequests: [], drafts: [] } }));
+  assert.ok(screen.getByText('Aucune nouvelle demande.'));
+  assert.ok(screen.getByText('Aucun brouillon en attente.'));
+  assert.ok(screen.getByRole('link', { name: 'Préparer votre prochain événement' }));
+});
+test('workspace navigation identifies the current section and preserves the public-site exit', () => {
+  render(React.createElement(AdminShell, { navigation: [{ href: '/admin', label: 'Tableau de bord', active: false }, { href: '/admin/submissions', label: 'Demandes reçues', active: true }], email: 'editor@example.test', onSignOut: async () => {}, siteHref: '/', children: React.createElement('h1', null, 'Demandes reçues') }));
+  assert.equal(screen.getByRole('link', { name: 'Demandes reçues' }).getAttribute('aria-current'), 'page');
+  assert.equal(screen.getByRole('link', { name: 'Voir le site public' }).getAttribute('href'), '/');
+  assert.ok(screen.getByRole('button', { name: 'Se déconnecter' }));
+});

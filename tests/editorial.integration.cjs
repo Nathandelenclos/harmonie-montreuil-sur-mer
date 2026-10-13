@@ -176,3 +176,29 @@ test('concurrent retries create a single received request and reject reuse for d
   const rows = (await admin.from('form_submissions').select('*').eq('id', input.id)).data;
   assert.equal(rows.length, 1); assert.equal(rows[0].text, input.text);
 });
+
+const { SupabaseDashboardReader } = require('../src/editorial/infrastructure/supabase-dashboard-reader.ts');
+test('the dashboard reflects newly received requests and excludes processed requests', async () => {
+  const input = await receiveRequest();
+  const reader = new SupabaseDashboardReader(editor);
+  const before = await reader.read();
+  await new SupabaseSubmissionRepository(editor).setStatus(input.id, 'processed');
+  const after = await reader.read();
+  assert.equal(after.newRequestsCount, before.newRequestsCount - 1);
+  assert.ok(!after.newRequests.some(item => item.id === input.id));
+});
+test('the dashboard stops presenting a draft after publication', async () => {
+  const reader = new SupabaseDashboardReader(editor); const entry = await create();
+  const before = await reader.read();
+  assert.ok(before.drafts.some(draft => draft.id === entry.id && draft.title === 'Concert test'));
+  await repository.publish(entry.id, entry.version);
+  const after = await reader.read();
+  assert.equal(after.draftsCount, before.draftsCount - 1);
+  assert.ok(!after.drafts.some(draft => draft.id === entry.id));
+});
+test('an outsider cannot obtain private dashboard summaries', async () => {
+  await assert.rejects(() => new SupabaseDashboardReader(anon).read());
+  const data = await new SupabaseDashboardReader(outsider).read();
+  assert.equal(data.newRequestsCount, 0); assert.equal(data.draftsCount, 0);
+  assert.deepEqual(data.newRequests, []); assert.deepEqual(data.drafts, []);
+});

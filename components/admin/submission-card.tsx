@@ -17,7 +17,7 @@ export default function SubmissionCard({ submission, onStatusChange }: { submiss
     } catch { setError('Le statut n’a pas été enregistré. Réessayez.') }
     finally { setPending(false) }
   }
-  return <article className="border rounded-xl p-6 space-y-3">
+  return <article id={`request-${submission.id}`} className="border rounded-xl p-6 space-y-3">
     <p className="text-sm">{submission.source === 'join' ? 'Nous rejoindre' : 'Contact'} · <time dateTime={submission.created_at}>{new Intl.DateTimeFormat('fr-FR', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Europe/Paris' }).format(new Date(submission.created_at))}</time></p>
     <h2 className="text-xl">{submission.subject}</h2>
     <p>{submission.name} — <a className="admin-link" href={`mailto:${encodeURIComponent(submission.email)}`}>{submission.email}</a></p>

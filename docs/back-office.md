@@ -186,3 +186,25 @@ pas un projet déjà en pause. Aucun e-mail de contrôle n’est envoyé.
 Analytics intégré au back-office, à définir séparément.
 
 Critères complémentaires : une demande sans identité de rejeu est refusée sans enregistrement ; le cron refuse les appels non autorisés et signale une panne de la base.
+
+
+## Tableau de bord
+
+L’accueil `/admin` réunit les nouvelles demandes à traiter, les cinq derniers brouillons modifiés
+et les raccourcis de création. Les compteurs sont calculés sur toutes les demandes nouvelles et
+tous les contenus jamais publiés, pas seulement sur les cinq éléments affichés. Les modifications
+d’un contenu déjà publié restent consultables dans sa rubrique, avec leur statut habituel.
+
+La navigation latérale reste accessible dans les éditeurs. Sur petit écran elle passe au-dessus
+du contenu, sans supprimer de rubrique. Les anciennes adresses `/admin?kind=…` redirigent vers
+les listes dédiées `/admin/contents/event`, `/admin/contents/album`, `/admin/contents/video`.
+Le lien « Voir le site public » quitte l’espace d’administration. L’analytics reste hors de cette V1.
+
+Critères du dashboard :
+- L’éditeur retrouve chaque rubrique depuis la navigation permanente, avec la rubrique active indiquée.
+- Une nouvelle demande apparaît parmi les demandes à traiter ; une demande traitée quitte ce résumé.
+- Un brouillon publié quitte la liste des brouillons à reprendre.
+- L’accueil vide explique où apparaîtront les demandes et propose de créer un premier contenu.
+- Les raccourcis ouvrent les formulaires de création existants.
+- Un compte non autorisé ne reçoit aucun résumé de données privées.
+- La navigation et les contenus restent accessibles à 375 px comme sur ordinateur.

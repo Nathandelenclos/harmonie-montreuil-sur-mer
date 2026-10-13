@@ -2,8 +2,7 @@ import type React from "react"
 import "./globals.css"
 import { pageMetadata, siteUrl } from "@/lib/metadata"
 import { Playfair_Display, Montserrat } from "next/font/google"
-import Navigation from "@/components/navigation"
-import Footer from "@/components/footer"
+import SiteFrame from "@/components/site-frame"
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -29,9 +28,7 @@ export default function RootLayout({
     <html lang="fr" className="scroll-smooth">
       <body className={`${playfair.variable} ${montserrat.variable} font-sans`}>
         <a href="#main-content" className="skip-link">Aller au contenu principal</a>
-        <Navigation />
-        <main id="main-content" tabIndex={-1} className="min-h-screen">{children}</main>
-        <Footer />
+        <SiteFrame>{children}</SiteFrame>
       </body>
     </html>
   )
