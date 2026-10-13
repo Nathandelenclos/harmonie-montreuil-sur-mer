@@ -60,12 +60,12 @@ export default function Home() {
         <div className="home-photo-grid grid grid-cols-2 items-start gap-4">
           <Image src="/assets/formation-musicale.jpg" alt="Les élèves de l’école de musique en formation musicale" width={900} height={600} sizes="(max-width: 1023px) 100vw, 50vw" className="col-span-2 aspect-[3/2] w-full rounded-lg object-cover" />
           <figure>
-            <Image src="/assets/cours-instruments.jpg" alt="Des flûtistes de l’école de musique réunies sur scène" width={675} height={1200} sizes="(max-width: 1023px) 50vw, 25vw" className="aspect-[4/3] w-full rounded-lg object-cover" />
+            <Image src="/assets/archives/3b5271865ed6ea93.webp" alt="Les élèves de flûte à l’audition de Noël 2025" width={1600} height={1200} sizes="(max-width: 1023px) 50vw, 25vw" className="aspect-[4/3] w-full rounded-lg object-cover" />
             <figcaption className="mt-2 text-sm text-muted-foreground">Partager la scène.</figcaption>
           </figure>
           <figure className="mt-6">
-            <Image src="/assets/archives/85c2087db2123161.webp" alt="Les élèves et les musiciens jouent ensemble à l’audition de 2018" width={1600} height={1063} sizes="(max-width: 1023px) 50vw, 25vw" className="aspect-[4/3] w-full rounded-lg object-cover" />
-            <figcaption className="mt-2 text-sm text-muted-foreground">Audition 2018.</figcaption>
+            <Image src="/assets/archives/2908f7532e393c5f.webp" alt="La classe orchestre sur scène lors du rassemblement 2026" width={1600} height={900} sizes="(max-width: 1023px) 50vw, 25vw" className="aspect-[4/3] w-full rounded-lg object-cover" />
+            <figcaption className="mt-2 text-sm text-muted-foreground">Classe orchestre · 2026.</figcaption>
           </figure>
         </div>
       </div>
@@ -92,8 +92,8 @@ export default function Home() {
           <Link href="/galerie" className="home-text-link text-primary">Tous les albums<ArrowUpRight aria-hidden="true" className="h-5 w-5" /></Link>
         </div>
         <div className="grid gap-6 md:grid-cols-2">
-          <figure><Image src="/assets/archives/878fe25780b01788.webp" alt="Les musiciens costumés sur scène dans une lumière bleue et jaune" width={1600} height={1059} sizes="(max-width: 767px) 100vw, 50vw" className="w-full h-auto rounded-lg" /><figcaption><Link href="/galerie/2018" className="home-text-link text-primary">Concert de printemps 2018 →</Link></figcaption></figure>
-          <figure><Image src="/assets/archives/5c7fa995c817cb7e.webp" alt="Le pupitre des tambours en costume sur scène" width={1600} height={1059} sizes="(max-width: 767px) 100vw, 50vw" className="w-full h-auto rounded-lg" /><figcaption><Link href="/galerie/tambours" className="home-text-link text-primary">Les tambours · Concert de printemps 2018 →</Link></figcaption></figure>
+          <figure><Image src="/assets/archives/a86f5ea708073ab6.webp" alt="Les musiciens réunis sur scène lors de Sacrée Fiesta" width={1600} height={999} sizes="(max-width: 767px) 100vw, 50vw" className="w-full h-auto rounded-lg" /><figcaption><Link href="/galerie/sacree-fiesta-2025" className="home-text-link text-primary">Sacrée Fiesta 2025 →</Link></figcaption></figure>
+          <figure><Image src="/assets/archives/911bcb816da624c3.webp" alt="L’harmonie en concert à la Chartreuse de Neuville" width={1600} height={1071} sizes="(max-width: 767px) 100vw, 50vw" className="w-full h-auto rounded-lg" /><figcaption><Link href="/galerie/chartreuse-2026" className="home-text-link text-primary">Chartreuse de Neuville 2026 →</Link></figcaption></figure>
         </div>
       </div>
     </section>

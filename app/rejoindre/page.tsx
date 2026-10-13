@@ -11,7 +11,7 @@ export default function JoinPage() {
     <div className="content-page">
       <PageHeader homeLink={<Link href="/">Accueil</Link>} eyebrow="Rejoindre l’harmonie" title="Votre place dans l’orchestre."
         description="Vous jouez d’un instrument, vous reprenez après une pause ou vous souhaitez partager votre expérience ? Venez rencontrer les musiciens."
-        media={<figure><Image src="/assets/harmonie-dordogne.jpg" alt="Les musiciens de l’Harmonie réunis au château en Dordogne" width={1800} height={1205} priority sizes="(max-width: 911px) 100vw, 50vw" className="w-full h-auto rounded-lg" /><figcaption className="mt-3 border-l-4 border-secondary pl-3 text-sm">Un souvenir partagé en Dordogne.</figcaption></figure>}
+        media={<figure><Image src="/assets/archives/0ebe50977a8de8d1.webp" alt="Les musiciens de l’Harmonie réunis au château en Dordogne" width={1600} height={1071} priority sizes="(max-width: 911px) 100vw, 50vw" className="w-full h-auto rounded-lg" /><figcaption className="mt-3 border-l-4 border-secondary pl-3 text-sm">Un souvenir partagé en Dordogne · 2026.</figcaption></figure>}
         actions={<><Button asChild variant="secondary"><a href="#rejoindre-formulaire">Faire connaissance</a></Button><Link className="home-text-link" href="/ecole-de-musique">Je souhaite apprendre →</Link></>}
       />
 
@@ -31,7 +31,7 @@ export default function JoinPage() {
 
       <section className="bg-muted py-12 md:py-16">
         <div className="site-container grid items-center gap-8 lg:grid-cols-2">
-          <Image src="/assets/cours-de-groupe.avif" alt="Les élèves pendant un cours de musique en groupe" width={500} height={600} sizes="(max-width: 1023px) 100vw, 50vw" className="w-full max-h-96 object-contain rounded-lg" />
+          <Image src="/assets/archives/2908f7532e393c5f.webp" alt="Les élèves de la classe orchestre réunis sur scène en 2026" width={1600} height={900} sizes="(max-width: 1023px) 100vw, 50vw" className="w-full max-h-96 object-contain rounded-lg" />
           <div><p className="text-sm font-semibold text-primary mb-4">L’école de musique</p><h2 className="section-title mb-6">Avant la scène,<br />les premiers pas.</h2><p className="text-lg mb-4">Cours d’instruments, formation musicale et pratique collective : l’école accueille les élèves de tous âges, débutants ou confirmés.</p><p className="text-muted-foreground mb-6">Dès que votre niveau le permet, vous pouvez participer aux répétitions et intégrer progressivement l’harmonie.</p><Button asChild><Link href="/ecole-de-musique">Découvrir l’école de musique</Link></Button></div>
         </div>
       </section>

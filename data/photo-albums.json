@@ -274,6 +274,7 @@
     {"src": "/assets/archives/06272c87b30d96f2.webp", "title": "Photographie 25", "width": 960, "height": 720}
   ]},
   {"slug": "tambours", "title": "Les tambours", "photos": [
+    {"src":"/assets/archives/a318a1e7524419cc.webp","title":"Le pupitre des tambours","width":1200,"height":1600},
     {"src": "/assets/archives/37d136aefba84273.webp", "title": "Palais de l'Europe 1998", "width": 1398, "height": 989},
     {"src": "/assets/archives/6856d88b78ccfa6c.webp", "title": "Palais de l'Europe 2000", "width": 1600, "height": 1073},
     {"src": "/assets/archives/7a4da06fb335caf2.webp", "title": "Palais de l'Europe 2002", "width": 1600, "height": 1092},
@@ -284,6 +285,12 @@
     {"src": "/assets/archives/5c7fa995c817cb7e.webp", "title": "Concert de printemps 2018", "width": 1600, "height": 1059}
   ]},
   {"slug": "ecole-de-musique", "title": "L’école de musique", "photos": [
+    {"src":"/assets/archives/3b5271865ed6ea93.webp","title":"Les élèves de flûte — Audition de Noël 2025","width":1600,"height":1200},
+    {"src":"/assets/archives/e62b8529768154ba.webp","title":"Les cuivres — Audition de Noël 2025","width":900,"height":1600},
+    {"src":"/assets/archives/f57c2c7dc3ec32df.webp","title":"La chorale — Audition de Noël 2025","width":900,"height":1600},
+    {"src":"/assets/archives/179c7073bbf5ffc0.webp","title":"Le Père Noël — Audition de Noël 2025","width":1200,"height":1600},
+    {"src":"/assets/archives/4820e1e45bcb634f.webp","title":"Projet Les Lunaisiens — 2026","width":1200,"height":1600},
+    {"src":"/assets/archives/2908f7532e393c5f.webp","title":"Rassemblement de la classe orchestre — 2026","width":1600,"height":900},
     {"src": "/assets/archives/b9bad18658517cc5.webp", "title": "Gouter de noël 2007", "width": 1600, "height": 1200},
     {"src": "/assets/archives/15e3984b1eb5e1e6.webp", "title": "Audition 2008", "width": 1600, "height": 1200},
     {"src": "/assets/archives/48becad429a40675.webp", "title": "Audition 2009", "width": 1600, "height": 1200},
@@ -318,5 +325,46 @@
     {"src": "/assets/archives/0f3f259e3e7667c7.webp", "title": "Rassemblement Evin-Malmaison 2018", "width": 1600, "height": 1063},
     {"src": "/assets/archives/85c2087db2123161.webp", "title": "Audition 2018", "width": 1600, "height": 1063},
     {"src": "/assets/archives/72076b258af35266.webp", "title": "Concert d'automne 2018", "width": 1600, "height": 1066}
+  ]},
+  {"slug":"ceremonies","title":"Cérémonies et rendez-vous", "photos": [
+    {"src":"/assets/archives/131c31d62cf169d0.webp","title":"L’harmonie en cérémonie","width":1600,"height":1132},
+    {"src":"/assets/archives/4be4d95d39668d0d.webp","title":"Vœux du maire","width":1440,"height":1080}
+  ]},
+  {"slug":"sainte-cecile-2025","title":"Sainte-Cécile 2025", "photos": [
+    {"src":"/assets/archives/79a2f06b72506460.webp","title":"Sainte-Cécile — 2025","width":1600,"height":1200}
+  ]},
+  {"slug":"sacree-fiesta-2025","title":"Sacrée Fiesta 2025", "photos": [
+    {"src":"/assets/archives/a86f5ea708073ab6.webp","title":"Sacrée Fiesta — 2025","width":1600,"height":999},
+    {"src":"/assets/archives/464dd9e774a827e3.webp","title":"L’harmonie sur scène — Sacrée Fiesta 2025","width":1600,"height":1200},
+    {"src":"/assets/archives/a0233c99ef1b457a.webp","title":"Les enfants chantent sur scène — Sacrée Fiesta 2025","width":1600,"height":1200},
+    {"src":"/assets/archives/c70f89d1f6890f0e.webp","title":"La chorale — Sacrée Fiesta 2025","width":1600,"height":1600},
+    {"src":"/assets/archives/bbe9f949cd83067b.webp","title":"Vue de la scène — Sacrée Fiesta 2025","width":1600,"height":1200},
+    {"src":"/assets/archives/de1aa5f21467d6e2.webp","title":"L’harmonie en concert — Sacrée Fiesta 2025","width":1600,"height":1600},
+    {"src":"/assets/archives/084cd2afa23862da.webp","title":"L’harmonie et les danseurs — Sacrée Fiesta 2025","width":1600,"height":1600}
+  ]},
+  {"slug":"chartreuse-2026","title":"Chartreuse de Neuville 2026", "photos": [
+    {"src":"/assets/archives/a6baddadb6ae14a2.webp","title":"L’harmonie à la Chartreuse de Neuville — 2026","width":1600,"height":1071},
+    {"src":"/assets/archives/911bcb816da624c3.webp","title":"Concert à la Chartreuse de Neuville — 2026","width":1600,"height":1071},
+    {"src":"/assets/archives/2b60c04b2cfe6e5a.webp","title":"Concert à la Chartreuse de Neuville — 2026","width":1600,"height":1071}
+  ]},
+  {"slug":"dordogne-2026","title":"Dordogne 2026", "photos": [
+    {"src":"/assets/archives/f7f6b51c44828264.webp","title":"Dordogne 2026 — Cloître de Cadouin et château de Biron","width":1200,"height":1600},
+    {"src":"/assets/archives/0ebe50977a8de8d1.webp","title":"L’harmonie en Dordogne — 2026","width":1600,"height":1071},
+    {"src":"/assets/archives/0d293d616d4b737f.webp","title":"Concert en Dordogne — 2026","width":1600,"height":1071},
+    {"src":"/assets/archives/62108a4f6084e789.webp","title":"L’harmonie dans le cloître — Dordogne 2026","width":1600,"height":1071},
+    {"src":"/assets/archives/095ed2725f96c5c6.webp","title":"Les musiciens dans le cloître — Dordogne 2026","width":1600,"height":1071},
+    {"src":"/assets/archives/4a76521add85d0d3.webp","title":"Les musiciens sur les remparts — Dordogne 2026","width":1600,"height":1071},
+    {"src":"/assets/archives/c106e93f0a316d54.webp","title":"Concert en Dordogne — 2026","width":1600,"height":1107},
+    {"src":"/assets/archives/a30548c9744aa272.webp","title":"Saxophones altos — Dordogne 2026","width":1071,"height":1600},
+    {"src":"/assets/archives/47c68dcf36c21527.webp","title":"Euphoniums et tubas — Dordogne 2026","width":1200,"height":1600},
+    {"src":"/assets/archives/9d5bcfc14ac4c7b2.webp","title":"Les chefs — Dordogne 2026","width":1200,"height":1600},
+    {"src":"/assets/archives/4e4b9e167ef00c48.webp","title":"Clarinettes — Dordogne 2026","width":1071,"height":1600},
+    {"src":"/assets/archives/546304a81da5a77f.webp","title":"Cor et présentation — Dordogne 2026","width":1200,"height":1600},
+    {"src":"/assets/archives/aff7f71ee00c6ba8.webp","title":"Flûtes et hautbois — Dordogne 2026","width":1071,"height":1600},
+    {"src":"/assets/archives/c946a0fbcc5b8c5c.webp","title":"Percussions — Dordogne 2026","width":1200,"height":1600},
+    {"src":"/assets/archives/86f64e41965ac697.webp","title":"Saxophones ténors et baryton — Dordogne 2026","width":1200,"height":1600},
+    {"src":"/assets/archives/ef5792a0d38ef878.webp","title":"Trombones — Dordogne 2026","width":1200,"height":1600},
+    {"src":"/assets/archives/a20afd1516294163.webp","title":"Trompettes — Dordogne 2026","width":1200,"height":1600},
+    {"src":"/assets/archives/f8ffefd2679c16fd.webp","title":"Violoncelle — Dordogne 2026","width":1200,"height":1600}
   ]}
 ]

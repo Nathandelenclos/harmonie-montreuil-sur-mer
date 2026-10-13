@@ -71,11 +71,11 @@ export default function MusicSchoolPage() {
       <PageHeader homeLink={<Link href="/">Accueil</Link>} eyebrow="École de musique de Montreuil-sur-Mer" title="La musique commence avec vous."
         description="Enfants, adultes, débutants ou confirmés : découvrir un instrument, trouver son rythme et prendre plaisir à jouer ensemble."
         media={<PhotoSlideshow photos={[
+          { src: "/assets/archives/3b5271865ed6ea93.webp", alt: "Les élèves de flûte à l’audition de Noël", caption: "Audition de Noël · 2025." },
           { src: "/assets/formation-musicale.jpg", alt: "Les élèves réunis pendant un cours de formation musicale", caption: "Apprendre, écouter et progresser ensemble." },
-          { src: "/assets/archives/85c2087db2123161.webp", alt: "Les élèves et les musiciens réunis sur scène lors d’une audition", caption: "Audition 2018 · Archives de l’école de musique." },
-          { src: "/assets/archives/2b41b7e380ca5292.webp", alt: "Un ensemble de clarinettes sur scène pendant l’audition", caption: "Audition 2017 · Archives de l’école de musique." },
+          { src: "/assets/archives/a0233c99ef1b457a.webp", alt: "Les enfants chantent sur scène", caption: "Sacrée Fiesta · 2025." },
           { src: "/assets/archives/cda43b50f8dd4d75.webp", alt: "Des familles découvrent le saxophone aux portes ouvertes", caption: "Portes ouvertes de l’école · 2016." },
-          { src: "/assets/archives/0f3f259e3e7667c7.webp", alt: "Les élèves et musiciens jouent ensemble lors d’un rassemblement", caption: "Rassemblement à Évin-Malmaison · 2018." },
+          { src: "/assets/archives/2908f7532e393c5f.webp", alt: "La classe orchestre réunie sur scène", caption: "Rassemblement de la classe orchestre · 2026." },
         ]} />}
         actions={<><Button asChild size="lg" variant="secondary"><a href="#cours">Trouver mon cours</a></Button><Button asChild size="lg" variant="outline" className="bg-white text-primary"><a href="#contacts">Parlons de votre projet</a></Button></>}
       />
@@ -94,10 +94,10 @@ export default function MusicSchoolPage() {
         </div>
         <div className="grid gap-x-12 gap-y-10 lg:grid-cols-2">
           {[
-            { title: "Éveil musical", image: "/assets/eveil-musical.jpg", alt: "Les enfants de l’éveil musical sur scène", label: "Découvrir · 4 à 6 ans", duration: "1 h par semaine", description: "Chanter, écouter, explorer le rythme et découvrir les instruments : une approche ludique et sensorielle pour les premiers pas en musique." },
+            { title: "Éveil musical", image: "/assets/archives/a0233c99ef1b457a.webp", alt: "Les enfants chantent sur scène lors de Sacrée Fiesta en 2025", label: "Découvrir · 4 à 6 ans", duration: "1 h par semaine", description: "Chanter, écouter, explorer le rythme et découvrir les instruments : une approche ludique et sensorielle pour les premiers pas en musique." },
             { title: "Formation musicale", image: "/assets/formation-musicale.jpg", alt: "Un cours collectif de formation musicale", label: "Comprendre · Cours collectifs par niveau", duration: "1 h 30 par semaine, chorale incluse", description: "Lecture de notes, rythme, écoute et culture musicale : les bases pour progresser à l’instrument, avec une approche ludique et la pratique du chant choral." },
-            { title: "Cours d’instruments", image: "/assets/cours-instruments.jpg", alt: "Les élèves de flûte en concert", label: "Pratiquer · Cours individuels", duration: "30 min par semaine", description: "Un suivi personnalisé, adapté à chaque élève, et un répertoire varié selon ses goûts. Instruments à vent, percussions ou piano : trouvez votre voix." },
-            { title: "Pratique collective", image: "/assets/pratique-collective.jpg", alt: "Les élèves réunis pour jouer en orchestre", label: "Partager · Jouer ensemble", duration: "1 h par semaine, le lundi de 18 h à 19 h", description: "Développer l’écoute, le sens du rythme et le plaisir de jouer en groupe. Orchestre junior pour les débutants, harmonie pour les élèves plus avancés." },
+            { title: "Cours d’instruments", image: "/assets/archives/3b5271865ed6ea93.webp", alt: "Les élèves de flûte à l’audition de Noël 2025", label: "Pratiquer · Cours individuels", duration: "30 min par semaine", description: "Un suivi personnalisé, adapté à chaque élève, et un répertoire varié selon ses goûts. Instruments à vent, percussions ou piano : trouvez votre voix." },
+            { title: "Pratique collective", image: "/assets/archives/2908f7532e393c5f.webp", alt: "La classe orchestre réunie sur scène en 2026", label: "Partager · Jouer ensemble", duration: "1 h par semaine, le lundi de 18 h à 19 h", description: "Développer l’écoute, le sens du rythme et le plaisir de jouer en groupe. Orchestre junior pour les débutants, harmonie pour les élèves plus avancés." },
           ].map(course => <article key={course.title} className="school-course">
             <Image src={course.image} alt={course.alt} width={600} height={450} sizes="(max-width: 767px) 100vw, (max-width: 1023px) 40vw, 20vw" className="aspect-[4/3] w-full rounded-lg object-contain bg-muted" />
             <div>
@@ -112,7 +112,7 @@ export default function MusicSchoolPage() {
 
       <MediaFeature id="school-stage-title" eyebrow="La classe orchestre en vidéo" title="Le plaisir de jouer ensemble."
         media={<figure><YouTubeEmbed id="j591F-YCkBs" title="We don’t talk about Bruno — classe orchestre de Montreuil à Samer" /><figcaption className="mt-3 text-sm">Classe orchestre de Montreuil à Samer · Vidéo publiée en mars 2024 par MARLENE47100.</figcaption></figure>}
-        actions={<Button asChild variant="secondary"><Link href="/videos">Voir les autres captations</Link></Button>}
+        actions={<Button asChild variant="secondary"><Link href="/videos#fiesta-orchestre">Retrouver la classe orchestre en vidéo</Link></Button>}
       >
         <p>Écouter les autres, trouver sa place dans l’ensemble et partager la scène : la pratique collective fait partie du parcours musical.</p>
         <p>La classe d’orchestre complète la formation après deux à trois années de pratique instrumentale.</p>
@@ -138,8 +138,8 @@ export default function MusicSchoolPage() {
       <section className="site-container py-12 md:py-16" aria-labelledby="school-photos-title">
         <div className="grid items-center gap-8 lg:grid-cols-2">
           <figure>
-            <Image src="/assets/archives/85c2087db2123161.webp" alt="Les élèves et les musiciens réunis sur scène lors d’une audition" width={1600} height={1063} sizes="(max-width: 1023px) 100vw, 50vw" className="w-full h-auto rounded-lg" />
-            <figcaption className="mt-3 border-l-4 border-secondary pl-3 text-sm text-muted-foreground">Audition 2018 · Archives de l’école de musique</figcaption>
+            <Image src="/assets/archives/3b5271865ed6ea93.webp" alt="Les élèves de flûte à l’audition de Noël 2025" width={1600} height={1200} sizes="(max-width: 1023px) 100vw, 50vw" className="w-full h-auto rounded-lg" />
+            <figcaption className="mt-3 border-l-4 border-secondary pl-3 text-sm text-muted-foreground">Audition de Noël 2025 · Archives de l’école de musique</figcaption>
           </figure>
           <div>
             <h2 id="school-photos-title" className="section-title mb-6">Des notes, des visages,<br />des souvenirs.</h2>

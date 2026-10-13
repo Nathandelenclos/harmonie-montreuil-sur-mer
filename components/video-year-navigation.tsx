@@ -35,7 +35,7 @@ export default function VideoYearNavigation({ years }: { years: string[] }) {
     }
   }, [years])
 
-  return <nav ref={navigation} aria-label="Années de publication des vidéos" className="sticky top-20 z-40 mb-8 overflow-x-auto bg-background py-2">
+  return <nav ref={navigation} aria-label="Années des vidéos" className="sticky top-20 z-40 mb-8 overflow-x-auto bg-background py-2">
     <div className="flex w-max min-w-full px-1">
       {years.map(year => <a key={year} href={`#videos-${year}`} aria-current={activeYear === year ? "location" : undefined}
         className={`group relative flex min-h-12 min-w-16 flex-1 flex-col items-center px-3 py-2 font-semibold text-primary underline-offset-4 hover:underline before:absolute before:inset-x-0 before:top-3 before:h-0.5 before:bg-primary/20 ${activeYear === year ? "underline decoration-2" : ""}`}>

@@ -46,16 +46,32 @@ test('the catalog contains all 81 identified recordings with local thumbnails an
 test('the video page renders every recording once, groups by publication year and defers players', () => {
   const { default: VideosPage, metadata } = require('../app/videos/page.tsx');
   const page = new JSDOM(renderToStaticMarkup(React.createElement(VideosPage))).window.document;
-  assert.equal(page.querySelectorAll('button').length, videos.length);
+  assert.equal(page.querySelectorAll('button').length, videos.length + require('../data/recordings.json').flatMap(group => group.recordings).filter(recording => recording.provider !== 'YouTube').length);
   assert.equal(page.querySelectorAll('iframe').length, 0);
   assert.equal(page.querySelectorAll('h1').length, 1);
-  for (const link of page.querySelectorAll('nav[aria-label="Années de publication des vidéos"] a')) assert.ok(page.querySelector(link.getAttribute('href')));
+  for (const link of page.querySelectorAll('nav[aria-label="Années des vidéos"] a')) assert.ok(page.querySelector(link.getAttribute('href')));
   for (const video of videos) {
     const section = page.getElementById('videos-' + video.published.slice(0, 4));
     assert.ok(section.querySelector(`a[href="https://www.youtube.com/watch?v=${video.id}"]`));
   }
   assert.match(metadata.alternates.canonical, /\/videos$/);
   assert.ok(require('../app/sitemap.ts').default().some(item => item.url.endsWith('/videos')));
+});
+
+test('new recordings share the year timeline with YouTube and keep event context', () => {
+  const { default: VideosPage } = require('../app/videos/page.tsx');
+  const page = new JSDOM(renderToStaticMarkup(React.createElement(VideosPage))).window.document;
+  const nav = page.querySelector('nav[aria-label="Années des vidéos"]');
+  assert.ok(nav);
+  assert.ok(nav.parentElement.contains(page.getElementById('videos-2011')));
+  for (const [group, year] of [['dordogne-2026', '2026'], ['fiesta-harmonie', '2025'], ['fiesta-chorale', '2025'], ['fiesta-orchestre', '2025'], ['vie-harmonie', '2026']]) {
+    const collection = page.getElementById(group);
+    assert.equal(collection.closest('[id^="videos-"]').id, `videos-${year}`);
+    assert.ok(nav.compareDocumentPosition(collection) & 4);
+  }
+  assert.equal(page.querySelectorAll('#youtube-0DapvwTHhz4').length, 1);
+  assert.ok(page.getElementById('fiesta-harmonie').contains(page.getElementById('youtube-0DapvwTHhz4')));
+  assert.equal(page.querySelectorAll('nav[aria-label="Collections de vidéos"]').length, 0);
 });
 
 test('the year navigation follows scrolling in both directions and reveals the active year without moving focus', () => {
@@ -66,7 +82,7 @@ test('the year navigation follows scrolling in both directions and reveals the a
   const view = render(React.createElement(React.Fragment, null,
     React.createElement(VideoYearNavigation, { years: ['2025', '2024', '2023'] }),
     ...['2025', '2024', '2023'].map(year => React.createElement('section', { key: year, id: `videos-${year}` }, year))));
-  const nav = screen.getByRole('navigation', { name: 'Années de publication des vidéos' });
+  const nav = screen.getByRole('navigation', { name: 'Années des vidéos' });
   nav.getBoundingClientRect = () => ({ bottom: 150 });
   Object.defineProperty(nav, 'clientWidth', { value: 120 });
   nav.scrollTo = ({ left }) => { nav.scrollLeft = left; };

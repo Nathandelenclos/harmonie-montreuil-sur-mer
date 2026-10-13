@@ -16,11 +16,11 @@ export default function AboutPage() {
       <PageHeader homeLink={<Link href="/">Accueil</Link>} eyebrow="Montreuil-sur-Mer · Depuis 1854" title="Une histoire de musique. Et de rencontres."
         description="Une trentaine de musiciens amateurs, de tous âges et de tous horizons, réunis par le plaisir de jouer ensemble et de faire vivre la musique à Montreuil."
         media={<PhotoSlideshow photos={[
-          { src: "/assets/sainte-cecile-2025.jpg", alt: "L’Harmonie réunie pour la Sainte-Cécile 2025", caption: "Les musiciens réunis pour la Sainte-Cécile 2025." },
-          { src: "/assets/archives/878fe25780b01788.webp", alt: "Les musiciens costumés sur scène au concert de printemps", caption: "Concert de printemps 2018." },
-          { src: "/assets/archives/eaced13a52ac384d.webp", alt: "L’orchestre et sa cheffe pendant le concert d’automne", caption: "Concert d’automne 2018." },
-          { src: "/assets/archives/e1b96b853f6ec045.webp", alt: "Les musiciens de l’harmonie jouent sous un kiosque", caption: "Festival du Touquet · 2018." },
-          { src: "/assets/archives/0b29b15e5107d464.webp", alt: "Les musiciens de l’harmonie réunis pour une photo de groupe", caption: "L’Harmonie de Montreuil-sur-Mer · 2018." },
+          {"src": "/assets/archives/a6baddadb6ae14a2.webp", "alt": "L’harmonie à la Chartreuse de Neuville — 2026", "caption": "La Chartreuse de Neuville · 2026."},
+          {"src": "/assets/archives/0ebe50977a8de8d1.webp", "alt": "L’harmonie en Dordogne — 2026", "caption": "L’harmonie en Dordogne · 2026."},
+          {"src": "/assets/archives/a86f5ea708073ab6.webp", "alt": "Sacrée Fiesta — 2025", "caption": "Sacrée Fiesta · 2025."},
+          {"src": "/assets/archives/79a2f06b72506460.webp", "alt": "Sainte-Cécile — 2025", "caption": "Sainte-Cécile · 2025."},
+          {"src": "/assets/archives/911bcb816da624c3.webp", "alt": "Concert à la Chartreuse de Neuville — 2026", "caption": "Concert à la Chartreuse de Neuville · 2026."},
         ]} />}
         actions={<><Button asChild variant="secondary"><Link href="/rejoindre">Jouer avec nous</Link></Button><Link href="#equipe-harmonie" className="home-text-link">Rencontrer l’équipe →</Link></>}
       />
@@ -47,7 +47,7 @@ export default function AboutPage() {
           <ul className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,var(--card-min-default)),1fr))] gap-8">
             <li className="card-hover">
               <div className="h-full">
-                <figure className="mb-6"><Image src="/assets/archives/878fe25780b01788.webp" alt="Les musiciens costumés au concert de printemps" width={1600} height={1063} sizes="(max-width: 767px) 100vw, 33vw" className="aspect-[3/2] w-full object-cover rounded-lg" /><figcaption className="mt-3 text-sm text-muted-foreground">Concert de printemps 2018</figcaption></figure>
+                <figure className="mb-6"><Image src="/assets/archives/a86f5ea708073ab6.webp" alt="Les musiciens réunis sur scène lors de Sacrée Fiesta" width={1600} height={999} sizes="(max-width: 767px) 100vw, 33vw" className="aspect-[3/2] w-full object-cover rounded-lg" /><figcaption className="mt-3 text-sm text-muted-foreground">Sacrée Fiesta · 2025</figcaption></figure>
                 <h3 className="text-2xl font-bold mb-4">Promouvoir la musique</h3>
                 <p className="text-muted-foreground">
                   Nous nous efforçons de faire découvrir et apprécier la musique d&#39;harmonie au plus grand nombre, à
@@ -58,7 +58,7 @@ export default function AboutPage() {
 
             <li className="card-hover">
               <div className="h-full">
-                <figure className="mb-6"><Image src="/assets/archives/85c2087db2123161.webp" alt="Les élèves et musiciens réunis pour une audition" width={1600} height={1063} sizes="(max-width: 767px) 100vw, 33vw" className="aspect-[3/2] w-full object-cover rounded-lg" /><figcaption className="mt-3 text-sm text-muted-foreground">Audition de l’école · 2018</figcaption></figure>
+                <figure className="mb-6"><Image src="/assets/archives/3b5271865ed6ea93.webp" alt="Les élèves de flûte à l’audition de Noël" width={1600} height={1200} sizes="(max-width: 767px) 100vw, 33vw" className="aspect-[3/2] w-full object-cover rounded-lg" /><figcaption className="mt-3 text-sm text-muted-foreground">Audition de Noël · 2025</figcaption></figure>
                 <h3 className="text-2xl font-bold mb-4">Former des musiciens</h3>
                 <p className="text-muted-foreground">
                   Nous accueillons des musiciens de tous niveaux et les accompagnons dans leur progression, en

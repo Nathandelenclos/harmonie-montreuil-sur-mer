@@ -55,7 +55,7 @@ test('closing a native dialog and unmounting both restore scrolling', () => {
 });
 
 test('every imported album has local, dimensioned photos and a unique published URL', () => {
-  assert.equal(albums.length, 13);
+  assert.equal(albums.length, 18);
   assert.equal(new Set(albums.map(album => album.slug)).size, albums.length);
   const files = new Set();
   for (const album of albums) {
@@ -69,7 +69,7 @@ test('every imported album has local, dimensioned photos and a unique published 
       files.add(photo.src);
     }
   }
-  assert.equal(files.size, 293);
+  assert.equal(files.size, 331);
   const sitemap = require('../app/sitemap.ts').default().map(item => item.url);
   for (const album of albums) assert.ok(sitemap.some(url => url.endsWith(`/galerie/${album.slug}`)));
 });

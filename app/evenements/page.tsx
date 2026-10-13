@@ -15,7 +15,7 @@ export default function EventsPage() {
   const { upcoming, past } = partitionEvents()
   return <>
     <PageHeader homeLink={<Link href="/">Accueil</Link>} eyebrow="À l’affiche et en souvenirs" title="La musique se vit ensemble." description="Retrouvez les prochains rendez-vous de l’harmonie et prolongez le concert avec nos captations."
-      media={<figure><Image src="/assets/archives/eaced13a52ac384d.webp" alt="L’orchestre sur scène au concert d’automne" width={1600} height={1066} priority sizes="(max-width: 911px) 100vw, 50vw" className="w-full h-auto rounded-lg" /><figcaption className="mt-3 border-l-4 border-secondary pl-3 text-sm">Concert d’automne 2018 · Archives de l’harmonie</figcaption></figure>}
+      media={<figure><Image src="/assets/archives/911bcb816da624c3.webp" alt="L’harmonie en concert à la Chartreuse de Neuville en 2026" width={1600} height={1071} priority sizes="(max-width: 911px) 100vw, 50vw" className="w-full h-auto rounded-lg" /><figcaption className="mt-3 border-l-4 border-secondary pl-3 text-sm">Chartreuse de Neuville · 2026</figcaption></figure>}
       actions={<><Button asChild variant="secondary"><a href="#programme">Voir le programme</a></Button><Link href="#videos" className="home-text-link">Écouter l’harmonie →</Link></>}
     />
     <section id="programme" className="site-container py-12 md:py-16">
@@ -48,7 +48,7 @@ export default function EventsPage() {
     </section>
     <section className="site-container py-12 md:py-16">
       <div className="grid items-center gap-8 lg:grid-cols-2">
-        <figure><Image src="/assets/archives/878fe25780b01788.webp" alt="Les musiciens costumés sur scène dans une lumière bleue et jaune" width={1600} height={1059} sizes="(max-width: 1023px) 100vw, 50vw" className="w-full h-auto rounded-lg" /><figcaption className="mt-3 border-l-4 border-secondary pl-3 text-sm text-muted-foreground">Concert de printemps 2018 · Archives de l’harmonie</figcaption></figure>
+        <figure><Image src="/assets/archives/a86f5ea708073ab6.webp" alt="Les musiciens réunis sur scène lors de Sacrée Fiesta" width={1600} height={999} sizes="(max-width: 1023px) 100vw, 50vw" className="w-full h-auto rounded-lg" /><figcaption className="mt-3 border-l-4 border-secondary pl-3 text-sm text-muted-foreground">Sacrée Fiesta · 2025</figcaption></figure>
         <div><h2 className="section-title text-primary mb-6">La scène se raconte aussi en photos.</h2><p className="mb-6 text-lg">Concerts, rencontres et souvenirs : retrouvez les albums de l’harmonie.</p><Button asChild variant="outline"><Link href="/galerie">Parcourir les albums</Link></Button></div>
       </div>
     </section>

@@ -1,0 +1,215 @@
+[
+  {
+    "id": "dordogne-2026",
+    "title": "Dordogne 2026",
+    "description": "Deux concerts à retrouver en intégralité, au cloître de Cadouin et au château de Biron.",
+    "album": "dordogne-2026",
+    "recordings": [
+      {
+        "id": "1er53uKDy7A1UBceTE2GS5qMqC9PFQoHz",
+        "title": "Cloître de Cadouin — 15 mai 2026",
+        "provider": "Google Drive",
+        "source": "https://drive.google.com/file/d/1er53uKDy7A1UBceTE2GS5qMqC9PFQoHz/preview",
+        "poster": "/assets/archives/0d293d616d4b737f.webp"
+      },
+      {
+        "id": "1G3Enj6t0N8fHUVZ2YsDSaqSSs0XjTWBT",
+        "title": "Château de Biron — 16 mai 2026",
+        "provider": "Google Drive",
+        "source": "https://drive.google.com/file/d/1G3Enj6t0N8fHUVZ2YsDSaqSSs0XjTWBT/preview",
+        "poster": "/assets/archives/c106e93f0a316d54.webp"
+      }
+    ],
+    "year": "2026"
+  },
+  {
+    "id": "fiesta-harmonie",
+    "title": "Sacrée Fiesta 2025 — L’harmonie",
+    "description": "Captations de Marlène Moreau.",
+    "album": "sacree-fiesta-2025",
+    "recordings": [
+      {
+        "id": "fiesta-1",
+        "title": "Music from Coco",
+        "provider": "Facebook",
+        "source": "https://www.facebook.com/reel/1137310918577428",
+        "poster": "/assets/videos/fiesta-1.jpg"
+      },
+      {
+        "id": "fiesta-2",
+        "title": "18 h — Enfin !",
+        "provider": "Facebook",
+        "source": "https://www.facebook.com/reel/822925267214085",
+        "poster": "/assets/videos/fiesta-2.jpg"
+      },
+      {
+        "id": "fiesta-3",
+        "title": "19 h 07 — After work",
+        "provider": "Facebook",
+        "source": "https://www.facebook.com/reel/1340914633854073",
+        "poster": "/assets/videos/fiesta-3.jpg"
+      },
+      {
+        "id": "fiesta-4",
+        "title": "20 h 52 — Petite ballade · 22 h 06 — Rockline",
+        "provider": "Facebook",
+        "source": "https://www.facebook.com/reel/1124504286557454",
+        "poster": "/assets/videos/fiesta-4.jpg"
+      },
+      {
+        "id": "fiesta-5",
+        "title": "23 h 12 — Ballade au crépuscule",
+        "provider": "Facebook",
+        "source": "https://www.facebook.com/reel/1332842884695218",
+        "poster": "/assets/videos/fiesta-5.jpg"
+      },
+      {
+        "id": "fiesta-6",
+        "title": "23 h 32 — O’Connell’s",
+        "provider": "YouTube",
+        "source": "#youtube-0DapvwTHhz4",
+        "poster": "/assets/videos/0DapvwTHhz4.jpg"
+      },
+      {
+        "id": "fiesta-7",
+        "title": "00 h 51 — Djollof",
+        "provider": "Facebook",
+        "source": "https://www.facebook.com/reel/1364860798632209",
+        "poster": "/assets/videos/fiesta-7.jpg"
+      },
+      {
+        "id": "fiesta-8",
+        "title": "02 h 07 — Mezzé",
+        "provider": "Facebook",
+        "source": "https://www.facebook.com/reel/1493888498505574",
+        "poster": "/assets/videos/fiesta-8.jpg"
+      },
+      {
+        "id": "fiesta-9",
+        "title": "02 h 30 — Rue de Paris",
+        "provider": "Facebook",
+        "source": "https://www.facebook.com/reel/1196014942420247",
+        "poster": "/assets/videos/fiesta-9.jpg"
+      },
+      {
+        "id": "fiesta-10",
+        "title": "03 h 41 — C’est beau une ville la nuit · 04 h — Golden wave",
+        "provider": "Facebook",
+        "source": "https://www.facebook.com/reel/860430516668607",
+        "poster": "/assets/videos/fiesta-10.jpg"
+      },
+      {
+        "id": "fiesta-11",
+        "title": "06 h — Balade au point du jour · 08 h 01 — Bourbon street",
+        "provider": "Facebook",
+        "source": "https://www.facebook.com/reel/696449396865619",
+        "poster": "/assets/videos/fiesta-11.jpg"
+      },
+      {
+        "id": "fiesta-12",
+        "title": "The Greatest Showman",
+        "provider": "Facebook",
+        "source": "https://www.facebook.com/reel/833261729326059",
+        "poster": "/assets/videos/fiesta-12.jpg"
+      }
+    ],
+    "year": "2025"
+  },
+  {
+    "id": "fiesta-chorale",
+    "title": "Sacrée Fiesta 2025 — La chorale",
+    "description": "Captations de Marlène Moreau.",
+    "album": "sacree-fiesta-2025",
+    "recordings": [
+      {
+        "id": "fiesta-13",
+        "title": "Viva Téquila — Bis",
+        "provider": "Facebook",
+        "source": "https://www.facebook.com/reel/1768174497228915",
+        "poster": "/assets/videos/fiesta-13.jpg"
+      },
+      {
+        "id": "fiesta-14",
+        "title": "Le Mambo",
+        "provider": "Facebook",
+        "source": "https://www.facebook.com/reel/1391516189204574",
+        "poster": "/assets/videos/fiesta-14.jpg"
+      },
+      {
+        "id": "fiesta-15",
+        "title": "À la claire fontaine — Version créole",
+        "provider": "Facebook",
+        "source": "https://www.facebook.com/reel/1345000457103788",
+        "poster": "/assets/videos/fiesta-15.jpg"
+      },
+      {
+        "id": "fiesta-16",
+        "title": "Uma Capirua",
+        "provider": "Facebook",
+        "source": "https://www.facebook.com/reel/1862903108439288",
+        "poster": "/assets/videos/fiesta-16.jpg"
+      }
+    ],
+    "year": "2025"
+  },
+  {
+    "id": "fiesta-orchestre",
+    "title": "Sacrée Fiesta 2025 — La classe orchestre",
+    "description": "Captations de Marlène Moreau.",
+    "album": "sacree-fiesta-2025",
+    "recordings": [
+      {
+        "id": "fiesta-17",
+        "title": "Guantanamera",
+        "provider": "Facebook",
+        "source": "https://www.facebook.com/reel/2288873341532854",
+        "poster": "/assets/videos/fiesta-17.jpg"
+      },
+      {
+        "id": "fiesta-18",
+        "title": "Havana",
+        "provider": "Facebook",
+        "source": "https://www.facebook.com/reel/1411747836989331",
+        "poster": "/assets/videos/fiesta-18.jpg"
+      },
+      {
+        "id": "fiesta-19",
+        "title": "The Banana Boat Song",
+        "provider": "Facebook",
+        "source": "https://www.facebook.com/reel/827414253372777",
+        "poster": "/assets/videos/fiesta-19.jpg"
+      },
+      {
+        "id": "fiesta-20",
+        "title": "The Bare Necessities",
+        "provider": "Facebook",
+        "source": "https://www.facebook.com/reel/1358042181892880",
+        "poster": "/assets/videos/fiesta-20.jpg"
+      },
+      {
+        "id": "fiesta-21",
+        "title": "Sway",
+        "provider": "Facebook",
+        "source": "https://www.facebook.com/reel/1824071038231819",
+        "poster": "/assets/videos/fiesta-21.jpg"
+      }
+    ],
+    "year": "2025"
+  },
+  {
+    "id": "vie-harmonie",
+    "title": "Dans les coulisses de l’harmonie",
+    "description": "Un aperçu des répétitions partagé par l’Harmonie de Montreuil-sur-Mer.",
+    "album": null,
+    "recordings": [
+      {
+        "id": "repetition-belle-bete",
+        "title": "La Belle et la Bête en répétition",
+        "provider": "Facebook",
+        "source": "https://www.facebook.com/reel/1108147711811103/",
+        "poster": "/assets/videos/repetition-belle-bete.jpg"
+      }
+    ],
+    "year": "2026"
+  }
+]

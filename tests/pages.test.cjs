@@ -74,7 +74,7 @@ test('school retains course durations, all instruments, teachers and practical d
   }
   for (const text of ['4 à 6 ans', '1 h 30', '30 min', '18 h à 19 h', 'Magalie DELMOTTE', 'Céline GRAY', '320 €', '400 €', '14 h à 18 h'])
     assert.ok(page.textContent.includes(text), text);
-  assert.match(page.textContent, /Audition 2018/);
+  assert.match(page.textContent, /Audition de Noël 2025/);
   assert.ok(getByRole(page, 'link', { name: /Photos de l’école/ }));
 });
 
